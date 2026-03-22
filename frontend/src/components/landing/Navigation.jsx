@@ -64,8 +64,12 @@ export const Navigation = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <div className="w-10 h-10 rounded-lg bg-[#CCFF00] flex items-center justify-center">
-              <span className="font-bold text-black text-lg font-['Space_Grotesk']">iA</span>
+            <div className="w-10 h-10 rounded-lg bg-[#050505] flex items-center justify-center overflow-hidden">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
+                alt="intelligent automotive"
+                className="w-8 h-8 object-contain"
+              />
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-white font-semibold text-sm font-['Space_Grotesk'] tracking-tight">

@@ -47,8 +47,12 @@ export const LoginPage = () => {
 
           {/* Logo */}
           <div className="flex items-center gap-2 mb-8">
-            <div className="w-12 h-12 rounded-lg bg-[#CCFF00] flex items-center justify-center">
-              <span className="font-bold text-black text-xl font-['Space_Grotesk']">iA</span>
+            <div className="w-12 h-12 rounded-lg bg-[#050505] flex items-center justify-center overflow-hidden">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
+                alt="intelligent automotive"
+                className="w-10 h-10 object-contain"
+              />
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-white font-semibold text-base">intelligent</span>
