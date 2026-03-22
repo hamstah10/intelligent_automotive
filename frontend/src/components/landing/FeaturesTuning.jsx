@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import { Cpu, FileText, Wrench, Database, GitBranch, AlertTriangle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Cpu, FileText, Wrench, Database, GitBranch, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Button } from '../ui/button';
 
 const tuningFeatures = [
   {
@@ -102,11 +104,28 @@ export const FeaturesTuning = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-white/60 text-base lg:text-lg max-w-2xl leading-relaxed"
+            className="text-white/60 text-base lg:text-lg max-w-2xl leading-relaxed mb-6"
           >
             ECU, TCU, Tools und Protokolle – zentralisiere dein technisches Wissen 
             und bleib immer auf dem neuesten Stand.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Link to="/tuning">
+              <Button 
+                variant="outline" 
+                className="border-[#CCFF00]/30 text-[#CCFF00] hover:bg-[#CCFF00]/10 rounded-full group"
+                data-testid="tuning-learn-more-btn"
+              >
+                Mehr erfahren
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </motion.div>
         </div>
 
         {/* Bento Grid */}

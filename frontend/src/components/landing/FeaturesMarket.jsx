@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import { TrendingUp, Search, Bell, Target, BarChart2, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { TrendingUp, Search, Bell, Target, BarChart2, Eye, ArrowRight } from 'lucide-react';
+import { Button } from '../ui/button';
 
 const marketFeatures = [
   {
@@ -95,11 +97,28 @@ export const FeaturesMarket = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-white/60 text-base lg:text-lg max-w-2xl leading-relaxed"
+            className="text-white/60 text-base lg:text-lg max-w-2xl leading-relaxed mb-6"
           >
             Analysiere den Fahrzeugmarkt, verstehe Preise, erkenne Deals und 
             überwache deine Konkurrenz – alles in einer Plattform.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Link to="/market">
+              <Button 
+                variant="outline" 
+                className="border-[#00E5FF]/30 text-[#00E5FF] hover:bg-[#00E5FF]/10 rounded-full group"
+                data-testid="market-learn-more-btn"
+              >
+                Mehr erfahren
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </motion.div>
         </div>
 
         {/* Bento Grid */}
