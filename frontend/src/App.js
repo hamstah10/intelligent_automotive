@@ -14,6 +14,14 @@ import { Pricing } from "@/components/landing/Pricing";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
+import { RealtimeCounter } from "@/components/landing/RealtimeCounter";
+import { IntegrationShowcase } from "@/components/landing/IntegrationShowcase";
+import { ParallaxDataWall } from "@/components/landing/ParallaxDataWall";
+import { DealQuiz } from "@/components/landing/DealQuiz";
+import { VehicleConfigurator } from "@/components/landing/VehicleConfigurator";
+import { BeforeAfterSlider } from "@/components/landing/BeforeAfterSlider";
+import { CompetitorRadar } from "@/components/landing/CompetitorRadar";
+import { MarketHeatmap } from "@/components/landing/MarketHeatmap";
 import { MarketPage } from "@/components/pages/MarketPage";
 import { TuningPage } from "@/components/pages/TuningPage";
 import { LoginPage } from "@/components/pages/LoginPage";
@@ -37,15 +45,33 @@ const HomePage = () => {
       <main>
         {/* Hero Section */}
         <HeroSection />
+
+        {/* Integration Partners Showcase */}
+        <IntegrationShowcase />
         
         {/* Live Deal Ticker */}
         <LiveTicker />
+
+        {/* Realtime Counter Stats */}
+        <RealtimeCounter />
         
         {/* Features - Market Intelligence */}
         <FeaturesMarket />
+
+        {/* Market Heatmap - Deal Hotspots */}
+        <MarketHeatmap />
+
+        {/* Parallax Data Wall */}
+        <ParallaxDataWall />
         
         {/* ROI Calculator */}
         <ROICalculator />
+
+        {/* Vehicle Configurator - Marktwert Check */}
+        <VehicleConfigurator />
+
+        {/* Deal Finder Quiz */}
+        <DealQuiz />
         
         {/* Features - Tuning Intelligence */}
         <FeaturesTuning />
@@ -55,6 +81,12 @@ const HomePage = () => {
 
         {/* AI Deal Analyzer */}
         <AIDealAnalyzer />
+
+        {/* Before / After Comparison */}
+        <BeforeAfterSlider />
+
+        {/* Competitor Radar */}
+        <CompetitorRadar />
         
         {/* How It Works */}
         <HowItWorks />
