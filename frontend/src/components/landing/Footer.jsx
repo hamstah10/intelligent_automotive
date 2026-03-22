@@ -23,6 +23,7 @@ const footerLinks = {
     { name: 'Hilfe Center', href: '/support' },
     { name: 'Dokumentation', href: '/support' },
     { name: 'API Referenz', href: '/support' },
+    { name: 'System Status', href: '/status' },
     { name: 'Kontakt', href: '#' },
   ],
   Legal: [

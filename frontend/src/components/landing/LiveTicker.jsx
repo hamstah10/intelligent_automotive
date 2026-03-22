@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingDown, Clock, Car } from 'lucide-react';
 
@@ -15,30 +15,24 @@ const fakeDealData = [
 
 export const LiveTicker = () => {
   const [deals, setDeals] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const indexRef = useRef(0);
 
-  useEffect(() => {
-    // Add initial deal
-    addNewDeal();
-    
-    // Add new deal every 4 seconds
-    const interval = setInterval(() => {
-      addNewDeal();
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const addNewDeal = () => {
+  const addNewDeal = useCallback(() => {
+    const idx = indexRef.current;
     const deal = {
-      ...fakeDealData[currentIndex % fakeDealData.length],
+      ...fakeDealData[idx % fakeDealData.length],
       id: Date.now(),
       time: 'Gerade eben',
     };
-    
     setDeals(prev => [deal, ...prev].slice(0, 5));
-    setCurrentIndex(prev => prev + 1);
-  };
+    indexRef.current = idx + 1;
+  }, []);
+
+  useEffect(() => {
+    addNewDeal();
+    const interval = setInterval(addNewDeal, 4000);
+    return () => clearInterval(interval);
+  }, [addNewDeal]);
 
   return (
     <section className="py-8 px-6 bg-[#0A0A0A] border-y border-white/10 overflow-hidden">

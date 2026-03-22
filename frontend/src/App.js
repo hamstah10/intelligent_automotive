@@ -3,8 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import { Navigation } from "@/components/landing/Navigation";
 import { HeroSection } from "@/components/landing/HeroSection";
+import { LiveTicker } from "@/components/landing/LiveTicker";
 import { FeaturesMarket } from "@/components/landing/FeaturesMarket";
+import { ROICalculator } from "@/components/landing/ROICalculator";
 import { FeaturesTuning } from "@/components/landing/FeaturesTuning";
+import { ECUVisualizer } from "@/components/landing/ECUVisualizer";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Pricing } from "@/components/landing/Pricing";
 import { Testimonials } from "@/components/landing/Testimonials";
@@ -16,6 +19,7 @@ import { LoginPage } from "@/components/pages/LoginPage";
 import { RegisterPage } from "@/components/pages/RegisterPage";
 import { DemoPage } from "@/components/pages/DemoPage";
 import { SupportPage } from "@/components/pages/SupportPage";
+import { StatusPage } from "@/components/pages/StatusPage";
 
 // Home Page Component
 const HomePage = () => {
@@ -32,11 +36,20 @@ const HomePage = () => {
         {/* Hero Section */}
         <HeroSection />
         
+        {/* Live Deal Ticker */}
+        <LiveTicker />
+        
         {/* Features - Market Intelligence */}
         <FeaturesMarket />
         
+        {/* ROI Calculator */}
+        <ROICalculator />
+        
         {/* Features - Tuning Intelligence */}
         <FeaturesTuning />
+        
+        {/* ECU Visualizer */}
+        <ECUVisualizer />
         
         {/* How It Works */}
         <HowItWorks />
@@ -68,6 +81,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/demo" element={<DemoPage />} />
         <Route path="/support" element={<SupportPage />} />
+        <Route path="/status" element={<StatusPage />} />
       </Routes>
       <Toaster 
         position="bottom-right"

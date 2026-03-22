@@ -12,6 +12,7 @@ import { Calendar } from '../ui/calendar';
 import { toast } from 'sonner';
 import { format, isBefore, isWeekend } from 'date-fns';
 import { de } from 'date-fns/locale';
+import confetti from 'canvas-confetti';
 
 const timeSlots = [
   '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
@@ -47,6 +48,32 @@ export const DemoPage = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     setIsLoading(false);
     setStep(4);
+
+    // Konfetti-Animation
+    const duration = 3000;
+    const end = Date.now() + duration;
+    const colors = ['#CCFF00', '#00E5FF', '#ffffff'];
+
+    const frame = () => {
+      confetti({
+        particleCount: 3,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors,
+      });
+      confetti({
+        particleCount: 3,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors,
+      });
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    };
+    frame();
   };
 
   const disabledDays = (date) => {
