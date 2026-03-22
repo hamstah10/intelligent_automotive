@@ -15,6 +15,7 @@ import { TuningPage } from "@/components/pages/TuningPage";
 import { LoginPage } from "@/components/pages/LoginPage";
 import { RegisterPage } from "@/components/pages/RegisterPage";
 import { DemoPage } from "@/components/pages/DemoPage";
+import { SupportPage } from "@/components/pages/SupportPage";
 
 // Home Page Component
 const HomePage = () => {
@@ -66,6 +67,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/demo" element={<DemoPage />} />
+        <Route path="/support" element={<SupportPage />} />
       </Routes>
       <Toaster 
         position="bottom-right"

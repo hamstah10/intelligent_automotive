@@ -7,10 +7,30 @@ import { ArrowRight, Mail, Linkedin, Twitter, Github } from 'lucide-react';
 import { toast } from 'sonner';
 
 const footerLinks = {
-  Produkt: ['Market Intelligence', 'Tuning Intelligence', 'Preise', 'API Dokumentation'],
-  Unternehmen: ['Über uns', 'Karriere', 'Blog', 'Presse'],
-  Support: ['Hilfe Center', 'Kontakt', 'Status', 'Dokumentation'],
-  Legal: ['Datenschutz', 'AGB', 'Impressum', 'Cookie-Einstellungen'],
+  Produkt: [
+    { name: 'Market Intelligence', href: '/market' },
+    { name: 'Tuning Intelligence', href: '/tuning' },
+    { name: 'Preise', href: '/#pricing' },
+    { name: 'API Dokumentation', href: '/support' },
+  ],
+  Unternehmen: [
+    { name: 'Über uns', href: '#' },
+    { name: 'Karriere', href: '#' },
+    { name: 'Blog', href: '#' },
+    { name: 'Presse', href: '#' },
+  ],
+  Support: [
+    { name: 'Hilfe Center', href: '/support' },
+    { name: 'Dokumentation', href: '/support' },
+    { name: 'API Referenz', href: '/support' },
+    { name: 'Kontakt', href: '#' },
+  ],
+  Legal: [
+    { name: 'Datenschutz', href: '#' },
+    { name: 'AGB', href: '#' },
+    { name: 'Impressum', href: '#' },
+    { name: 'Cookie-Einstellungen', href: '#' },
+  ],
 };
 
 export const Footer = () => {
@@ -121,14 +141,13 @@ export const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
                       className="text-white/50 text-sm hover:text-white transition-colors duration-200"
-                      onClick={(e) => e.preventDefault()}
                     >
-                      {link}
-                    </a>
+                      {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
