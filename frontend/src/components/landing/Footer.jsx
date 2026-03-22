@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -87,22 +88,24 @@ export const Footer = () => {
 
           {/* Alternative CTAs */}
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <Button
-              variant="outline"
-              data-testid="footer-demo-btn"
-              className="border-white/20 text-white hover:bg-white/5 rounded-lg"
-              onClick={() => toast.info('Demo-Buchung kommt bald!')}
-            >
-              Demo buchen
-            </Button>
-            <Button
-              variant="outline"
-              data-testid="footer-login-btn"
-              className="border-white/20 text-white hover:bg-white/5 rounded-lg"
-              onClick={() => toast.info('Login kommt bald!')}
-            >
-              Anmelden
-            </Button>
+            <Link to="/demo">
+              <Button
+                variant="outline"
+                data-testid="footer-demo-btn"
+                className="border-white/20 text-white hover:bg-white/5 rounded-lg"
+              >
+                Demo buchen
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button
+                variant="outline"
+                data-testid="footer-login-btn"
+                className="border-white/20 text-white hover:bg-white/5 rounded-lg"
+              >
+                Anmelden
+              </Button>
+            </Link>
           </div>
         </motion.div>
 
