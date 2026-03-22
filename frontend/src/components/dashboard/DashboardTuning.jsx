@@ -143,44 +143,47 @@ export const DashboardTuning = () => {
         </motion.div>
       </div>
 
-      {/* ECU Knowledge Bot */}
-      <div className="mb-6">
-        <ECUKnowledgeBot />
-      </div>
-
-      {/* ECU Database Table */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="bg-[#111111] border border-white/10 rounded-2xl p-6">
-        <div className="flex items-center justify-between mb-5">
-          <div>
-            <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white">ECU-Datenbank</h3>
-            <p className="text-white/30 text-xs mt-0.5">{filtered.length} Einträge</p>
+      {/* ECU Database + Knowledge Bot side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        {/* ECU Database Table - 8 cols */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="lg:col-span-8 bg-[#111111] border border-white/10 rounded-2xl p-6">
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white">ECU-Datenbank</h3>
+              <p className="text-white/30 text-xs mt-0.5">{filtered.length} Einträge</p>
+            </div>
           </div>
+          <div className="space-y-2.5">
+            {filtered.map((ecu, i) => (
+              <motion.div key={ecu.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 + i * 0.03 }}
+                className="p-4 bg-[#0A0A0A] rounded-xl border border-white/5 hover:border-[#CCFF00]/15 transition-colors cursor-pointer">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-3">
+                    <span className="text-white font-semibold text-sm">{ecu.brand} {ecu.model}</span>
+                    <span className={`px-2 py-0.5 rounded-md text-[10px] font-medium border ${riskColor(ecu.risk)}`}>Risiko: {ecu.risk}</span>
+                  </div>
+                  <span className="text-white/25 text-xs flex items-center gap-1"><Clock className="w-3 h-3" />{ecu.lastUpdate}</span>
+                </div>
+                <div className="flex items-center gap-6 text-xs">
+                  <span className="text-white/50"><span className="text-[#CCFF00]">ECU:</span> {ecu.ecu}</span>
+                  <span className="text-white/50"><span className="text-[#00E5FF]">TCU:</span> {ecu.tcu}</span>
+                  <div className="flex items-center gap-1.5">
+                    {ecu.tools.map(t => <span key={t} className="px-2 py-0.5 bg-white/5 rounded text-white/50 border border-white/10">{t}</span>)}
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    {ecu.methods.map(m => <span key={m} className="px-2 py-0.5 bg-[#CCFF00]/10 rounded text-[#CCFF00]/70 border border-[#CCFF00]/15">{m}</span>)}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ECU Knowledge Bot - 4 cols */}
+        <div className="lg:col-span-4">
+          <ECUKnowledgeBot />
         </div>
-        <div className="space-y-2.5">
-          {filtered.map((ecu, i) => (
-            <motion.div key={ecu.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 + i * 0.03 }}
-              className="p-4 bg-[#0A0A0A] rounded-xl border border-white/5 hover:border-[#CCFF00]/15 transition-colors cursor-pointer">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-3">
-                  <span className="text-white font-semibold text-sm">{ecu.brand} {ecu.model}</span>
-                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-medium border ${riskColor(ecu.risk)}`}>Risiko: {ecu.risk}</span>
-                </div>
-                <span className="text-white/25 text-xs flex items-center gap-1"><Clock className="w-3 h-3" />{ecu.lastUpdate}</span>
-              </div>
-              <div className="flex items-center gap-6 text-xs">
-                <span className="text-white/50"><span className="text-[#CCFF00]">ECU:</span> {ecu.ecu}</span>
-                <span className="text-white/50"><span className="text-[#00E5FF]">TCU:</span> {ecu.tcu}</span>
-                <div className="flex items-center gap-1.5">
-                  {ecu.tools.map(t => <span key={t} className="px-2 py-0.5 bg-white/5 rounded text-white/50 border border-white/10">{t}</span>)}
-                </div>
-                <div className="flex items-center gap-1.5">
-                  {ecu.methods.map(m => <span key={m} className="px-2 py-0.5 bg-[#CCFF00]/10 rounded text-[#CCFF00]/70 border border-[#CCFF00]/15">{m}</span>)}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+      </div>
     </>
   );
 };
