@@ -96,7 +96,7 @@ export const DemoModal = ({ isOpen, onClose }) => {
                   <X className="w-5 h-5" />
                 </button>
                 
-                <h2 className="text-xl font-bold text-white font-['Space_Grotesk']">Demo buchen</h2>
+                <h2 className="text-xl font-bold text-white font-['Orbitron']">Demo buchen</h2>
                 <p className="text-white/50 text-sm mt-1">
                   {step === 4 ? 'Buchung bestätigt!' : `Schritt ${step} von 3`}
                 </p>

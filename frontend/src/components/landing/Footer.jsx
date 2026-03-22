@@ -70,7 +70,7 @@ export const Footer = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-6">
+          <h2 className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-6">
             STARTEN SIE{' '}
             <span className="text-gradient-yellow">JETZT</span>
           </h2>
@@ -166,10 +166,10 @@ export const Footer = () => {
               className="w-10 h-10 object-contain"
             />
             <div className="flex flex-col leading-none">
-              <span className="text-white font-semibold text-xs font-['Space_Grotesk'] tracking-tight">
+              <span className="text-white font-semibold text-xs font-['Orbitron'] tracking-tight">
                 intelligent
               </span>
-              <span className="text-[#CCFF00] font-bold text-xs font-['Space_Grotesk'] tracking-tight">
+              <span className="text-[#CCFF00] font-bold text-xs font-['Orbitron'] tracking-tight">
                 automotive
               </span>
             </div>

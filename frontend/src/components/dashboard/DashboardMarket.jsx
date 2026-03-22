@@ -72,7 +72,7 @@ export const DashboardMarket = () => {
     <>
       <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 mb-8">
         <div>
-          <h1 data-testid="market-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Market Intelligence</h1>
+          <h1 data-testid="market-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Market Intelligence</h1>
           <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Fahrzeug-Listings, Preisanalysen und Deal-Bewertungen.</p>
         </div>
         <div className="flex items-center gap-3 flex-wrap">
@@ -98,7 +98,7 @@ export const DashboardMarket = () => {
           <motion.div key={stat.label} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
             className={`${surface()} p-5`}>
             <div className="text-sm mb-1" style={{ color: t.textSec }}>{stat.label}</div>
-            <div className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{stat.value}</div>
+            <div className="font-['Orbitron'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{stat.value}</div>
             <div className={`text-xs mt-1 flex items-center gap-1 ${stat.up ? 'text-[#00E5FF]' : 'text-red-400'}`}>
               {stat.up ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}{stat.change}
             </div>
@@ -108,7 +108,7 @@ export const DashboardMarket = () => {
 
       {/* Price Chart */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={`${surface()} p-6 mb-6`}>
-        <h3 className="font-['Space_Grotesk'] text-lg font-bold mb-1" style={{ color: t.text }}>Preisentwicklung BMW 3er Touring</h3>
+        <h3 className="font-['Orbitron'] text-lg font-bold mb-1" style={{ color: t.text }}>Preisentwicklung BMW 3er Touring</h3>
         <p className="text-xs mb-6" style={{ color: t.textMut }}>Durchschnittspreis der letzten 7 Monate</p>
         <div className="h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
@@ -125,7 +125,7 @@ export const DashboardMarket = () => {
 
       {/* Listings */}
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="font-['Space_Grotesk'] text-lg font-bold" style={{ color: t.text }}>Aktuelle Listings</h3>
+        <h3 className="font-['Orbitron'] text-lg font-bold" style={{ color: t.text }}>Aktuelle Listings</h3>
         <span className="text-sm" style={{ color: t.textMut }}>{listings.length} Ergebnisse</span>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
@@ -153,7 +153,7 @@ export const DashboardMarket = () => {
                 </div>
                 <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid var(--d-border-sub)' }}>
                   <div>
-                    <div className="font-['Space_Grotesk'] text-lg font-bold" style={{ color: t.text }}>€{item.price.toLocaleString('de-DE')}</div>
+                    <div className="font-['Orbitron'] text-lg font-bold" style={{ color: t.text }}>€{item.price.toLocaleString('de-DE')}</div>
                     <div className="text-[10px] line-through" style={{ color: t.textDim }}>Markt: €{item.marketPrice.toLocaleString('de-DE')}</div>
                   </div>
                   <div className="text-right">

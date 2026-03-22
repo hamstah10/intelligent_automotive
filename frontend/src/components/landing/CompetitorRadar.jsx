@@ -34,7 +34,7 @@ export const CompetitorRadar = () => {
             <RadarIcon className="w-4 h-4 text-[#00E5FF]" />
             <span className="text-[#00E5FF] text-sm font-medium">Performance Vergleich</span>
           </div>
-          <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold text-white mb-4">AutoIntel vs. Manuelle Suche</h2>
+          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">AutoIntel vs. Manuelle Suche</h2>
           <p className="text-white/40 text-base max-w-lg mx-auto">In jeder Dimension überlegen. Datengetrieben statt Bauchgefühl.</p>
         </motion.div>
 
@@ -73,7 +73,7 @@ export const CompetitorRadar = () => {
                 const ly = cy + (r + 28) * Math.sin(angle);
                 return (
                   <text key={cat} x={lx} y={ly} textAnchor="middle" dominantBaseline="middle"
-                    fill="rgba(255,255,255,0.4)" fontSize="11" fontFamily="Space Grotesk">{cat}</text>
+                    fill="rgba(255,255,255,0.4)" fontSize="11" fontFamily="Orbitron">{cat}</text>
                 );
               })}
             </svg>

@@ -51,7 +51,7 @@ export const ECUKnowledgeBot = () => {
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-[#CCFF00]/10 flex items-center justify-center"><Cpu className="w-[18px] h-[18px] text-[#CCFF00]" /></div>
           <div>
-            <h3 className="font-['Space_Grotesk'] text-sm font-bold" style={{ color: t.text }}>ECU Knowledge Bot</h3>
+            <h3 className="font-['Orbitron'] text-sm font-bold" style={{ color: t.text }}>ECU Knowledge Bot</h3>
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
               <span className="text-[10px]" style={{ color: t.textMut }}>GPT-4o · Online</span>

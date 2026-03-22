@@ -100,7 +100,7 @@ export const DashboardOverview = () => {
       {/* Header */}
       <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 mb-8">
         <div>
-          <h1 data-testid="dashboard-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Automotive Dashboard</h1>
+          <h1 data-testid="dashboard-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Automotive Dashboard</h1>
           <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Echtzeit-Übersicht für Fahrzeugmarkt, Preisänderungen und Tuning-Updates.</p>
         </div>
         <div className="flex items-center gap-3 flex-wrap">
@@ -133,7 +133,7 @@ export const DashboardOverview = () => {
               </div>
               <div className="text-sm mb-1" style={{ color: t.textSec }}>{card.title}</div>
               <div className="flex items-end gap-3">
-                <span className="font-['Space_Grotesk'] text-3xl font-bold tracking-tighter" style={{ color: t.text }}>{card.value}</span>
+                <span className="font-['Orbitron'] text-3xl font-bold tracking-tighter" style={{ color: t.text }}>{card.value}</span>
                 <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold mb-1" style={{ backgroundColor: accentBg, color: card.accent }}>{card.badge}</span>
               </div>
               <div className="text-xs mt-1" style={{ color: t.textDim }}>{card.sub}</div>
@@ -148,7 +148,7 @@ export const DashboardOverview = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} data-testid="market-chart-card" className={`lg:col-span-5 ${surface()} p-6`}>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h3 className="font-['Space_Grotesk'] text-base font-bold" style={{ color: t.text }}>Marktbewegung</h3>
+              <h3 className="font-['Orbitron'] text-base font-bold" style={{ color: t.text }}>Marktbewegung</h3>
               <p className="text-xs mt-0.5" style={{ color: t.textMut }}>Preis + Volumen · 7 Tage</p>
             </div>
             <span className="px-2.5 py-1 bg-[#00E5FF]/10 border border-[#00E5FF]/20 rounded-lg text-[#00E5FF] text-xs font-medium">Market</span>
@@ -177,7 +177,7 @@ export const DashboardOverview = () => {
         {/* Alert-Zentrale */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} data-testid="alert-center-card" className={`lg:col-span-4 ${surface()} p-6`}>
           <div className="mb-4">
-            <h3 className="font-['Space_Grotesk'] text-base font-bold" style={{ color: t.text }}>Alert-Zentrale</h3>
+            <h3 className="font-['Orbitron'] text-base font-bold" style={{ color: t.text }}>Alert-Zentrale</h3>
             <p className="text-xs mt-0.5" style={{ color: t.textMut }}>Signale aus beiden Modulen</p>
           </div>
           <div className="space-y-2">
@@ -204,7 +204,7 @@ export const DashboardOverview = () => {
 
         {/* Segment Donut */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className={`lg:col-span-3 ${surface()} p-6`}>
-          <h3 className="font-['Space_Grotesk'] text-base font-bold mb-0.5" style={{ color: t.text }}>Segmente</h3>
+          <h3 className="font-['Orbitron'] text-base font-bold mb-0.5" style={{ color: t.text }}>Segmente</h3>
           <p className="text-xs mb-3" style={{ color: t.textMut }}>Listings nach Fahrzeugklasse</p>
           <div className="h-[150px]">
             <ResponsiveContainer width="100%" height="100%">
@@ -245,7 +245,7 @@ export const DashboardOverview = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} data-testid="update-freq-card" className={`lg:col-span-5 ${surface()} p-6`}>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h3 className="font-['Space_Grotesk'] text-base font-bold" style={{ color: t.text }}>Aktivität</h3>
+              <h3 className="font-['Orbitron'] text-base font-bold" style={{ color: t.text }}>Aktivität</h3>
               <p className="text-xs mt-0.5" style={{ color: t.textMut }}>Market vs. Tuning · 7 Tage</p>
             </div>
             <div className="flex items-center gap-3">
@@ -269,7 +269,7 @@ export const DashboardOverview = () => {
 
         {/* Deal Score Distribution */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }} className={`lg:col-span-4 ${surface()} p-6`}>
-          <h3 className="font-['Space_Grotesk'] text-base font-bold mb-0.5" style={{ color: t.text }}>Deal Score Verteilung</h3>
+          <h3 className="font-['Orbitron'] text-base font-bold mb-0.5" style={{ color: t.text }}>Deal Score Verteilung</h3>
           <p className="text-xs mb-5" style={{ color: t.textMut }}>Anzahl Deals nach Score-Range</p>
           <div className="h-[200px]">
             <ResponsiveContainer width="100%" height="100%">
@@ -288,7 +288,7 @@ export const DashboardOverview = () => {
 
         {/* System Health */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className={`lg:col-span-3 ${surface()} p-6`}>
-          <h3 className="font-['Space_Grotesk'] text-base font-bold mb-0.5" style={{ color: t.text }}>System Health</h3>
+          <h3 className="font-['Orbitron'] text-base font-bold mb-0.5" style={{ color: t.text }}>System Health</h3>
           <p className="text-xs mb-3" style={{ color: t.textMut }}>Modul-Performance</p>
           <div className="h-[150px]">
             <ResponsiveContainer width="100%" height="100%">
@@ -314,7 +314,7 @@ export const DashboardOverview = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} data-testid="tuning-feed-card" className={`${surface()} p-6`}>
         <div className="flex items-center justify-between mb-5">
           <div>
-            <h3 className="font-['Space_Grotesk'] text-base font-bold" style={{ color: t.text }}>Tuning Change Feed</h3>
+            <h3 className="font-['Orbitron'] text-base font-bold" style={{ color: t.text }}>Tuning Change Feed</h3>
             <p className="text-xs mt-0.5" style={{ color: t.textMut }}>Mock-Daten bis dein Tuning-Modul live ist</p>
           </div>
           <span className="px-2.5 py-1 bg-[#CCFF00]/10 border border-[#CCFF00]/20 rounded-lg text-[#CCFF00] text-xs font-medium">Tuning</span>

@@ -165,7 +165,7 @@ export const StatusPage = () => {
               <AlertTriangle className="w-10 h-10 text-yellow-400" />
             )}
             <div>
-              <h1 className="font-['Space_Grotesk'] text-2xl font-bold text-white">
+              <h1 className="font-['Orbitron'] text-2xl font-bold text-white">
                 {allOperational ? 'Alle Systeme operational' : 'Teilweise Einschränkungen'}
               </h1>
               <p className="text-white/60">
@@ -177,7 +177,7 @@ export const StatusPage = () => {
 
         {/* Services */}
         <div className="mb-12">
-          <h2 className="font-['Space_Grotesk'] text-xl font-bold text-white mb-6">
+          <h2 className="font-['Orbitron'] text-xl font-bold text-white mb-6">
             Services
           </h2>
           <div className="space-y-3">
@@ -219,7 +219,7 @@ export const StatusPage = () => {
 
         {/* Uptime Chart Placeholder */}
         <div className="mb-12">
-          <h2 className="font-['Space_Grotesk'] text-xl font-bold text-white mb-6">
+          <h2 className="font-['Orbitron'] text-xl font-bold text-white mb-6">
             Uptime der letzten 90 Tage
           </h2>
           <div className="p-6 bg-[#111111] border border-white/10 rounded-xl">
@@ -257,7 +257,7 @@ export const StatusPage = () => {
 
         {/* Past Incidents */}
         <div>
-          <h2 className="font-['Space_Grotesk'] text-xl font-bold text-white mb-6">
+          <h2 className="font-['Orbitron'] text-xl font-bold text-white mb-6">
             Vergangene Vorfälle
           </h2>
           <div className="space-y-4">

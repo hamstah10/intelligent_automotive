@@ -150,7 +150,7 @@ END:VCALENDAR`;
               className="w-16 h-16 object-contain"
             />
           </div>
-          <h1 className="font-['Space_Grotesk'] text-4xl font-bold text-white mb-4">
+          <h1 className="font-['Orbitron'] text-4xl font-bold text-white mb-4">
             Demo buchen
           </h1>
           <p className="text-white/60 max-w-lg mx-auto">
@@ -436,7 +436,7 @@ END:VCALENDAR`;
               <div className="w-20 h-20 rounded-2xl bg-[#CCFF00]/20 flex items-center justify-center mx-auto mb-8">
                 <Check className="w-10 h-10 text-[#CCFF00]" />
               </div>
-              <h2 className="font-['Space_Grotesk'] text-3xl font-bold text-white mb-4">
+              <h2 className="font-['Orbitron'] text-3xl font-bold text-white mb-4">
                 Demo erfolgreich gebucht!
               </h2>
               <p className="text-white/60 mb-8 max-w-md mx-auto">

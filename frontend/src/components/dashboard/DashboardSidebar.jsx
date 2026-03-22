@@ -33,7 +33,7 @@ export const DashboardSidebar = () => {
             className="w-10 h-10 object-contain"
           />
           <div className="flex flex-col leading-tight">
-            <span className="font-semibold text-sm font-['Space_Grotesk'] tracking-tight" style={{ color: 'var(--d-text)' }}>AutoIntel</span>
+            <span className="font-semibold text-sm font-['Orbitron'] tracking-tight" style={{ color: 'var(--d-text)' }}>AutoIntel</span>
             <span className="text-[10px]" style={{ color: 'var(--d-text-sec)' }}>Market + Tuning Intelligence</span>
           </div>
         </Link>

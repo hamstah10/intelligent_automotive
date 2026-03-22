@@ -80,7 +80,7 @@ export const DashboardAlerts = () => {
     <>
       <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 mb-8">
         <div>
-          <h1 data-testid="alerts-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Alerts</h1>
+          <h1 data-testid="alerts-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Alerts</h1>
           <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Preisdrops, ECU-Updates, Watchlist-Treffer und System-Warnungen.</p>
         </div>
         <Button onClick={analyzeAlerts} disabled={aiLoading} data-testid="smart-alert-btn"
@@ -97,7 +97,7 @@ export const DashboardAlerts = () => {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-[#CCFF00]/10 flex items-center justify-center"><Sparkles className="w-5 h-5 text-[#CCFF00]" /></div>
               <div>
-                <h3 className="font-['Space_Grotesk'] text-base font-bold" style={{ color: t.text }}>Smart Alert Engine</h3>
+                <h3 className="font-['Orbitron'] text-base font-bold" style={{ color: t.text }}>Smart Alert Engine</h3>
                 <p className="text-xs" style={{ color: t.textMut }}>AI-basierte Muster-Erkennung</p>
               </div>
             </div>
@@ -120,7 +120,7 @@ export const DashboardAlerts = () => {
           <motion.div key={card.label} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
             className={`${surface()} p-5`}>
             <div className="text-sm mb-1" style={{ color: t.textSec }}>{card.label}</div>
-            <div className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{card.value}</div>
+            <div className="font-['Orbitron'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{card.value}</div>
             <div className="text-xs mt-1" style={{ color: card.color }}>{card.sub}</div>
           </motion.div>
         ))}

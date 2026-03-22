@@ -28,7 +28,7 @@ const roleColor = (role) => {
 export const DashboardTeams = () => (
   <>
     <div className="mb-8">
-      <h1 data-testid="teams-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Teams</h1>
+      <h1 data-testid="teams-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Teams</h1>
       <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Team-Mitglieder, Rollen und Berechtigungen verwalten.</p>
     </div>
 
@@ -43,7 +43,7 @@ export const DashboardTeams = () => (
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${role.color}15` }}>
                 <Icon className="w-5 h-5" style={{ color: role.color }} />
               </div>
-              <span className="font-['Space_Grotesk'] text-2xl font-bold" style={{ color: t.text }}>{role.count}</span>
+              <span className="font-['Orbitron'] text-2xl font-bold" style={{ color: t.text }}>{role.count}</span>
             </div>
             <div className="font-medium text-sm" style={{ color: t.text }}>{role.name}</div>
             <div className="text-xs mt-0.5" style={{ color: t.textDim }}>{role.desc}</div>
@@ -53,7 +53,7 @@ export const DashboardTeams = () => (
     </div>
 
     {/* Members */}
-    <h3 className="font-['Space_Grotesk'] text-lg font-bold mb-4" style={{ color: t.text }}>Mitglieder</h3>
+    <h3 className="font-['Orbitron'] text-lg font-bold mb-4" style={{ color: t.text }}>Mitglieder</h3>
     <div className="space-y-2.5">
       {members.map((m, i) => {
         const rc = roleColor(m.role);

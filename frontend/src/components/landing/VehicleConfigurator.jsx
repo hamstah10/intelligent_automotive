@@ -34,7 +34,7 @@ export const VehicleConfigurator = () => {
             <Gauge className="w-4 h-4 text-[#00E5FF]" />
             <span className="text-[#00E5FF] text-sm font-medium">Live Marktwert</span>
           </div>
-          <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold text-white mb-4">Marktwert-Check</h2>
+          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">Marktwert-Check</h2>
           <p className="text-white/40 text-base max-w-lg mx-auto">Wähle Marke und Modell — sieh sofort den geschätzten Marktwert.</p>
         </motion.div>
 
@@ -77,7 +77,7 @@ export const VehicleConfigurator = () => {
                 className="bg-[#0A0A0A] border border-[#00E5FF]/20 rounded-2xl p-8 text-center">
                 <p className="text-white/40 text-sm mb-2">Geschätzter Marktwert für <span className="text-white font-medium">{brand} {model}</span></p>
                 <motion.div key={price} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                  className="font-['Space_Grotesk'] text-5xl lg:text-6xl font-bold text-white tracking-tighter mb-3">
+                  className="font-['Orbitron'] text-5xl lg:text-6xl font-bold text-white tracking-tighter mb-3">
                   €{price.toLocaleString('de-DE')}
                 </motion.div>
                 <p className="text-[#00E5FF] text-sm font-medium">Basierend auf aktuellen Marktdaten · Ø 2022-2023 · Deutschland</p>

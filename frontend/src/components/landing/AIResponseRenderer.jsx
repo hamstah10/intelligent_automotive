@@ -49,13 +49,13 @@ const ScoreBadge = ({ score, accentColor = '#00E5FF' }) => {
             style={{ transition: 'stroke-dashoffset 1s ease-out' }} />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-['Space_Grotesk'] text-2xl font-bold text-white">{score}</span>
+          <span className="font-['Orbitron'] text-2xl font-bold text-white">{score}</span>
         </div>
       </div>
       <div>
         <div className="flex items-center gap-2 mb-1">
           <Icon className="w-4 h-4" style={{ color: config.color }} />
-          <span className="font-['Space_Grotesk'] text-sm font-bold" style={{ color: config.color }}>{config.label}</span>
+          <span className="font-['Orbitron'] text-sm font-bold" style={{ color: config.color }}>{config.label}</span>
         </div>
         <span className="text-white/40 text-xs">Deal Score</span>
       </div>
@@ -84,25 +84,25 @@ const RecommendationBadge = ({ rec }) => {
 
 const markdownComponents = {
   h1: ({ children }) => (
-    <h1 className="font-['Space_Grotesk'] text-xl font-bold text-white mt-5 mb-2 flex items-center gap-2">
+    <h1 className="font-['Orbitron'] text-xl font-bold text-white mt-5 mb-2 flex items-center gap-2">
       <Star className="w-5 h-5 text-[#CCFF00] shrink-0" />
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="font-['Space_Grotesk'] text-base font-bold text-white mt-4 mb-2 flex items-center gap-2">
+    <h2 className="font-['Orbitron'] text-base font-bold text-white mt-4 mb-2 flex items-center gap-2">
       <Zap className="w-4 h-4 text-[#00E5FF] shrink-0" />
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="font-['Space_Grotesk'] text-sm font-bold text-white/90 mt-3 mb-1.5 flex items-center gap-2">
+    <h3 className="font-['Orbitron'] text-sm font-bold text-white/90 mt-3 mb-1.5 flex items-center gap-2">
       <Target className="w-3.5 h-3.5 text-[#CCFF00] shrink-0" />
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="font-['Space_Grotesk'] text-sm font-semibold text-white/80 mt-2 mb-1">{children}</h4>
+    <h4 className="font-['Orbitron'] text-sm font-semibold text-white/80 mt-2 mb-1">{children}</h4>
   ),
   p: ({ children }) => (
     <p className="text-white/60 text-sm leading-relaxed mb-2">{children}</p>
@@ -201,19 +201,19 @@ export const AIChatBubbleRenderer = ({ content }) => {
       <p className="text-white/70 text-sm leading-relaxed mb-1.5 last:mb-0">{children}</p>
     ),
     h1: ({ children }) => (
-      <h1 className="font-['Space_Grotesk'] text-sm font-bold text-white mt-2 mb-1 flex items-center gap-1.5">
+      <h1 className="font-['Orbitron'] text-sm font-bold text-white mt-2 mb-1 flex items-center gap-1.5">
         <Zap className="w-3.5 h-3.5 text-[#CCFF00] shrink-0" />
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="font-['Space_Grotesk'] text-sm font-bold text-white/90 mt-2 mb-1 flex items-center gap-1.5">
+      <h2 className="font-['Orbitron'] text-sm font-bold text-white/90 mt-2 mb-1 flex items-center gap-1.5">
         <Target className="w-3 h-3 text-[#CCFF00] shrink-0" />
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="font-['Space_Grotesk'] text-xs font-bold text-white/80 mt-1.5 mb-1">{children}</h3>
+      <h3 className="font-['Orbitron'] text-xs font-bold text-white/80 mt-1.5 mb-1">{children}</h3>
     ),
     ul: ({ children }) => (
       <ul className="space-y-1 my-1 ml-1">{children}</ul>

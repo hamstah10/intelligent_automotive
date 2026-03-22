@@ -55,7 +55,7 @@ export const ECUVisualizer = () => {
           <span className="text-[#CCFF00] text-xs font-mono uppercase tracking-[0.2em] mb-4 block">
             Interaktive Demo
           </span>
-          <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             ECU Finder ausprobieren
           </h2>
           <p className="text-white/60 max-w-xl mx-auto">

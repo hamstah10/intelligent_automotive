@@ -43,7 +43,7 @@ export const ROICalculator = () => {
                 <Calculator className="w-6 h-6 text-[#CCFF00]" />
               </div>
               <div>
-                <h3 className="font-['Space_Grotesk'] text-xl font-bold text-white">ROI Rechner</h3>
+                <h3 className="font-['Orbitron'] text-xl font-bold text-white">ROI Rechner</h3>
                 <p className="text-white/50 text-sm">Berechne dein Einsparpotenzial</p>
               </div>
             </div>
@@ -124,7 +124,7 @@ export const ROICalculator = () => {
                 key={calculations.yearlySavings}
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="font-['Space_Grotesk'] text-5xl lg:text-7xl font-bold text-white tracking-tighter"
+                className="font-['Orbitron'] text-5xl lg:text-7xl font-bold text-white tracking-tighter"
               >
                 {formatCurrency(calculations.yearlySavings)}
               </motion.div>

@@ -64,7 +64,7 @@ export const DashboardReports = () => {
   return (
     <>
       <div className="mb-8">
-        <h1 data-testid="reports-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Reports</h1>
+        <h1 data-testid="reports-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Reports</h1>
         <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Automatische Berichte und Analytics.</p>
       </div>
 
@@ -74,7 +74,7 @@ export const DashboardReports = () => {
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-xl bg-[#CCFF00]/10 flex items-center justify-center"><Brain className="w-5 h-5 text-[#CCFF00]" /></div>
           <div>
-            <h3 className="font-['Space_Grotesk'] text-lg font-bold" style={{ color: t.text }}>AI Market Report</h3>
+            <h3 className="font-['Orbitron'] text-lg font-bold" style={{ color: t.text }}>AI Market Report</h3>
             <p className="text-xs" style={{ color: t.textMut }}>Generiere einen AI-gestützten Marktbericht auf Knopfdruck</p>
           </div>
         </div>
@@ -120,7 +120,7 @@ export const DashboardReports = () => {
               className={`${surface()} p-5 flex items-start justify-between`}>
               <div>
                 <div className="text-sm mb-1" style={{ color: t.textSec }}>{kpi.label}</div>
-                <div className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{kpi.value}</div>
+                <div className="font-['Orbitron'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{kpi.value}</div>
                 <div className="text-xs mt-1" style={{ color: t.textDim }}>{kpi.sub}</div>
               </div>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'var(--d-hover)' }}><Icon className="w-5 h-5" style={{ color: t.textMut }} /></div>
@@ -131,7 +131,7 @@ export const DashboardReports = () => {
 
       {/* Chart */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={`${surface()} p-6 mb-6`}>
-        <h3 className="font-['Space_Grotesk'] text-lg font-bold mb-1" style={{ color: t.text }}>Aktivität der letzten 6 Monate</h3>
+        <h3 className="font-['Orbitron'] text-lg font-bold mb-1" style={{ color: t.text }}>Aktivität der letzten 6 Monate</h3>
         <p className="text-xs mb-6" style={{ color: t.textMut }}>Listings, Deals und Alerts im Überblick</p>
         <div className="h-[240px]">
           <ResponsiveContainer width="100%" height="100%">
@@ -148,7 +148,7 @@ export const DashboardReports = () => {
       </motion.div>
 
       {/* Reports List */}
-      <h3 className="font-['Space_Grotesk'] text-lg font-bold mb-4" style={{ color: t.text }}>Verfügbare Reports</h3>
+      <h3 className="font-['Orbitron'] text-lg font-bold mb-4" style={{ color: t.text }}>Verfügbare Reports</h3>
       <div className="space-y-2.5">
         {reports.map((r, i) => {
           const tc = typeColors[r.type];

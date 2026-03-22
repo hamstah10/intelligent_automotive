@@ -59,7 +59,7 @@ export const DashboardTuning = () => {
     <>
       <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 mb-8">
         <div>
-          <h1 data-testid="tuning-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Tuning Intelligence</h1>
+          <h1 data-testid="tuning-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Tuning Intelligence</h1>
           <p className="text-sm mt-1.5" style={{ color: t.textSec }}>ECU-Datenbank, Tool-Matrix und Support-Übersicht.</p>
         </div>
         <div className="relative">
@@ -83,7 +83,7 @@ export const DashboardTuning = () => {
               className={`${surface()} p-5 flex items-start justify-between`}>
               <div>
                 <div className="text-sm mb-1" style={{ color: t.textSec }}>{s.label}</div>
-                <div className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{s.value}</div>
+                <div className="font-['Orbitron'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{s.value}</div>
               </div>
               <div className="w-10 h-10 rounded-xl bg-[#CCFF00]/10 flex items-center justify-center">
                 <Icon className="w-5 h-5 text-[#CCFF00]" />
@@ -96,7 +96,7 @@ export const DashboardTuning = () => {
       {/* Tool Matrix + Coverage */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-6">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={`lg:col-span-3 ${surface()} p-6`}>
-          <h3 className="font-['Space_Grotesk'] text-lg font-bold mb-1" style={{ color: t.text }}>Tool-Matrix</h3>
+          <h3 className="font-['Orbitron'] text-lg font-bold mb-1" style={{ color: t.text }}>Tool-Matrix</h3>
           <p className="text-xs mb-5" style={{ color: t.textMut }}>Verfügbare Methoden pro Tool</p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -125,7 +125,7 @@ export const DashboardTuning = () => {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className={`lg:col-span-2 ${surface()} p-6`}>
-          <h3 className="font-['Space_Grotesk'] text-lg font-bold mb-1" style={{ color: t.text }}>ECU-Abdeckung</h3>
+          <h3 className="font-['Orbitron'] text-lg font-bold mb-1" style={{ color: t.text }}>ECU-Abdeckung</h3>
           <p className="text-xs mb-5" style={{ color: t.textMut }}>Einträge pro Marke</p>
           <div className="h-[220px]">
             <ResponsiveContainer width="100%" height="100%">
@@ -146,7 +146,7 @@ export const DashboardTuning = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className={`lg:col-span-8 ${surface()} p-6`}>
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h3 className="font-['Space_Grotesk'] text-lg font-bold" style={{ color: t.text }}>ECU-Datenbank</h3>
+              <h3 className="font-['Orbitron'] text-lg font-bold" style={{ color: t.text }}>ECU-Datenbank</h3>
               <p className="text-xs mt-0.5" style={{ color: t.textMut }}>{filtered.length} Einträge</p>
             </div>
           </div>

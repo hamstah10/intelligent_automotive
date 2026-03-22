@@ -96,7 +96,7 @@ export const AuthModal = ({ isOpen, onClose, initialTab = 'login' }) => {
                 {/* Logo */}
                 <div className="flex items-center gap-2 mb-6">
                   <div className="w-10 h-10 rounded-lg bg-[#CCFF00] flex items-center justify-center">
-                    <span className="font-bold text-black text-lg font-['Space_Grotesk']">iA</span>
+                    <span className="font-bold text-black text-lg font-['Orbitron']">iA</span>
                   </div>
                   <div className="flex flex-col leading-none">
                     <span className="text-white font-semibold text-sm">intelligent</span>

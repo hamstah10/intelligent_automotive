@@ -70,10 +70,10 @@ export const Navigation = () => {
               className="w-12 h-12 object-contain"
             />
             <div className="flex flex-col leading-none">
-              <span className="text-white font-semibold text-sm font-['Space_Grotesk'] tracking-tight">
+              <span className="text-white font-semibold text-sm font-['Orbitron'] tracking-tight">
                 intelligent
               </span>
-              <span className="text-[#CCFF00] font-bold text-sm font-['Space_Grotesk'] tracking-tight">
+              <span className="text-[#CCFF00] font-bold text-sm font-['Orbitron'] tracking-tight">
                 automotive
               </span>
             </div>

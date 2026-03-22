@@ -154,7 +154,7 @@ export const TuningPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-['Space_Grotesk'] text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-8"
+            className="font-['Orbitron'] text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-8"
             data-testid="tuning-hero-title"
           >
             Verstehe jedes{' '}
@@ -197,7 +197,7 @@ export const TuningPage = () => {
             <span className="text-[#CCFF00] text-xs font-mono uppercase tracking-[0.2em] mb-4 block">
               Die Herausforderung
             </span>
-            <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tighter text-white mb-8">
+            <h2 className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tighter text-white mb-8">
               Tuning-Wissen ist
               <br />
               <span className="text-white/30">fragmentiert.</span>
@@ -225,7 +225,7 @@ export const TuningPage = () => {
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="p-8 bg-[#111111] border border-white/10 rounded-2xl h-full">
                   <item.icon className="w-10 h-10 text-[#CCFF00]/50 mb-6" />
-                  <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-white mb-3">
+                  <h3 className="font-['Orbitron'] text-xl font-semibold text-white mb-3">
                     {item.title}
                   </h3>
                   <p className="text-white/50 leading-relaxed">
@@ -242,7 +242,7 @@ export const TuningPage = () => {
       <section className="py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
-            <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-8">
+            <h2 className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-8">
               Eine Quelle der Wahrheit
             </h2>
           </AnimatedSection>
@@ -317,7 +317,7 @@ export const TuningPage = () => {
               <span className="text-[#CCFF00] text-xs font-mono uppercase tracking-[0.2em] mb-4 block">
                 Feature 01
               </span>
-              <h3 className="font-['Space_Grotesk'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
+              <h3 className="font-['Orbitron'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
                 ECU Finder
               </h3>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
@@ -414,7 +414,7 @@ export const TuningPage = () => {
               <span className="text-[#CCFF00] text-xs font-mono uppercase tracking-[0.2em] mb-4 block">
                 Feature 02
               </span>
-              <h3 className="font-['Space_Grotesk'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
+              <h3 className="font-['Orbitron'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
                 Tool Matrix
               </h3>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
@@ -489,7 +489,7 @@ export const TuningPage = () => {
               <span className="text-[#CCFF00] text-xs font-mono uppercase tracking-[0.2em] mb-4 block">
                 Feature 03
               </span>
-              <h3 className="font-['Space_Grotesk'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
+              <h3 className="font-['Orbitron'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
                 Protokoll-Tracking
               </h3>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
@@ -524,7 +524,7 @@ export const TuningPage = () => {
       <section className="py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold tracking-tighter text-white mb-4">
+            <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold tracking-tighter text-white mb-4">
               Die Datenbank in Zahlen
             </h2>
             <p className="text-white/50">Kontinuierlich wachsend und aktualisiert</p>
@@ -538,7 +538,7 @@ export const TuningPage = () => {
               { value: 'Täglich', label: 'Updates' },
             ].map((stat, index) => (
               <AnimatedSection key={index} delay={index * 0.1} className="text-center">
-                <div className="font-['Space_Grotesk'] text-4xl lg:text-5xl font-bold text-[#CCFF00] tracking-tighter">
+                <div className="font-['Orbitron'] text-4xl lg:text-5xl font-bold text-[#CCFF00] tracking-tighter">
                   {stat.value}
                 </div>
                 <p className="text-white/50 text-sm mt-2">{stat.label}</p>
@@ -552,7 +552,7 @@ export const TuningPage = () => {
       <section className="py-32 px-6">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold tracking-tighter text-white">
+            <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold tracking-tighter text-white">
               Ein typischer Workflow
             </h2>
           </AnimatedSection>
@@ -585,7 +585,7 @@ export const TuningPage = () => {
       <section className="py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
-            <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-white mb-6">
+            <h2 className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-white mb-6">
               Bereit für
               <br />
               <span className="text-gradient-yellow">effizienteres Tuning?</span>
@@ -631,10 +631,10 @@ export const TuningPage = () => {
               className="w-10 h-10 object-contain"
             />
             <div className="flex flex-col leading-none">
-              <span className="text-white font-semibold text-xs font-['Space_Grotesk'] tracking-tight">
+              <span className="text-white font-semibold text-xs font-['Orbitron'] tracking-tight">
                 intelligent
               </span>
-              <span className="text-[#CCFF00] font-bold text-xs font-['Space_Grotesk'] tracking-tight">
+              <span className="text-[#CCFF00] font-bold text-xs font-['Orbitron'] tracking-tight">
                 automotive
               </span>
             </div>

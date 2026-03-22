@@ -59,7 +59,7 @@ export const LoginPage = () => {
           </div>
 
           {/* Header */}
-          <h1 className="font-['Space_Grotesk'] text-3xl font-bold text-white mb-2">
+          <h1 className="font-['Orbitron'] text-3xl font-bold text-white mb-2">
             Willkommen zurück
           </h1>
           <p className="text-white/60 mb-8">
@@ -148,7 +148,7 @@ export const LoginPage = () => {
         />
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <div className="text-center p-8">
-            <h2 className="font-['Space_Grotesk'] text-4xl font-bold text-white mb-4">
+            <h2 className="font-['Orbitron'] text-4xl font-bold text-white mb-4">
               Market Intelligence
             </h2>
             <p className="text-white/60 max-w-md">

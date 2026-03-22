@@ -25,7 +25,7 @@ export const MarketHeatmap = () => {
             <MapPin className="w-4 h-4 text-[#00E5FF]" />
             <span className="text-[#00E5FF] text-sm font-medium">Live Heatmap</span>
           </div>
-          <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold text-white mb-4">Deal-Hotspots in Deutschland</h2>
+          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">Deal-Hotspots in Deutschland</h2>
           <p className="text-white/40 text-base max-w-lg mx-auto">Echtzeit-Übersicht: Wo sind gerade die besten Deals?</p>
         </motion.div>
 
@@ -49,7 +49,7 @@ export const MarketHeatmap = () => {
                   <motion.circle cx={spot.x} cy={spot.y} r="3" fill="white"
                     initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
                     transition={{ delay: 0.5 + i * 0.1 }} />
-                  <motion.text x={spot.x} y={spot.y - 16} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="Space Grotesk" fontWeight="600"
+                  <motion.text x={spot.x} y={spot.y - 16} textAnchor="middle" fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="Orbitron" fontWeight="600"
                     initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.6 + i * 0.1 }}>
                     {spot.city}
                   </motion.text>
@@ -62,7 +62,7 @@ export const MarketHeatmap = () => {
           <div className="lg:col-span-2 space-y-4">
             {/* Color Legend */}
             <div className="bg-[#111111] border border-white/10 rounded-2xl p-5">
-              <h4 className="font-['Space_Grotesk'] text-sm font-bold text-white mb-4">Preisniveau</h4>
+              <h4 className="font-['Orbitron'] text-sm font-bold text-white mb-4">Preisniveau</h4>
               <div className="space-y-2.5">
                 {[{ label: 'Günstig — unter Marktwert', color: '#00E5FF' }, { label: 'Mittel — Marktwert', color: '#facc15' }, { label: 'Hoch — über Marktwert', color: '#f87171' }].map(l => (
                   <div key={l.label} className="flex items-center gap-3">
@@ -75,7 +75,7 @@ export const MarketHeatmap = () => {
 
             {/* Top Cities */}
             <div className="bg-[#111111] border border-white/10 rounded-2xl p-5">
-              <h4 className="font-['Space_Grotesk'] text-sm font-bold text-white mb-4">Top Deal-Städte</h4>
+              <h4 className="font-['Orbitron'] text-sm font-bold text-white mb-4">Top Deal-Städte</h4>
               <div className="space-y-2">
                 {hotspots.sort((a, b) => b.deals - a.deals).slice(0, 5).map((spot, i) => (
                   <motion.div key={spot.city} initial={{ opacity: 0, x: 10 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.5 + i * 0.08 }}

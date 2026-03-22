@@ -94,7 +94,7 @@ export const FeaturesTuning = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-['Space_Grotesk'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white mb-4"
+            className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white mb-4"
           >
             Verstehe{' '}
             <span className="text-gradient-yellow">jedes Steuergerät</span>
@@ -161,7 +161,7 @@ export const FeaturesTuning = () => {
                   <div className="w-12 h-12 rounded-xl bg-[#CCFF00]/10 border border-[#CCFF00]/20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
                     <Icon className="w-6 h-6 text-[#CCFF00]" />
                   </div>
-                  <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-white mb-2 tracking-tight">
+                  <h3 className="font-['Orbitron'] text-xl font-semibold text-white mb-2 tracking-tight">
                     {feature.title}
                   </h3>
                   <p className="text-white/60 text-sm leading-relaxed">

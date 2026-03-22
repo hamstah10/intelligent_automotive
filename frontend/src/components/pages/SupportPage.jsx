@@ -124,7 +124,7 @@ export const SupportPage = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-['Space_Grotesk'] text-4xl lg:text-5xl font-bold text-white mb-4"
+            className="font-['Orbitron'] text-4xl lg:text-5xl font-bold text-white mb-4"
           >
             Wie können wir helfen?
           </motion.h1>
@@ -194,7 +194,7 @@ export const SupportPage = () => {
               key="hilfe"
             >
               <div className="flex items-center justify-between mb-8">
-                <h2 className="font-['Space_Grotesk'] text-2xl font-bold text-white">
+                <h2 className="font-['Orbitron'] text-2xl font-bold text-white">
                   Beliebte Artikel
                 </h2>
                 <Button variant="ghost" className="text-[#00E5FF] hover:text-[#00E5FF]/80">
@@ -227,7 +227,7 @@ export const SupportPage = () => {
 
               {/* Contact Support */}
               <div className="p-8 bg-[#111111] border border-white/10 rounded-2xl">
-                <h3 className="font-['Space_Grotesk'] text-xl font-bold text-white mb-4">
+                <h3 className="font-['Orbitron'] text-xl font-bold text-white mb-4">
                   Keine Antwort gefunden?
                 </h3>
                 <p className="text-white/60 mb-6">
@@ -254,7 +254,7 @@ export const SupportPage = () => {
               animate={{ opacity: 1, y: 0 }}
               key="doku"
             >
-              <h2 className="font-['Space_Grotesk'] text-2xl font-bold text-white mb-8">
+              <h2 className="font-['Orbitron'] text-2xl font-bold text-white mb-8">
                 Dokumentation
               </h2>
 
@@ -304,7 +304,7 @@ export const SupportPage = () => {
             >
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h2 className="font-['Space_Grotesk'] text-2xl font-bold text-white">
+                  <h2 className="font-['Orbitron'] text-2xl font-bold text-white">
                     API Referenz
                   </h2>
                   <p className="text-white/60 mt-1">Version 1.0 • RESTful API</p>
