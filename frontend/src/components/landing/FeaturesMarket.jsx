@@ -65,7 +65,7 @@ export const FeaturesMarket = () => {
       className="relative py-24 lg:py-32 overflow-hidden"
     >
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-[#00E5FF]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-[#00E5FF]/5 rounded-lg blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
@@ -111,7 +111,7 @@ export const FeaturesMarket = () => {
             <Link to="/market">
               <Button 
                 variant="outline" 
-                className="border-[#00E5FF]/30 text-[#00E5FF] hover:bg-[#00E5FF]/10 rounded-full group"
+                className="border-[#00E5FF]/30 text-[#00E5FF] hover:bg-[#00E5FF]/10 rounded-lg group"
                 data-testid="market-learn-more-btn"
               >
                 Mehr erfahren

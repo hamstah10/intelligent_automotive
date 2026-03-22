@@ -153,7 +153,7 @@ export const Navigation = () => {
             </Button>
             <Button
               data-testid="nav-demo-btn"
-              className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-5 rounded-full transition-transform duration-200 active:scale-95"
+              className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-5 rounded-lg transition-transform duration-200 active:scale-95"
               onClick={() => scrollToSection('#cta')}
             >
               Demo buchen

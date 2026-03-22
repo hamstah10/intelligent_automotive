@@ -71,14 +71,14 @@ export const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 data-testid="newsletter-email-input"
-                className="w-full pl-12 pr-4 py-6 bg-[#111111] border-white/10 text-white placeholder:text-white/40 rounded-full focus:border-[#CCFF00]/50 focus:ring-[#CCFF00]/20"
+                className="w-full pl-12 pr-4 py-6 bg-[#111111] border-white/10 text-white placeholder:text-white/40 rounded-lg focus:border-[#CCFF00]/50 focus:ring-[#CCFF00]/20"
               />
             </div>
             <Button
               type="submit"
               disabled={isSubmitting}
               data-testid="newsletter-submit-btn"
-              className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 rounded-full transition-transform duration-200 active:scale-95 disabled:opacity-50"
+              className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 rounded-lg transition-transform duration-200 active:scale-95 disabled:opacity-50"
             >
               {isSubmitting ? 'Wird gesendet...' : 'Anmelden'}
               <ArrowRight className="ml-2 w-4 h-4" />
@@ -90,7 +90,7 @@ export const Footer = () => {
             <Button
               variant="outline"
               data-testid="footer-demo-btn"
-              className="border-white/20 text-white hover:bg-white/5 rounded-full"
+              className="border-white/20 text-white hover:bg-white/5 rounded-lg"
               onClick={() => toast.info('Demo-Buchung kommt bald!')}
             >
               Demo buchen
@@ -98,7 +98,7 @@ export const Footer = () => {
             <Button
               variant="outline"
               data-testid="footer-login-btn"
-              className="border-white/20 text-white hover:bg-white/5 rounded-full"
+              className="border-white/20 text-white hover:bg-white/5 rounded-lg"
               onClick={() => toast.info('Login kommt bald!')}
             >
               Anmelden
@@ -166,7 +166,7 @@ export const Footer = () => {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/20 transition-colors duration-200"
+                className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:border-white/20 transition-colors duration-200"
                 onClick={(e) => e.preventDefault()}
               >
                 <Icon className="w-4 h-4" />

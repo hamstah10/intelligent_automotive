@@ -104,7 +104,7 @@ export const TuningPage = () => {
 
         {/* Floating Elements */}
         <motion.div 
-          className="absolute top-1/3 left-1/4 w-64 h-64 rounded-full bg-[#CCFF00]/10 blur-[100px]"
+          className="absolute top-1/3 left-1/4 w-64 h-64 rounded-lg bg-[#CCFF00]/10 blur-[100px]"
           animate={{ 
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
@@ -112,7 +112,7 @@ export const TuningPage = () => {
           transition={{ duration: 4, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full bg-[#CCFF00]/5 blur-[80px]"
+          className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-lg bg-[#CCFF00]/5 blur-[80px]"
           animate={{ 
             scale: [1.2, 1, 1.2],
             opacity: [0.2, 0.4, 0.2]
@@ -144,7 +144,7 @@ export const TuningPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#CCFF00]/10 border border-[#CCFF00]/30 rounded-full text-[#CCFF00] text-sm font-mono uppercase tracking-wider mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#CCFF00]/10 border border-[#CCFF00]/30 rounded-lg text-[#CCFF00] text-sm font-mono uppercase tracking-wider mb-8">
               <Cpu className="w-4 h-4" />
               Tuning Intelligence
             </span>
@@ -601,7 +601,7 @@ export const TuningPage = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/#cta">
                 <Button 
-                  className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 text-lg rounded-full"
+                  className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 text-lg rounded-lg"
                   data-testid="tuning-cta-demo"
                 >
                   Demo buchen
@@ -611,7 +611,7 @@ export const TuningPage = () => {
               <Link to="/">
                 <Button 
                   variant="outline"
-                  className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg rounded-full"
+                  className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg rounded-lg"
                 >
                   Zurück zur Übersicht
                 </Button>

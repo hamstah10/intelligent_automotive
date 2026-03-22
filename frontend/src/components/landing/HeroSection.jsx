@@ -37,8 +37,8 @@ export const HeroSection = () => {
       </div>
 
       {/* Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00E5FF]/10 rounded-full blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#CCFF00]/10 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00E5FF]/10 rounded-lg blur-[120px] animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#CCFF00]/10 rounded-lg blur-[120px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-left">
@@ -89,7 +89,7 @@ export const HeroSection = () => {
         >
           <Button
             data-testid="hero-cta-demo"
-            className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 text-base rounded-full transition-transform duration-200 active:scale-95 group"
+            className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 text-base rounded-lg transition-transform duration-200 active:scale-95 group"
             onClick={() => scrollToSection('#cta')}
           >
             Demo buchen
@@ -98,7 +98,7 @@ export const HeroSection = () => {
           <Button
             data-testid="hero-cta-waitlist"
             variant="outline"
-            className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-base rounded-full backdrop-blur-sm"
+            className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-base rounded-lg backdrop-blur-sm"
             onClick={() => scrollToSection('#cta')}
           >
             <Play className="mr-2 w-4 h-4" />
@@ -113,11 +113,11 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap gap-4"
         >
-          <div className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#00E5FF]/30 rounded-full">
+          <div className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#00E5FF]/30 rounded-lg">
             <BarChart3 className="w-5 h-5 text-[#00E5FF]" />
             <span className="text-white/80 text-sm font-medium">Market Intelligence</span>
           </div>
-          <div className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#CCFF00]/30 rounded-full">
+          <div className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#CCFF00]/30 rounded-lg">
             <Cpu className="w-5 h-5 text-[#CCFF00]" />
             <span className="text-white/80 text-sm font-medium">Tuning Intelligence</span>
           </div>
@@ -157,9 +157,9 @@ export const HeroSection = () => {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-5 h-8 border border-white/20 rounded-full flex justify-center pt-2"
+          className="w-5 h-8 border border-white/20 rounded-lg flex justify-center pt-2"
         >
-          <div className="w-1 h-2 bg-white/40 rounded-full" />
+          <div className="w-1 h-2 bg-white/40 rounded-lg" />
         </motion.div>
       </motion.div>
     </section>

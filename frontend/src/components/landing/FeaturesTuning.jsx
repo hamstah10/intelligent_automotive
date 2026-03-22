@@ -72,7 +72,7 @@ export const FeaturesTuning = () => {
       className="relative py-24 lg:py-32 overflow-hidden"
     >
       {/* Background Glow */}
-      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-[#CCFF00]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-[#CCFF00]/5 rounded-lg blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
@@ -118,7 +118,7 @@ export const FeaturesTuning = () => {
             <Link to="/tuning">
               <Button 
                 variant="outline" 
-                className="border-[#CCFF00]/30 text-[#CCFF00] hover:bg-[#CCFF00]/10 rounded-full group"
+                className="border-[#CCFF00]/30 text-[#CCFF00] hover:bg-[#CCFF00]/10 rounded-lg group"
                 data-testid="tuning-learn-more-btn"
               >
                 Mehr erfahren

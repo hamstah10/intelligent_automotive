@@ -105,8 +105,8 @@ export const Pricing = () => {
       className="relative py-24 lg:py-32 overflow-hidden"
     >
       {/* Background Glows */}
-      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#00E5FF]/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-[#CCFF00]/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#00E5FF]/5 rounded-lg blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-[#CCFF00]/5 rounded-lg blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -179,7 +179,7 @@ export const Pricing = () => {
                 {/* Popular Badge */}
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <div className="flex items-center gap-1 bg-[#CCFF00] text-black text-xs font-semibold px-3 py-1 rounded-full">
+                    <div className="flex items-center gap-1 bg-[#CCFF00] text-black text-xs font-semibold px-3 py-1 rounded-lg">
                       <Zap className="w-3 h-3" />
                       Beliebt
                     </div>
@@ -213,7 +213,7 @@ export const Pricing = () => {
                 {/* CTA Button */}
                 <Button
                   data-testid={`pricing-cta-${plan.name.toLowerCase()}`}
-                  className={`w-full font-semibold rounded-full py-5 transition-transform duration-200 active:scale-95 ${getButtonStyle()}`}
+                  className={`w-full font-semibold rounded-lg py-5 transition-transform duration-200 active:scale-95 ${getButtonStyle()}`}
                   onClick={() => scrollToSection('#cta')}
                 >
                   {plan.cta}

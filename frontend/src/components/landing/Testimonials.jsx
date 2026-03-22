@@ -112,7 +112,7 @@ export const Testimonials = () => {
 
                 {/* Author */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10">
+                  <div className="w-12 h-12 rounded-lg overflow-hidden border-2 border-white/10">
                     <img
                       src={testimonial.avatar}
                       alt={testimonial.author}

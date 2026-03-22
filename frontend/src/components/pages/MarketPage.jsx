@@ -122,7 +122,7 @@ export const MarketPage = () => {
 
         {/* Floating Elements */}
         <motion.div 
-          className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-[#00E5FF]/10 blur-[100px]"
+          className="absolute top-1/4 right-1/4 w-64 h-64 rounded-lg bg-[#00E5FF]/10 blur-[100px]"
           animate={{ 
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
@@ -140,7 +140,7 @@ export const MarketPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#00E5FF]/10 border border-[#00E5FF]/30 rounded-full text-[#00E5FF] text-sm font-mono uppercase tracking-wider mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#00E5FF]/10 border border-[#00E5FF]/30 rounded-lg text-[#00E5FF] text-sm font-mono uppercase tracking-wider mb-8">
               <BarChart2 className="w-4 h-4" />
               Market Intelligence
             </span>
@@ -536,7 +536,7 @@ export const MarketPage = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/#cta">
                 <Button 
-                  className="bg-[#00E5FF] text-black hover:bg-[#00CDE6] font-semibold px-8 py-6 text-lg rounded-full"
+                  className="bg-[#00E5FF] text-black hover:bg-[#00CDE6] font-semibold px-8 py-6 text-lg rounded-lg"
                   data-testid="market-cta-demo"
                 >
                   Demo buchen
@@ -546,7 +546,7 @@ export const MarketPage = () => {
               <Link to="/">
                 <Button 
                   variant="outline"
-                  className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg rounded-full"
+                  className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg rounded-lg"
                 >
                   Zurück zur Übersicht
                 </Button>
