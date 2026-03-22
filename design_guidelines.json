@@ -1,0 +1,146 @@
+{
+  "theme": "dark",
+  "language": "de",
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "mono_font": "JetBrains Mono",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600&family=Outfit:wght@300;500;700;900&display=swap",
+    "rules": [
+      "Headings MUST use tight letter spacing (tracking-tight or tracking-tighter)",
+      "Overlines and small labels MUST be Uppercase, JetBrains Mono, text-xs, with wide spacing (tracking-[0.2em])",
+      "Body text should use leading-relaxed for readability",
+      "NEVER center-align paragraphs; prioritize left-alignment for tech precision"
+    ]
+  },
+  "colors": {
+    "background": "#050505",
+    "surface": "#111111",
+    "surface_glass": "rgba(17, 17, 17, 0.65)",
+    "primary": "#CCFF00",
+    "primary_hover": "#B3E600",
+    "primary_foreground": "#000000",
+    "secondary": "#00E5FF",
+    "secondary_hover": "#00CDE6",
+    "secondary_foreground": "#000000",
+    "muted": "#1F1F1F",
+    "muted_foreground": "#A3A3A3",
+    "border": "rgba(255, 255, 255, 0.1)",
+    "rules": [
+      "NO generic full-screen gradients. Use subtle radial glows behind specific elements",
+      "Tinted Grey Rule: All grays must feel slightly cool or match the Obsidian base",
+      "Hover states MUST have explicitly higher contrast",
+      "Use Electric Cyan (#00E5FF) specifically for Market Intelligence elements and Acid Yellow (#CCFF00) for Tuning Intelligence elements to create visual product separation"
+    ]
+  },
+  "layouts": {
+    "hero": "Asymmetric split or massive typography over dark cinematic car image. Overlay with grid lines. High padding (py-32)",
+    "features": "Bento Grid Mode A: grid-cols-1 md:grid-cols-12 gap-8. Mix tall (col-span-4 row-span-2) and wide (col-span-8 row-span-1) items",
+    "pricing": "4-column grid (grid-cols-1 md:grid-cols-2 lg:grid-cols-4) with The Tracing Beam effect on the 'Combined' tier. Glassmorphism cards",
+    "general_spacing": "Generous spacing. Use p-8 or p-12 inside cards. Section padding should be py-24 or py-32"
+  },
+  "surfaces": {
+    "cards": "Flat background (bg-[#111111]), 1px subtle border (border-white/10). On hover: border color darkens/lightens, slight translate-y",
+    "glass": "Crystal Glass for Nav: bg-black/60 backdrop-blur-2xl border-b border-white/10",
+    "tech_borders": "Use 'Grid Borders' look for How it Works section. Items have border-r and border-b of border-white/10"
+  },
+  "motion": {
+    "scroll_reveal": "Staggered fade-up and slight scale-in for bento grid items using framer-motion",
+    "interactions": "Buttons get scale down on tap (active:scale-95), borders glow on hover",
+    "rules": [
+      "Include prefers-reduced-motion checks",
+      "Transitions should target specific properties, NEVER 'all'"
+    ]
+  },
+  "components_to_use": [
+    {
+      "name": "Navigation",
+      "style": "Sticky Crystal Glass header, Logo left, links center, CTAs right"
+    },
+    {
+      "name": "Button",
+      "style": "Pill-shaped or slightly rounded (rounded-md). Primary is Acid Yellow. Secondary is Outline with backdrop-blur."
+    },
+    {
+      "name": "BentoCard",
+      "style": "Custom div with border-white/10, bg-surface, inner padding p-8. Use for Feature sections."
+    },
+    {
+      "name": "PricingCard",
+      "style": "Dark mode SaaSFrame pattern. 3-4 tiers. Feature lists with Lucide 'Check' icons. Elite/Combined tier uses Tracing Beam."
+    },
+    {
+      "name": "Accordion",
+      "style": "Shadcn accordion for FAQs. Flush left, 1px bottom border per item, monospace numbers."
+    }
+  ],
+  "media": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1764552283704-ed67e7ad6059?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwyfHxkYXJrJTIwc2xlZWslMjBzcG9ydHMlMjBjYXIlMjBoZWFkbGlnaHRzfGVufDB8fHx8MTc3NDE0OTA4MXww&ixlib=rb-4.1.0&q=85",
+        "category": "hero",
+        "description": "Black BMW car with headlights on at night. Use as a large, darkened background for the Hero section with an opacity overlay."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwyfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwZGFya3xlbnwwfHx8fDE3NzQxNDkwODR8MA&ixlib=rb-4.1.0&q=85",
+        "category": "features_market",
+        "description": "Graphs of performance analytics. Use inside a bento grid card for Market Intelligence."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1765445665883-085301570c87?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHw0fHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwZGFya3xlbnwwfHx8fDE3NzQxNDkwODR8MA&ixlib=rb-4.1.0&q=85",
+        "category": "features_market",
+        "description": "Abstract glitch art digital code. Use as a background texture for a Market Intelligence bento card."
+      },
+      {
+        "url": "https://images.pexels.com/photos/1409999/pexels-photo-1409999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "features_tuning",
+        "description": "Detailed view of an exposed car engine. Use for Tuning Intelligence ECU/TCU support bento card."
+      },
+      {
+        "url": "https://images.pexels.com/photos/7564872/pexels-photo-7564872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "features_tuning",
+        "description": "Mechanic tuning up engine parts. Use for Technical Knowledge Centralization bento card."
+      },
+      {
+        "url": "https://images.pexels.com/photos/6720529/pexels-photo-6720529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "testimonials",
+        "description": "Auto mechanic with toolbox standing confidently. Use as a testimonial avatar."
+      },
+      {
+        "url": "https://images.pexels.com/photos/7807035/pexels-photo-7807035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "testimonials",
+        "description": "Portrait of a skilled mechanic holding a lug wrench. Use as a testimonial avatar."
+      }
+    ]
+  },
+  "visual_enhancers": {
+    "icons": "lucide-react",
+    "textures": "Subtle SVG noise overlay fixed over the entire screen with pointer-events-none and 3% opacity. Gives a matte, physical feel.",
+    "effects": "Use blurred colored circles (Electric Cyan and Acid Yellow) behind feature grids for a subtle glowing ambient light."
+  },
+  "accessibility": {
+    "contrast": "Ensure white text over dark backgrounds maintains WCAG AA standard.",
+    "testing": "All interactive elements MUST include a data-testid attribute in kebab-case (e.g., data-testid='hero-cta-demo')."
+  },
+  "instructions_to_main_agent": [
+    "Build the landing page in /app/frontend/src/App.jsx or create separate components in /app/frontend/src/components/.",
+    "Ensure the entire app is wrapped in a dark theme container with bg-[#050505] and text-white.",
+    "Do NOT use 'transition: all'. Apply specific transitions.",
+    "Do NOT center align the App container. Use left-aligned layouts mostly.",
+    "Use Framer Motion for scroll animations (initial={opacity: 0, y: 20} whileInView={opacity: 1, y: 0}).",
+    "Section 1: Hero - Use the car image as background, heavy dark gradient overlay so text is readable.",
+    "Section 2 & 3: Market & Tuning Features - Build two separate Bento Grid sections. Use Electric Cyan for Market, Acid Yellow for Tuning accents.",
+    "Section 4: How It Works - Use a grid layout with visible borders to create a 'technical blueprint' look.",
+    "Section 5: Pricing - 4 dark mode cards. Make the 'Combined' (Market+Tuning) plan stand out with a glowing border or The Tracing Beam.",
+    "Section 6: Testimonials - Simple horizontal scrolling or flex row.",
+    "Section 7: FAQ - Left-aligned accordion.",
+    "Section 8: Footer - Massive typography 'STARTEN SIE JETZT' with a newsletter input."
+  ],
+  "universal_guidelines": {
+    "rule_1": "Never use AI emojis.",
+    "rule_2": "Implement micro-animations on all interactive elements.",
+    "rule_3": "Use layered shadows and borders (e.g. border-white/10).",
+    "rule_4": "Avoid placeholder text for images; use the provided image URLs.",
+    "rule_5": "Toasts should use Sonner if applicable (e.g., for form submissions)."
+  }
+}
