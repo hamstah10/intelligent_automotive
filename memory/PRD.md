@@ -1,66 +1,70 @@
 # AutoIntel - Automotive SaaS Platform PRD
 
 ## Original Problem Statement
-Landing page + Full Dashboard for an Automotive SaaS platform with two specialized products:
-- **Market Intelligence**: Fahrzeugmarkt analysieren, Preise verstehen, Deals erkennen, Konkurrenz ueberwachen
-- **Tuning Intelligence**: ECU/TCU/Tools verstehen, Protokolle & Methoden tracken, Support-Matrix aufbauen
+Automotive Intelligence SaaS platform with Market Intelligence and Tuning Intelligence products. Features landing page, customer dashboard, and AI-powered analysis tools.
 
 ## Core Requirements
-- Dark Theme Design (#050505 background, #111111 cards)
-- German Language UI
-- Space Grotesk Typography
-- rounded-2xl cards, border-white/10
-- Framer Motion Animations + Noise Overlay
-- No modals for main flows (dedicated pages)
-- Accent colors: Cyan (#00E5FF) for Market, Yellow-Green (#CCFF00) for Tuning
+- Dark Theme (#050505 bg, #111111 cards), German UI, Space Grotesk font
+- Framer Motion animations, Noise overlay, rounded-2xl cards
+- Accent: #CCFF00 (Tuning), #00E5FF (Market)
+- No modals for main flows
 
 ## What's Been Implemented
 
 ### Landing Page (/)
 - [x] Navigation, Hero, LiveTicker, FeaturesMarket, ROI Calculator
-- [x] FeaturesTuning, ECU Visualizer, HowItWorks, Pricing, Testimonials, FAQ, Footer
+- [x] FeaturesTuning, ECU Visualizer
+- [x] **AI Deal Analyzer** — Interactive form + AI-powered deal evaluation (GPT-4o)
+- [x] HowItWorks, Pricing, Testimonials, FAQ, Footer
 
 ### Customer Dashboard (/dashboard/*)
-- [x] **Übersicht** (/dashboard) - KPIs, Marktbewegung Chart, Alert-Zentrale, Tabs, Tuning Feed, Update-Frequenz
-- [x] **Market** (/dashboard/market) - Stats, Preisentwicklung Chart, 6 Fahrzeug-Listings mit Bildern und Deal-Scores
-- [x] **Tuning** (/dashboard/tuning) - ECU-Stats, Tool-Matrix Tabelle, Coverage Chart, 8 ECU-Datenbank-Eintraege
-- [x] **Alerts** (/dashboard/alerts) - Filter-Tabs, 4 Summary Cards, 12 Alert Items mit Severity-Badges
-- [x] **Reports** (/dashboard/reports) - KPIs, 6-Monats Activity Chart, 5 Reports mit Download
-- [x] **Teams** (/dashboard/teams) - 4 Rollen-Cards, 6 Team-Mitglieder mit Avataren und Status
-- [x] **Tenants** (/dashboard/tenants) - Stats, 6 Mandanten mit Plan-Badges und Nutzungsbalken
-- [x] **Sidebar** - Logo, 7 Nav-Items mit Badges, Plan Status Card (78%)
+- [x] Uebersicht — KPIs, Charts, Alert-Zentrale, Tabs, Feed
+- [x] Market — Listings, Preistrend, Deal Scores
+- [x] Tuning — Tool-Matrix, ECU DB, **ECU Knowledge Bot** (AI Chat)
+- [x] Alerts — Filter, Summary Cards, **Smart Alert Engine** (AI Muster-Analyse)
+- [x] Reports — KPIs, Chart, Report Liste, **AI Market Report Generator**
+- [x] Teams — Rollen, Mitglieder
+- [x] Tenants — Mandanten-Verwaltung
+- [x] Sidebar — Nav, Badges, Plan Status
 
-### Storytelling Subpages
-- [x] Market (/market), Tuning (/tuning)
+### AI Features (GPT-4o via Emergent LLM Key)
+- [x] **AI Deal Analyzer** (Landing) — Fahrzeugdaten eingeben, AI-Bewertung erhalten
+- [x] **AI Market Reports** (Dashboard) — Ein-Klick Report-Generierung mit Fokus-Auswahl
+- [x] **Smart Alert Engine** (Dashboard) — AI erkennt Muster in Alerts
+- [x] **ECU Knowledge Bot** (Dashboard) — Chat-Interface fuer ECU/Tuning-Fragen
 
-### Auth & Booking
-- [x] Login (/login), Register (/register), Demo (/demo) mit Konfetti + .ics
+### Other Pages
+- [x] Market/Tuning Storytelling, Login, Register, Demo (Konfetti + .ics), Support, System Status
 
-### Utility
-- [x] Support (/support), System Status (/system-status)
+## API Endpoints
+- POST /api/ai/deal-analyzer — AI Deal-Bewertung
+- POST /api/ai/market-report — AI Marktbericht
+- POST /api/ai/smart-alerts — AI Alert-Muster-Analyse
+- POST /api/ai/ecu-chat — ECU Knowledge Bot
+
+## Tech Stack
+- Frontend: React, TailwindCSS, Framer Motion, Shadcn UI, recharts
+- Backend: FastAPI, MongoDB (Motor), emergentintegrations (LLM)
+- AI: OpenAI GPT-4o via Emergent LLM Key
 
 ## Prioritized Backlog
 
-### P0 - Critical
-- [ ] Backend API (FastAPI + MongoDB)
-- [ ] Frontend mit Backend verbinden
+### P0
 - [ ] User Authentication (JWT)
+- [ ] Connect Dashboard to real data via Backend API
 
-### P1 - High
-- [ ] Dashboard mit echten Daten fuellen
-- [ ] ECU Finder mit echten Daten
+### P1
+- [ ] Market Intelligence real data pipeline
+- [ ] ECU Database CRUD in MongoDB
 
-### P2 - Medium
-- [ ] Crawler System (Python Pipeline)
-- [ ] Deal Score Algorithmus
-- [ ] Alert System mit Notifications
+### P2
+- [ ] Crawler System, Deal Score Algorithm
+- [ ] Chat history persistence (MongoDB)
 
-### P3 - Nice to Have
-- [ ] Admin Panel
-- [ ] Multi-Tenant DB Trennung
-- [ ] Multi-Language (EN)
+### P3
+- [ ] Admin Panel, Multi-Tenant, Multi-Language
 
 ## Project Health
 - **Broken**: None
-- **Mocked**: ALL data (Listings, ECUs, Alerts, Teams, Tenants, KPIs, Charts)
-- **3rd Party Integrations**: None
+- **Real AI**: Deal Analyzer, Market Reports, Smart Alerts, ECU Bot (GPT-4o)
+- **Mocked**: Dashboard data (Listings, Alerts, ECU DB, Teams, Tenants, KPIs)
