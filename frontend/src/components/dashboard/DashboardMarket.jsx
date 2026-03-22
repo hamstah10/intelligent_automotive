@@ -63,8 +63,8 @@ const ChartTooltip = ({ active, payload, label }) => {
 };
 
 const getScoreColor = (score) => {
-  if (score >= 90) return 'text-green-400 bg-green-500/15';
-  if (score >= 80) return 'text-[#CCFF00] bg-[#CCFF00]/15';
+  if (score >= 90) return 'text-[#00E5FF] bg-[#00E5FF]/20';
+  if (score >= 80) return 'text-[#00E5FF] bg-[#00E5FF]/15';
   return 'text-yellow-400 bg-yellow-500/15';
 };
 
@@ -85,7 +85,7 @@ export const DashboardMarket = () => {
             <Input placeholder="Fahrzeug suchen ..." value={search} onChange={(e) => setSearch(e.target.value)}
               className="pl-10 w-[240px] bg-[#111111] border-white/10 text-white placeholder:text-white/25 rounded-lg h-10 text-sm" />
           </div>
-          <Button className="bg-[#CCFF00] text-black hover:bg-[#b8e600] font-semibold rounded-lg h-10 px-5 text-sm gap-2">
+          <Button className="bg-[#00E5FF] text-black hover:bg-[#00c8e0] font-semibold rounded-lg h-10 px-5 text-sm gap-2">
             <SlidersHorizontal className="w-4 h-4" />Filter
           </Button>
         </div>
@@ -100,10 +100,10 @@ export const DashboardMarket = () => {
           { label: 'Watchlist', value: '8', change: '3 neue Treffer', up: true },
         ].map((stat, i) => (
           <motion.div key={stat.label} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-            className="bg-[#111111] border border-white/10 rounded-2xl p-5">
+            className="bg-[#111111] border border-[#00E5FF]/10 rounded-2xl p-5 hover:border-[#00E5FF]/25 transition-colors">
             <div className="text-white/40 text-sm mb-1">{stat.label}</div>
             <div className="font-['Space_Grotesk'] text-2xl font-bold text-white tracking-tight">{stat.value}</div>
-            <div className={`text-xs mt-1 flex items-center gap-1 ${stat.up ? 'text-green-400' : 'text-red-400'}`}>
+            <div className={`text-xs mt-1 flex items-center gap-1 ${stat.up ? 'text-[#00E5FF]' : 'text-red-400'}`}>
               {stat.up ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}{stat.change}
             </div>
           </motion.div>
@@ -111,7 +111,7 @@ export const DashboardMarket = () => {
       </div>
 
       {/* Price Trend Chart */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-[#111111] border border-white/10 rounded-2xl p-6 mb-6">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-[#111111] border border-[#00E5FF]/10 rounded-2xl p-6 mb-6">
         <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white mb-1">Preisentwicklung BMW 3er Touring</h3>
         <p className="text-white/30 text-xs mb-6">Durchschnittspreis der letzten 7 Monate</p>
         <div className="h-[200px]">
@@ -135,7 +135,7 @@ export const DashboardMarket = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {listings.map((item, i) => (
           <motion.div key={item.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.05 }}
-            className="bg-[#111111] border border-white/10 rounded-2xl overflow-hidden hover:border-[#CCFF00]/20 transition-colors duration-200 cursor-pointer group">
+            className="bg-[#111111] border border-white/10 rounded-2xl overflow-hidden hover:border-[#00E5FF]/20 transition-colors duration-200 cursor-pointer group">
             {/* Image */}
             <div className="relative">
               <img src={item.image} alt={item.car} className="w-full h-[140px] object-cover" />
@@ -165,7 +165,7 @@ export const DashboardMarket = () => {
                   <div className="text-[10px] text-white/25 line-through">Markt: €{item.marketPrice.toLocaleString('de-DE')}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-green-400 font-semibold text-xs flex items-center gap-1">
+                  <div className="text-[#00E5FF] font-semibold text-xs flex items-center gap-1">
                     <TrendingDown className="w-3 h-3" />
                     -€{(item.marketPrice - item.price).toLocaleString('de-DE')}
                   </div>

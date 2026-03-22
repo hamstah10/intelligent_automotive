@@ -7,13 +7,13 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { name: 'Übersicht', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Market', href: '/dashboard/market', icon: Car, badge: 0 },
-  { name: 'Tuning', href: '/dashboard/tuning', icon: Wrench, badge: 17 },
-  { name: 'Alerts', href: '/dashboard/alerts', icon: Bell, badge: 61 },
-  { name: 'Reports', href: '/dashboard/reports', icon: FileText },
-  { name: 'Teams', href: '/dashboard/teams', icon: Users },
-  { name: 'Tenants', href: '/dashboard/tenants', icon: Building2 },
+  { name: 'Übersicht', href: '/dashboard', icon: LayoutDashboard, color: null },
+  { name: 'Market', href: '/dashboard/market', icon: Car, badge: 0, color: '#00E5FF' },
+  { name: 'Tuning', href: '/dashboard/tuning', icon: Wrench, badge: 17, color: '#CCFF00' },
+  { name: 'Alerts', href: '/dashboard/alerts', icon: Bell, badge: 61, color: null },
+  { name: 'Reports', href: '/dashboard/reports', icon: FileText, color: null },
+  { name: 'Teams', href: '/dashboard/teams', icon: Users, color: null },
+  { name: 'Tenants', href: '/dashboard/tenants', icon: Building2, color: null },
 ];
 
 export const DashboardSidebar = () => {
@@ -46,6 +46,8 @@ export const DashboardSidebar = () => {
           const isActive = location.pathname === item.href ||
             (item.href === '/dashboard' && location.pathname === '/dashboard');
 
+          const activeColor = item.color || '#CCFF00';
+
           return (
             <Link
               key={item.name}
@@ -53,11 +55,12 @@ export const DashboardSidebar = () => {
               data-testid={`sidebar-nav-${item.name.toLowerCase()}`}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 isActive
-                  ? 'bg-[#CCFF00] text-black'
+                  ? 'text-black'
                   : 'text-white/50 hover:text-white hover:bg-white/5'
               }`}
+              style={isActive ? { backgroundColor: activeColor } : {}}
             >
-              <Icon className="w-[18px] h-[18px]" />
+              <Icon className="w-[18px] h-[18px]" style={!isActive && item.color ? { color: `${item.color}80` } : {}} />
               <span className="flex-1">{item.name}</span>
               {item.badge !== undefined && (
                 <span className={`min-w-[26px] h-[22px] flex items-center justify-center rounded-md text-[11px] font-semibold ${
