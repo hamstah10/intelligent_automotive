@@ -1,97 +1,66 @@
 # AutoIntel - Automotive SaaS Platform PRD
 
 ## Original Problem Statement
-Landing page + Dashboard for an Automotive SaaS platform with two specialized products:
+Landing page + Full Dashboard for an Automotive SaaS platform with two specialized products:
 - **Market Intelligence**: Fahrzeugmarkt analysieren, Preise verstehen, Deals erkennen, Konkurrenz ueberwachen
 - **Tuning Intelligence**: ECU/TCU/Tools verstehen, Protokolle & Methoden tracken, Support-Matrix aufbauen
-
-## User Personas
-1. **Automotive Haendler**: Benoetigen schnelle Marktuebersicht und Deal-Erkennung
-2. **Tuning-Spezialisten**: Suchen technische ECU/TCU Informationen und Tool-Kompatibilitaet
-3. **Automotive Geschaeftsfuehrer**: Wollen Konkurrenz-Monitoring und Business Intelligence
 
 ## Core Requirements
 - Dark Theme Design (#050505 background, #111111 cards)
 - German Language UI
 - Space Grotesk Typography
-- 8px border-radius buttons, rounded-2xl cards
-- Framer Motion Animations
-- No modals for main flows (dedicated pages instead)
+- rounded-2xl cards, border-white/10
+- Framer Motion Animations + Noise Overlay
+- No modals for main flows (dedicated pages)
 - Accent colors: Cyan (#00E5FF) for Market, Yellow-Green (#CCFF00) for Tuning
-- Noise texture overlay on pages
 
 ## What's Been Implemented
 
 ### Landing Page (/)
-- [x] Navigation (sticky glass header, mobile menu, Products dropdown)
-- [x] Hero Section (parallax background image, CTAs, stats)
-- [x] Live Deal Ticker (animated feed between Hero & Features)
-- [x] Market Intelligence Features (5 Bento-Grid cards)
-- [x] ROI Calculator (interactive sliders, German currency formatting)
-- [x] Tuning Intelligence Features (6 Bento-Grid cards)
-- [x] ECU Visualizer (interactive brand/model selection, ECU/TCU/tools display)
-- [x] How It Works (4-step workflow)
-- [x] Pricing (4 plans)
-- [x] Testimonials, FAQ, Footer
+- [x] Navigation, Hero, LiveTicker, FeaturesMarket, ROI Calculator
+- [x] FeaturesTuning, ECU Visualizer, HowItWorks, Pricing, Testimonials, FAQ, Footer
 
-### Customer Dashboard (/dashboard) - NEW
-- [x] Sidebar Navigation (AutoIntel logo, 7 nav items with badges, Plan Status card)
-- [x] Header with search bar, Filter button, filter pills
-- [x] KPI Cards (Neue Listings, Top-Deals, Aktive Alerts, Tuning Updates)
-- [x] Marktbewegung Line Chart (7-day, recharts, Live badge)
-- [x] Alert-Zentrale (4 alert types with count badges)
-- [x] Tab Bar (Market/Tuning/Management)
-- [x] Tuning Change Feed (3 items with risk badges)
-- [x] Update-Frequenz Bar Chart (7-day, recharts)
-- [x] Design matches website aesthetic (#050505, #111111, rounded-2xl, noise overlay)
+### Customer Dashboard (/dashboard/*)
+- [x] **Übersicht** (/dashboard) - KPIs, Marktbewegung Chart, Alert-Zentrale, Tabs, Tuning Feed, Update-Frequenz
+- [x] **Market** (/dashboard/market) - Stats, Preisentwicklung Chart, 6 Fahrzeug-Listings mit Bildern und Deal-Scores
+- [x] **Tuning** (/dashboard/tuning) - ECU-Stats, Tool-Matrix Tabelle, Coverage Chart, 8 ECU-Datenbank-Eintraege
+- [x] **Alerts** (/dashboard/alerts) - Filter-Tabs, 4 Summary Cards, 12 Alert Items mit Severity-Badges
+- [x] **Reports** (/dashboard/reports) - KPIs, 6-Monats Activity Chart, 5 Reports mit Download
+- [x] **Teams** (/dashboard/teams) - 4 Rollen-Cards, 6 Team-Mitglieder mit Avataren und Status
+- [x] **Tenants** (/dashboard/tenants) - Stats, 6 Mandanten mit Plan-Badges und Nutzungsbalken
+- [x] **Sidebar** - Logo, 7 Nav-Items mit Badges, Plan Status Card (78%)
 
 ### Storytelling Subpages
-- [x] Market Intelligence (/market)
-- [x] Tuning Intelligence (/tuning)
+- [x] Market (/market), Tuning (/tuning)
 
-### Auth & Booking Pages
-- [x] Login (/login), Register (/register)
-- [x] Demo Booking (/demo) with .ics download + confetti
+### Auth & Booking
+- [x] Login (/login), Register (/register), Demo (/demo) mit Konfetti + .ics
 
-### Utility Pages
-- [x] Support Page (/support)
-- [x] System Status (/system-status)
-
-## Routes
-- `/` - Landing Page
-- `/market` - Market Intelligence Storytelling
-- `/tuning` - Tuning Intelligence Storytelling
-- `/login` - Login Page
-- `/register` - Register Page
-- `/demo` - Demo Booking
-- `/support` - Support/Help Center
-- `/system-status` - System Status
-- `/dashboard` - Customer Dashboard
-- `/dashboard/*` - Dashboard sub-routes
+### Utility
+- [x] Support (/support), System Status (/system-status)
 
 ## Prioritized Backlog
 
-### P0 - Critical (Next Phase)
-- [ ] Backend API Implementation (FastAPI + MongoDB)
-- [ ] Connect Frontend to Backend API (replace mocked data)
-- [ ] User Authentication System (JWT)
+### P0 - Critical
+- [ ] Backend API (FastAPI + MongoDB)
+- [ ] Frontend mit Backend verbinden
+- [ ] User Authentication (JWT)
 
-### P1 - High Priority
-- [ ] Dashboard sub-pages (Market detail, Tuning detail, Alerts list)
-- [ ] Market Intelligence real data integration
-- [ ] Tuning Intelligence ECU Finder (real data)
+### P1 - High
+- [ ] Dashboard mit echten Daten fuellen
+- [ ] ECU Finder mit echten Daten
 
-### P2 - Medium Priority
+### P2 - Medium
 - [ ] Crawler System (Python Pipeline)
-- [ ] Deal Score Algorithm
-- [ ] Alert System with real notifications
+- [ ] Deal Score Algorithmus
+- [ ] Alert System mit Notifications
 
 ### P3 - Nice to Have
-- [ ] Admin Panel (Tenants, Crawl Jobs, Logs)
-- [ ] Multi-tenant database separation
-- [ ] Multi-Language Support (EN)
+- [ ] Admin Panel
+- [ ] Multi-Tenant DB Trennung
+- [ ] Multi-Language (EN)
 
 ## Project Health
 - **Broken**: None
-- **Mocked**: All data, Auth, API endpoints, Dashboard KPIs, Charts, Alerts, Feed
-- **3rd Party Integrations**: None yet
+- **Mocked**: ALL data (Listings, ECUs, Alerts, Teams, Tenants, KPIs, Charts)
+- **3rd Party Integrations**: None
