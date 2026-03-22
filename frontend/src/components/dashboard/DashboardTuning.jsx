@@ -5,6 +5,35 @@ import { Input } from '../ui/input';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { ECUKnowledgeBot } from './ECUKnowledgeBot';
 
+const brandLogos = {
+  BMW: 'https://static.prod-images.emergentagent.com/jobs/75c63187-f714-4297-8bd0-b3bae932661f/images/180bbe474591d40156ff9ca850911c777640e049637418cbcd1245695206ac72.png',
+  Audi: 'https://static.prod-images.emergentagent.com/jobs/75c63187-f714-4297-8bd0-b3bae932661f/images/5e6c139b20069d400e137b86483d1e995c0c15c21977fa96e4dd7fc3c92bc6c6.png',
+};
+
+const brandColors = {
+  BMW: 'from-blue-500 to-blue-700',
+  Audi: 'from-gray-400 to-gray-600',
+  Mercedes: 'from-gray-300 to-gray-500',
+  VW: 'from-blue-600 to-blue-800',
+  Porsche: 'from-red-600 to-red-800',
+};
+
+const BrandBadge = ({ brand }) => {
+  if (brandLogos[brand]) {
+    return (
+      <div className="w-7 h-7 rounded-md bg-white flex items-center justify-center p-0.5 shrink-0">
+        <img src={brandLogos[brand]} alt={brand} className="w-full h-full object-contain" />
+      </div>
+    );
+  }
+  const initials = brand === 'Mercedes' ? 'MB' : brand;
+  return (
+    <div className={`w-7 h-7 rounded-md bg-gradient-to-br ${brandColors[brand] || 'from-gray-500 to-gray-700'} flex items-center justify-center shrink-0`}>
+      <span className="text-white text-[9px] font-bold">{initials}</span>
+    </div>
+  );
+};
+
 const ecuDatabase = [
   { id: 1, brand: 'BMW', model: '320d (G20)', ecu: 'Bosch EDC17C50', tcu: 'ZF 8HP50', tools: ['Autotuner', 'KESSv3', 'KTAG'], methods: ['OBD', 'Bench'], risk: 'Niedrig', lastUpdate: 'vor 2d' },
   { id: 2, brand: 'BMW', model: 'M340i (G20)', ecu: 'Bosch MG1CS201', tcu: 'ZF 8HP51', tools: ['Autotuner'], methods: ['Bench'], risk: 'Mittel', lastUpdate: 'vor 5d' },
@@ -158,7 +187,8 @@ export const DashboardTuning = () => {
               <motion.div key={ecu.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 + i * 0.03 }}
                 className="p-4 bg-[#0A0A0A] rounded-xl border border-white/5 hover:border-[#CCFF00]/15 transition-colors cursor-pointer">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <BrandBadge brand={ecu.brand} />
                     <span className="text-white font-semibold text-sm">{ecu.brand} {ecu.model}</span>
                     <span className={`px-2 py-0.5 rounded-md text-[10px] font-medium border ${riskColor(ecu.risk)}`}>Risiko: {ecu.risk}</span>
                   </div>
