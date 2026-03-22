@@ -81,7 +81,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/demo" element={<DemoPage />} />
         <Route path="/support" element={<SupportPage />} />
-        <Route path="/status" element={<StatusPage />} />
+        <Route path="/system-status" element={<StatusPage />} />
       </Routes>
       <Toaster 
         position="bottom-right"
