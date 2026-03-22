@@ -1,11 +1,9 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { ArrowRight, Play, BarChart3, Cpu } from 'lucide-react';
-import { useModals } from '@/App';
 
 export const HeroSection = () => {
-  const { openDemo } = useModals();
-  
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -90,14 +88,15 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-wrap gap-4 mb-16"
         >
-          <Button
-            data-testid="hero-cta-demo"
-            className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 text-base rounded-lg transition-transform duration-200 active:scale-95 group"
-            onClick={openDemo}
-          >
-            Demo buchen
-            <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </Button>
+          <Link to="/demo">
+            <Button
+              data-testid="hero-cta-demo"
+              className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-8 py-6 text-base rounded-lg transition-transform duration-200 active:scale-95 group"
+            >
+              Demo buchen
+              <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </Button>
+          </Link>
           <Button
             data-testid="hero-cta-waitlist"
             variant="outline"

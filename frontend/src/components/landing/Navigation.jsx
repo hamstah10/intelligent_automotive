@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, BarChart2, Cpu } from 'lucide-react';
 import { Button } from '../ui/button';
-import { useModals } from '@/App';
 
 const navLinks = [
   { name: 'Features', href: '#features' },
@@ -22,7 +21,6 @@ export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showProductMenu, setShowProductMenu] = useState(false);
   const location = useLocation();
-  const { openLogin, openDemo } = useModals();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -145,21 +143,23 @@ export const Navigation = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button
-              variant="ghost"
-              data-testid="nav-login-btn"
-              className="text-white/80 hover:text-white hover:bg-white/5"
-              onClick={openLogin}
-            >
-              Anmelden
-            </Button>
-            <Button
-              data-testid="nav-demo-btn"
-              className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-5 rounded-lg transition-transform duration-200 active:scale-95"
-              onClick={openDemo}
-            >
-              Demo buchen
-            </Button>
+            <Link to="/login">
+              <Button
+                variant="ghost"
+                data-testid="nav-login-btn"
+                className="text-white/80 hover:text-white hover:bg-white/5"
+              >
+                Anmelden
+              </Button>
+            </Link>
+            <Link to="/demo">
+              <Button
+                data-testid="nav-demo-btn"
+                className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-5 rounded-lg transition-transform duration-200 active:scale-95"
+              >
+                Demo buchen
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -214,19 +214,21 @@ export const Navigation = () => {
                 </button>
               ))}
               <div className="flex flex-col gap-3 mt-6">
-                <Button
-                  variant="outline"
-                  className="w-full border-white/20 text-white"
-                  onClick={() => { setIsMobileMenuOpen(false); openLogin(); }}
-                >
-                  Anmelden
-                </Button>
-                <Button
-                  className="w-full bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold"
-                  onClick={() => { setIsMobileMenuOpen(false); openDemo(); }}
-                >
-                  Demo buchen
-                </Button>
+                <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    variant="outline"
+                    className="w-full border-white/20 text-white"
+                  >
+                    Anmelden
+                  </Button>
+                </Link>
+                <Link to="/demo" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    className="w-full bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold"
+                  >
+                    Demo buchen
+                  </Button>
+                </Link>
               </div>
             </div>
           </motion.div>
