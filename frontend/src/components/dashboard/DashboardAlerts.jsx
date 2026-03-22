@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, TrendingDown, Cpu, AlertTriangle, Eye, Clock, Brain, Sparkles, Loader2 } from 'lucide-react';
 import { Button } from '../ui/button';
+import { AIResponseRenderer } from '../landing/AIResponseRenderer';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -145,7 +146,9 @@ export const DashboardAlerts = () => {
                 <span className="text-white/50 text-sm">AI erkennt Muster in deinen Alerts...</span>
               </div>
             ) : (
-              <div data-testid="smart-alert-result" className="text-white/70 text-sm leading-relaxed whitespace-pre-wrap">{aiAnalysis}</div>
+              <div data-testid="smart-alert-result" className="max-h-[400px] overflow-y-auto custom-scrollbar">
+                <AIResponseRenderer content={aiAnalysis} showScore={false} showRecommendation={false} accentColor="#CCFF00" />
+              </div>
             )}
           </motion.div>
         )}

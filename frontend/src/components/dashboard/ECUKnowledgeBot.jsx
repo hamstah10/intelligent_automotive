@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Bot, Send, User, Loader2, Cpu, Sparkles, RotateCcw } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import { AIChatBubbleRenderer } from '../landing/AIResponseRenderer';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -109,7 +110,11 @@ export const ECUKnowledgeBot = () => {
                 ? 'bg-[#CCFF00] text-black rounded-br-md'
                 : 'bg-[#0A0A0A] border border-white/5 text-white/70 rounded-bl-md'
             }`}>
-              <span className="whitespace-pre-wrap">{msg.content}</span>
+              {msg.role === 'assistant' ? (
+                <AIChatBubbleRenderer content={msg.content} />
+              ) : (
+                <span className="whitespace-pre-wrap">{msg.content}</span>
+              )}
             </div>
             {msg.role === 'user' && (
               <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center shrink-0 mt-0.5">

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Download, Calendar, TrendingUp, BarChart3, PieChart, Clock, Sparkles, Loader2, Brain } from 'lucide-react';
 import { Button } from '../ui/button';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { AIResponseRenderer } from '../landing/AIResponseRenderer';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -125,8 +126,8 @@ export const DashboardReports = () => {
                   <span className="text-white/50 text-sm">AI analysiert Marktdaten...</span>
                 </div>
               ) : (
-                <div data-testid="ai-report-result" className="text-white/70 text-sm leading-relaxed whitespace-pre-wrap max-h-[400px] overflow-y-auto">
-                  {aiReport}
+                <div data-testid="ai-report-result" className="max-h-[400px] overflow-y-auto custom-scrollbar">
+                  <AIResponseRenderer content={aiReport} showScore={false} showRecommendation={false} accentColor="#00E5FF" />
                 </div>
               )}
             </motion.div>

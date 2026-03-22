@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Car, MapPin, Gauge, Euro, Loader2, TrendingUp, TrendingDown, Shield, Target, Sparkles } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
+import { AIResponseRenderer } from './AIResponseRenderer';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -152,13 +153,14 @@ export const AIDealAnalyzer = () => {
                 </motion.div>
               )}
               {analysis && (
-                <motion.div key="result" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+                <motion.div key="result" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                  className="max-h-[500px] overflow-y-auto custom-scrollbar">
                   <div className="flex items-center gap-2 mb-4">
                     <Sparkles className="w-5 h-5 text-[#CCFF00]" />
                     <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white">AI-Analyse</h3>
                   </div>
-                  <div data-testid="deal-analysis-result" className="prose prose-invert prose-sm max-w-none text-white/70 leading-relaxed whitespace-pre-wrap text-sm">
-                    {analysis}
+                  <div data-testid="deal-analysis-result">
+                    <AIResponseRenderer content={analysis} showScore={true} showRecommendation={true} accentColor="#CCFF00" />
                   </div>
                 </motion.div>
               )}
