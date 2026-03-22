@@ -25,7 +25,7 @@ export const ParallaxDataWall = () => {
 
       <div className="max-w-6xl mx-auto px-6 relative">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} className="text-center mb-16">
-          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">Die Zahlen sprechen für sich</h2>
+          <h2 className="font-['Orbitron'] text-2xl sm:text-3xl font-bold text-white mb-4">Die Zahlen sprechen für sich</h2>
           <p className="text-white/40 text-base max-w-lg mx-auto">Automotive Intelligence in Echtzeit — powered by Data.</p>
         </motion.div>
 
@@ -40,7 +40,7 @@ export const ParallaxDataWall = () => {
                   <div className="w-14 h-14 rounded-2xl mx-auto mb-5 flex items-center justify-center transition-colors duration-300" style={{ backgroundColor: `${stat.color}10` }}>
                     <Icon className="w-7 h-7 transition-colors" style={{ color: stat.color }} />
                   </div>
-                  <div className="font-['Orbitron'] text-4xl lg:text-5xl font-bold text-white tracking-tighter mb-2">{stat.value}</div>
+                  <div className="font-['Orbitron'] text-xl lg:text-2xl font-bold text-white tracking-tighter mb-2">{stat.value}</div>
                   <div className="text-white/40 text-sm">{stat.label}</div>
                 </div>
               </motion.div>

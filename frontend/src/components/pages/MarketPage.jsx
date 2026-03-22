@@ -57,7 +57,7 @@ const AnimatedCounter = ({ value, suffix = '', prefix = '' }) => {
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      className="font-['Orbitron'] text-4xl lg:text-6xl font-bold text-white tracking-tighter"
+      className="font-['Orbitron'] text-base lg:text-6xl font-bold text-white tracking-tighter"
     >
       {prefix}{isInView ? value : '0'}{suffix}
     </motion.span>
@@ -150,7 +150,7 @@ export const MarketPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-['Orbitron'] text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-8"
+            className="font-['Orbitron'] text-base sm:text-6xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-8"
             data-testid="market-hero-title"
           >
             Finde den{' '}
@@ -195,7 +195,7 @@ export const MarketPage = () => {
             <span className="text-[#00E5FF] text-xs font-mono uppercase tracking-[0.2em] mb-4 block">
               Das Problem
             </span>
-            <h2 className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tighter text-white mb-8">
+            <h2 className="font-['Orbitron'] text-base sm:text-4xl lg:text-6xl font-bold tracking-tighter text-white mb-8">
               Der Fahrzeugmarkt ist
               <br />
               <span className="text-white/30">unübersichtlich.</span>
@@ -223,7 +223,7 @@ export const MarketPage = () => {
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="p-8 bg-[#111111] border border-white/10 rounded-2xl h-full">
                   <item.icon className="w-10 h-10 text-[#00E5FF]/50 mb-6" />
-                  <h3 className="font-['Orbitron'] text-xl font-semibold text-white mb-3">
+                  <h3 className="font-['Orbitron'] text-base font-semibold text-white mb-3">
                     {item.title}
                   </h3>
                   <p className="text-white/50 leading-relaxed">
@@ -240,7 +240,7 @@ export const MarketPage = () => {
       <section className="py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
-            <h2 className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-8">
+            <h2 className="font-['Orbitron'] text-base sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-8">
               Stell dir vor...
             </h2>
           </AnimatedSection>
@@ -261,7 +261,7 @@ export const MarketPage = () => {
             <span className="text-[#00E5FF] text-xs font-mono uppercase tracking-[0.2em] mb-4 block">
               Die Lösung
             </span>
-            <h2 className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white">
+            <h2 className="font-['Orbitron'] text-base sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white">
               Market Intelligence Features
             </h2>
           </AnimatedSection>
@@ -277,7 +277,7 @@ export const MarketPage = () => {
                       <Target className="w-8 h-8 text-[#00E5FF]" />
                     </div>
                     <div>
-                      <h3 className="font-['Orbitron'] text-2xl font-bold text-white">Deal Score</h3>
+                      <h3 className="font-['Orbitron'] text-base font-bold text-white">Deal Score</h3>
                       <p className="text-[#00E5FF] text-sm">Automatische Bewertung</p>
                     </div>
                   </div>
@@ -318,7 +318,7 @@ export const MarketPage = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <h3 className="font-['Orbitron'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
+              <h3 className="font-['Orbitron'] text-base lg:text-4xl font-bold tracking-tight text-white mb-6">
                 Sofort wissen, ob sich ein Deal lohnt
               </h3>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
@@ -394,7 +394,7 @@ export const MarketPage = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2} className="lg:order-1">
-              <h3 className="font-['Orbitron'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
+              <h3 className="font-['Orbitron'] text-base lg:text-4xl font-bold tracking-tight text-white mb-6">
                 Nie wieder einen Deal verpassen
               </h3>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
@@ -460,7 +460,7 @@ export const MarketPage = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <h3 className="font-['Orbitron'] text-3xl lg:text-4xl font-bold tracking-tight text-white mb-6">
+              <h3 className="font-['Orbitron'] text-base lg:text-4xl font-bold tracking-tight text-white mb-6">
                 Wisse, was die Konkurrenz macht
               </h3>
               <p className="text-white/60 text-lg leading-relaxed mb-8">
@@ -495,7 +495,7 @@ export const MarketPage = () => {
       <section className="py-32 px-6 bg-[#0A0A0A]">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold tracking-tighter text-white">
+            <h2 className="font-['Orbitron'] text-base sm:text-4xl font-bold tracking-tighter text-white">
               Die Zahlen sprechen für sich
             </h2>
           </AnimatedSection>
@@ -520,7 +520,7 @@ export const MarketPage = () => {
       <section className="py-32 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
-            <h2 className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter text-white mb-6">
+            <h2 className="font-['Orbitron'] text-base sm:text-5xl lg:text-6xl font-bold tracking-tighter text-white mb-6">
               Bereit, keine Deals
               <br />
               mehr zu verpassen?

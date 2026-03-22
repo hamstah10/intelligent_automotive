@@ -129,7 +129,7 @@ export const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white mb-4"
+            className="font-['Orbitron'] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tighter text-white mb-4"
           >
             Transparente Preise
           </motion.h2>
@@ -187,14 +187,14 @@ export const Pricing = () => {
                 )}
 
                 {/* Plan Name */}
-                <h3 className="font-['Orbitron'] text-lg font-semibold text-white mb-1 tracking-tight">
+                <h3 className="font-['Orbitron'] text-sm font-semibold text-white mb-1 tracking-tight">
                   {plan.name}
                 </h3>
                 <p className="text-white/50 text-sm mb-6">{plan.description}</p>
 
                 {/* Price */}
                 <div className="flex items-baseline gap-1 mb-6">
-                  <span className="font-['Orbitron'] text-4xl lg:text-5xl font-bold text-white tracking-tighter">
+                  <span className="font-['Orbitron'] text-xl lg:text-2xl font-bold text-white tracking-tighter">
                     €{plan.price}
                   </span>
                   <span className="text-white/50 text-sm">/Monat</span>

@@ -70,7 +70,7 @@ export const Footer = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-6">
+          <h2 className="font-['Orbitron'] text-2xl sm:text-3xl lg:text-6xl font-bold tracking-tighter text-white mb-6">
             STARTEN SIE{' '}
             <span className="text-gradient-yellow">JETZT</span>
           </h2>

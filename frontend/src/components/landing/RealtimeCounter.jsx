@@ -48,7 +48,7 @@ export const RealtimeCounter = () => {
                 <div className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: `${c.color}15` }}>
                   <Icon className="w-6 h-6" style={{ color: c.color }} />
                 </div>
-                <div className="font-['Orbitron'] text-3xl lg:text-4xl font-bold text-white tracking-tight mb-2">
+                <div className="font-['Orbitron'] text-xl lg:text-2xl font-bold text-white tracking-tight mb-2">
                   <AnimatedNumber end={c.end} suffix={c.suffix} decimals={c.decimals || 0} inView={inView} />
                 </div>
                 <div className="text-white/40 text-sm">{c.label}</div>

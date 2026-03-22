@@ -90,7 +90,7 @@ export const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white mb-4"
+            className="font-['Orbitron'] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tighter text-white mb-4"
           >
             So funktioniert's
           </motion.h2>
@@ -150,7 +150,7 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="font-['Orbitron'] text-xl font-semibold text-white mb-3 tracking-tight">
+                <h3 className="font-['Orbitron'] text-base font-semibold text-white mb-3 tracking-tight">
                   {step.title}
                 </h3>
                 <p className="text-white/60 text-sm leading-relaxed">

@@ -25,7 +25,7 @@ export const MarketHeatmap = () => {
             <MapPin className="w-4 h-4 text-[#00E5FF]" />
             <span className="text-[#00E5FF] text-sm font-medium">Live Heatmap</span>
           </div>
-          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">Deal-Hotspots in Deutschland</h2>
+          <h2 className="font-['Orbitron'] text-2xl sm:text-3xl font-bold text-white mb-4">Deal-Hotspots in Deutschland</h2>
           <p className="text-white/40 text-base max-w-lg mx-auto">Echtzeit-Übersicht: Wo sind gerade die besten Deals?</p>
         </motion.div>
 

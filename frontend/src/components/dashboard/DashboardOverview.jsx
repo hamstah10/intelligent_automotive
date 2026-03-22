@@ -100,7 +100,7 @@ export const DashboardOverview = () => {
       {/* Header */}
       <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 mb-8">
         <div>
-          <h1 data-testid="dashboard-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Automotive Dashboard</h1>
+          <h1 data-testid="dashboard-title" className="font-['Orbitron'] text-xl font-bold tracking-tight" style={{ color: t.text }}>Automotive Dashboard</h1>
           <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Echtzeit-Übersicht für Fahrzeugmarkt, Preisänderungen und Tuning-Updates.</p>
         </div>
         <div className="flex items-center gap-3 flex-wrap">
@@ -133,7 +133,7 @@ export const DashboardOverview = () => {
               </div>
               <div className="text-sm mb-1" style={{ color: t.textSec }}>{card.title}</div>
               <div className="flex items-end gap-3">
-                <span className="font-['Orbitron'] text-3xl font-bold tracking-tighter" style={{ color: t.text }}>{card.value}</span>
+                <span className="font-['Orbitron'] text-xl font-bold tracking-tighter" style={{ color: t.text }}>{card.value}</span>
                 <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold mb-1" style={{ backgroundColor: accentBg, color: card.accent }}>{card.badge}</span>
               </div>
               <div className="text-xs mt-1" style={{ color: t.textDim }}>{card.sub}</div>

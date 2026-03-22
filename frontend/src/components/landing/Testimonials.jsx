@@ -70,7 +70,7 @@ export const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white"
+            className="font-['Orbitron'] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tighter text-white"
           >
             Was unsere Kunden sagen
           </motion.h2>
@@ -154,7 +154,7 @@ export const Testimonials = () => {
             { value: '<2h', label: 'Avg. Response Time' },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="font-['Orbitron'] text-2xl lg:text-3xl font-bold text-white tracking-tighter">
+              <div className="font-['Orbitron'] text-xl lg:text-2xl font-bold text-white tracking-tighter">
                 {stat.value}
               </div>
               <div className="text-white/50 text-sm mt-1">{stat.label}</div>

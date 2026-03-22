@@ -49,7 +49,7 @@ const ScoreBadge = ({ score, accentColor = '#00E5FF' }) => {
             style={{ transition: 'stroke-dashoffset 1s ease-out' }} />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-['Orbitron'] text-2xl font-bold text-white">{score}</span>
+          <span className="font-['Orbitron'] text-base font-bold text-white">{score}</span>
         </div>
       </div>
       <div>
@@ -84,7 +84,7 @@ const RecommendationBadge = ({ rec }) => {
 
 const markdownComponents = {
   h1: ({ children }) => (
-    <h1 className="font-['Orbitron'] text-xl font-bold text-white mt-5 mb-2 flex items-center gap-2">
+    <h1 className="font-['Orbitron'] text-base font-bold text-white mt-5 mb-2 flex items-center gap-2">
       <Star className="w-5 h-5 text-[#CCFF00] shrink-0" />
       {children}
     </h1>

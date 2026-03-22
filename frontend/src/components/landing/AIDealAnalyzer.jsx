@@ -50,7 +50,7 @@ export const AIDealAnalyzer = () => {
             <Brain className="w-4 h-4 text-[#CCFF00]" />
             <span className="text-[#CCFF00] text-sm font-medium">AI-Powered</span>
           </div>
-          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="font-['Orbitron'] text-2xl sm:text-3xl font-bold text-white mb-4">
             AI Deal Analyzer
           </h2>
           <p className="text-white/40 text-base max-w-xl mx-auto">
@@ -157,7 +157,7 @@ export const AIDealAnalyzer = () => {
                   className="max-h-[500px] overflow-y-auto custom-scrollbar">
                   <div className="flex items-center gap-2 mb-4">
                     <Sparkles className="w-5 h-5 text-[#CCFF00]" />
-                    <h3 className="font-['Orbitron'] text-lg font-bold text-white">AI-Analyse</h3>
+                    <h3 className="font-['Orbitron'] text-sm font-bold text-white">AI-Analyse</h3>
                   </div>
                   <div data-testid="deal-analysis-result">
                     <AIResponseRenderer content={analysis} showScore={true} showRecommendation={true} accentColor="#CCFF00" />

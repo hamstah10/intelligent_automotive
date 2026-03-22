@@ -27,7 +27,7 @@ const planColor = (plan) => {
 export const DashboardTenants = () => (
   <>
     <div className="mb-8">
-      <h1 data-testid="tenants-title" className="font-['Orbitron'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Tenants</h1>
+      <h1 data-testid="tenants-title" className="font-['Orbitron'] text-xl font-bold tracking-tight" style={{ color: t.text }}>Tenants</h1>
       <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Multi-Tenant Verwaltung und Mandanten-Übersicht.</p>
     </div>
 
@@ -40,7 +40,7 @@ export const DashboardTenants = () => (
             className={`${surface()} p-5 flex items-start justify-between`}>
             <div>
               <div className="text-sm mb-1" style={{ color: t.textSec }}>{stat.label}</div>
-              <div className="font-['Orbitron'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{stat.value}</div>
+              <div className="font-['Orbitron'] text-xl font-bold tracking-tight" style={{ color: t.text }}>{stat.value}</div>
             </div>
             <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${stat.color}15` }}>
               <Icon className="w-5 h-5" style={{ color: stat.color }} />
@@ -53,7 +53,7 @@ export const DashboardTenants = () => (
     {/* Table */}
     <div className={`${surface()} overflow-hidden`}>
       <div className="p-5 pb-0">
-        <h3 className="font-['Orbitron'] text-lg font-bold" style={{ color: t.text }}>Alle Mandanten</h3>
+        <h3 className="font-['Orbitron'] text-sm font-bold" style={{ color: t.text }}>Alle Mandanten</h3>
         <p className="text-xs mt-0.5 mb-5" style={{ color: t.textMut }}>{tenants.length} Mandanten registriert</p>
       </div>
       <div className="overflow-x-auto">

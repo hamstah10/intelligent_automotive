@@ -46,7 +46,7 @@ export const RegisterPage = () => {
         />
         <div className="absolute inset-0 flex items-center justify-center z-20">
           <div className="text-center p-8">
-            <h2 className="font-['Orbitron'] text-4xl font-bold text-white mb-4">
+            <h2 className="font-['Orbitron'] text-base font-bold text-white mb-4">
               Tuning Intelligence
             </h2>
             <p className="text-white/60 max-w-md">
@@ -88,7 +88,7 @@ export const RegisterPage = () => {
           </div>
 
           {/* Header */}
-          <h1 className="font-['Orbitron'] text-3xl font-bold text-white mb-2">
+          <h1 className="font-['Orbitron'] text-base font-bold text-white mb-2">
             Account erstellen
           </h1>
           <p className="text-white/60 mb-8">

@@ -58,7 +58,7 @@ export const DealQuiz = () => {
             <Crosshair className="w-4 h-4 text-[#00E5FF]" />
             <span className="text-[#00E5FF] text-sm font-medium">Deal Finder</span>
           </div>
-          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">Finde deinen Deal</h2>
+          <h2 className="font-['Orbitron'] text-2xl sm:text-3xl font-bold text-white mb-4">Finde deinen Deal</h2>
           <p className="text-white/40 text-base">3 Fragen — und wir zeigen dir wie viele Top-Deals auf dich warten.</p>
         </motion.div>
 
@@ -74,7 +74,7 @@ export const DealQuiz = () => {
             {!done ? (
               <motion.div key={step} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} className="w-full max-w-md">
                 <p className="text-white/30 text-xs mb-2 text-center">Frage {step + 1} von {questions.length}</p>
-                <h3 className="font-['Orbitron'] text-xl font-bold text-white text-center mb-8">{questions[step].q}</h3>
+                <h3 className="font-['Orbitron'] text-base font-bold text-white text-center mb-8">{questions[step].q}</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {questions[step].options.map((opt) => (
                     <button key={opt.value} onClick={() => handleAnswer(opt.value)}
@@ -87,9 +87,9 @@ export const DealQuiz = () => {
             ) : (
               <motion.div key="result" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
                 <div className="w-20 h-20 rounded-2xl bg-[#00E5FF]/10 flex items-center justify-center mx-auto mb-6">
-                  <span className="font-['Orbitron'] text-3xl font-bold text-[#00E5FF]">{dealCount}</span>
+                  <span className="font-['Orbitron'] text-base font-bold text-[#00E5FF]">{dealCount}</span>
                 </div>
-                <h3 className="font-['Orbitron'] text-2xl font-bold text-white mb-2">Wir hätten {dealCount} Deals für dich!</h3>
+                <h3 className="font-['Orbitron'] text-base font-bold text-white mb-2">Wir hätten {dealCount} Deals für dich!</h3>
                 <p className="text-white/40 text-sm mb-8">Basierend auf deinen Präferenzen. Starte jetzt und verpasse keinen Deal.</p>
                 <div className="flex items-center gap-3 justify-center">
                   <Link to="/demo">

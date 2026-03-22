@@ -31,7 +31,7 @@ export const BeforeAfterSlider = () => {
             <ArrowLeftRight className="w-4 h-4 text-white/60" />
             <span className="text-white/60 text-sm font-medium">Vorher / Nachher</span>
           </div>
-          <h2 className="font-['Orbitron'] text-3xl sm:text-4xl font-bold text-white mb-4">Der Unterschied</h2>
+          <h2 className="font-['Orbitron'] text-2xl sm:text-3xl font-bold text-white mb-4">Der Unterschied</h2>
         </motion.div>
 
         <div className="relative bg-[#111111] border border-white/10 rounded-2xl overflow-hidden">

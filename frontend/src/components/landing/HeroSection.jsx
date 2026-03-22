@@ -98,7 +98,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] mb-6 max-w-4xl"
+          className="font-['Orbitron'] text-2xl sm:text-3xl lg:text-6xl font-bold tracking-tighter leading-[1.1] mb-6 max-w-4xl"
         >
           Die{' '}
           <span className="text-gradient-cyan">Daten</span>
