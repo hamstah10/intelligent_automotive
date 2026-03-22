@@ -65,9 +65,9 @@ export const Navigation = () => {
             }}
           >
             <div className="w-10 h-10 rounded-lg bg-[#CCFF00] flex items-center justify-center">
-              <span className="font-bold text-black text-lg font-['Syne']">AI</span>
+              <span className="font-bold text-black text-lg font-['Space_Grotesk']">AI</span>
             </div>
-            <span className="text-white font-semibold text-xl font-['Syne'] tracking-tight">
+            <span className="text-white font-semibold text-xl font-['Space_Grotesk'] tracking-tight">
               AutoIntel
             </span>
           </a>

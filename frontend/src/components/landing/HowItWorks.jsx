@@ -90,7 +90,7 @@ export const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-['Syne'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white mb-4"
+            className="font-['Space_Grotesk'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter text-white mb-4"
           >
             So funktioniert's
           </motion.h2>
@@ -132,7 +132,7 @@ export const HowItWorks = () => {
               >
                 {/* Step Number */}
                 <span 
-                  className="text-6xl lg:text-7xl font-bold font-['Syne'] tracking-tighter opacity-10 absolute top-4 right-4"
+                  className="text-6xl lg:text-7xl font-bold font-['Space_Grotesk'] tracking-tighter opacity-10 absolute top-4 right-4"
                   style={{ color: accentColor }}
                 >
                   {step.number}
@@ -150,7 +150,7 @@ export const HowItWorks = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="font-['Syne'] text-xl font-semibold text-white mb-3 tracking-tight">
+                <h3 className="font-['Space_Grotesk'] text-xl font-semibold text-white mb-3 tracking-tight">
                   {step.title}
                 </h3>
                 <p className="text-white/60 text-sm leading-relaxed">
