@@ -20,6 +20,7 @@ import { RegisterPage } from "@/components/pages/RegisterPage";
 import { DemoPage } from "@/components/pages/DemoPage";
 import { SupportPage } from "@/components/pages/SupportPage";
 import { StatusPage } from "@/components/pages/StatusPage";
+import DashboardPage from "@/components/dashboard/DashboardPage";
 
 // Home Page Component
 const HomePage = () => {
@@ -82,6 +83,8 @@ function App() {
         <Route path="/demo" element={<DemoPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/system-status" element={<StatusPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard/*" element={<DashboardPage />} />
       </Routes>
       <Toaster 
         position="bottom-right"
