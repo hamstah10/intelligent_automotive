@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { ArrowRight, Play, BarChart3, Cpu } from 'lucide-react';
+import { HeroCanvas } from './HeroCanvas';
 
 export const HeroSection = () => {
   const heroRef = useRef(null);
@@ -42,6 +43,9 @@ export const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-[#050505]/80 to-[#050505]" />
       </motion.div>
+
+      {/* AI Neural Network Canvas Animation */}
+      <HeroCanvas />
 
       {/* Parallax Grid Lines Overlay */}
       <motion.div 
