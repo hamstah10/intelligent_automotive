@@ -16,33 +16,31 @@ Automotive Intelligence SaaS platform with Market Intelligence and Tuning Intell
 - [x] FeaturesTuning, ECU Visualizer
 - [x] **AI Deal Analyzer** — Interactive form + AI-powered deal evaluation (GPT-4o)
 - [x] HowItWorks, Pricing, Testimonials, FAQ, Footer
-- [x] **IntegrationShowcase** — Scrolling partner logos (mobile.de, AutoScout24, DAT, etc.)
-- [x] **RealtimeCounter** — 4 animated live stat counters
-- [x] **ParallaxDataWall** — 6 stat cards with parallax scroll effect
-- [x] **DealQuiz** — 3-question interactive deal finder quiz
-- [x] **VehicleConfigurator** — Brand/model Marktwert-Check (BMW, Audi, Mercedes, VW, Porsche)
-- [x] **BeforeAfterSlider** — Vorher/Nachher comparison slider
-- [x] **CompetitorRadar** — SVG radar chart AutoIntel vs Manuelle Suche
-- [x] **MarketHeatmap** — Germany map with deal hotspots (8 cities)
+- [x] **8 New Interactive Components** (IntegrationShowcase, RealtimeCounter, ParallaxDataWall, DealQuiz, VehicleConfigurator, BeforeAfterSlider, CompetitorRadar, MarketHeatmap)
 
 ### Customer Dashboard (/dashboard/*)
+- [x] **Dark/Light Theme System** with animated toggle switch (persists in localStorage)
+- [x] CSS Variables architecture (--d-bg, --d-surface, --d-text, etc.)
 - [x] Uebersicht — KPIs, Charts, Alert-Zentrale, Tabs, Feed
 - [x] Market — Listings, Preistrend, Deal Scores
 - [x] Tuning — Tool-Matrix, ECU DB, **ECU Knowledge Bot** (AI Chat)
-- [x] Alerts — Filter, Summary Cards, **Smart Alert Engine** (AI Muster-Analyse)
+- [x] Alerts — Filter, Summary Cards, **Smart Alert Engine** (AI)
 - [x] Reports — KPIs, Chart, Report Liste, **AI Market Report Generator**
 - [x] Teams — Rollen, Mitglieder
 - [x] Tenants — Mandanten-Verwaltung
-- [x] Sidebar — Nav, Badges, Plan Status
+- [x] Sidebar — Nav, Badges, Plan Status, Theme Toggle
 
 ### AI Features (GPT-4o via Emergent LLM Key)
-- [x] **AI Deal Analyzer** (Landing) — Fahrzeugdaten eingeben, AI-Bewertung erhalten
-- [x] **AI Market Reports** (Dashboard) — Ein-Klick Report-Generierung mit Fokus-Auswahl
-- [x] **Smart Alert Engine** (Dashboard) — AI erkennt Muster in Alerts
-- [x] **ECU Knowledge Bot** (Dashboard) — Chat-Interface fuer ECU/Tuning-Fragen
+- [x] **AI Deal Analyzer** — Score badges, recommendation badges, styled markdown
+- [x] **AI Market Reports** — Styled markdown output
+- [x] **Smart Alert Engine** — Styled markdown output
+- [x] **ECU Knowledge Bot** — Chat bubbles with markdown rendering
 
-### Other Pages
-- [x] Market/Tuning Storytelling, Login, Register, Demo (Konfetti + .ics), Support, System Status
+### AI Output Formatting
+- [x] Score Badge with circular ring animation (extracts score from AI text)
+- [x] Recommendation Badge (Kaufen/Abwarten/Finger weg)
+- [x] Markdown rendering with styled headings (icons), lists, blockquotes, tables
+- [x] AIChatBubbleRenderer for compact chat messages
 
 ## API Endpoints
 - POST /api/ai/deal-analyzer — AI Deal-Bewertung
@@ -51,7 +49,7 @@ Automotive Intelligence SaaS platform with Market Intelligence and Tuning Intell
 - POST /api/ai/ecu-chat — ECU Knowledge Bot
 
 ## Tech Stack
-- Frontend: React, TailwindCSS, Framer Motion, Shadcn UI, recharts
+- Frontend: React, TailwindCSS, Framer Motion, Shadcn UI, recharts, react-markdown
 - Backend: FastAPI, MongoDB (Motor), emergentintegrations (LLM)
 - AI: OpenAI GPT-4o via Emergent LLM Key
 
