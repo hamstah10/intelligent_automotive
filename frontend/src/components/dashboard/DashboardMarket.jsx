@@ -1,21 +1,18 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, SlidersHorizontal, Car, TrendingDown, TrendingUp, MapPin, Calendar, Star, Eye, ExternalLink } from 'lucide-react';
+import { Search, SlidersHorizontal, Car, TrendingDown, TrendingUp, MapPin, Calendar } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { t, surface, ThemedTooltip } from './themeUtils';
 
 const brandLogos = {
   BMW: 'https://static.prod-images.emergentagent.com/jobs/75c63187-f714-4297-8bd0-b3bae932661f/images/180bbe474591d40156ff9ca850911c777640e049637418cbcd1245695206ac72.png',
   Audi: 'https://static.prod-images.emergentagent.com/jobs/75c63187-f714-4297-8bd0-b3bae932661f/images/5e6c139b20069d400e137b86483d1e995c0c15c21977fa96e4dd7fc3c92bc6c6.png',
 };
-
 const brandColors = {
-  BMW: 'from-blue-500 to-blue-700',
-  Audi: 'from-gray-400 to-gray-600',
-  Mercedes: 'from-gray-300 to-gray-500',
-  VW: 'from-blue-600 to-blue-800',
-  Porsche: 'from-red-600 to-red-800',
+  BMW: 'from-blue-500 to-blue-700', Audi: 'from-gray-400 to-gray-600',
+  Mercedes: 'from-gray-300 to-gray-500', VW: 'from-blue-600 to-blue-800', Porsche: 'from-red-600 to-red-800',
 };
 
 const BrandBadge = ({ brand }) => {
@@ -50,12 +47,12 @@ const priceHistory = [
   { month: 'Dez', avg: 29500 }, { month: 'Jan', avg: 29800 }, { month: 'Feb', avg: 29200 }, { month: 'Mär', avg: 28900 },
 ];
 
-const ChartTooltip = ({ active, payload, label }) => {
+const PriceTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-[#111111] border border-white/10 rounded-xl px-4 py-2.5 text-xs shadow-xl">
-        <p className="text-white/40 mb-1">{label}</p>
-        <p className="text-white font-semibold">€{payload[0].value.toLocaleString('de-DE')}</p>
+      <div className="px-4 py-2.5 text-xs rounded-xl" style={{ backgroundColor: t.tooltipBg, border: `1px solid ${t.border}`, boxShadow: t.shadow }}>
+        <p className="mb-1" style={{ color: t.textSec }}>{label}</p>
+        <p className="font-semibold" style={{ color: t.text }}>€{payload[0].value.toLocaleString('de-DE')}</p>
       </div>
     );
   }
@@ -63,27 +60,26 @@ const ChartTooltip = ({ active, payload, label }) => {
 };
 
 const getScoreColor = (score) => {
-  if (score >= 90) return 'text-[#00E5FF] bg-[#00E5FF]/20';
-  if (score >= 80) return 'text-[#00E5FF] bg-[#00E5FF]/15';
-  return 'text-yellow-400 bg-yellow-500/15';
+  if (score >= 90) return { bg: 'rgba(0,229,255,0.2)', color: '#00E5FF' };
+  if (score >= 80) return { bg: 'rgba(0,229,255,0.15)', color: '#00E5FF' };
+  return { bg: 'rgba(250,204,21,0.15)', color: '#facc15' };
 };
 
 export const DashboardMarket = () => {
   const [search, setSearch] = useState('');
-  const [activeView, setActiveView] = useState('listings');
 
   return (
     <>
       <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 mb-8">
         <div>
-          <h1 data-testid="market-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight text-white">Market Intelligence</h1>
-          <p className="text-white/40 text-sm mt-1.5">Fahrzeug-Listings, Preisanalysen und Deal-Bewertungen.</p>
+          <h1 data-testid="market-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight" style={{ color: t.text }}>Market Intelligence</h1>
+          <p className="text-sm mt-1.5" style={{ color: t.textSec }}>Fahrzeug-Listings, Preisanalysen und Deal-Bewertungen.</p>
         </div>
         <div className="flex items-center gap-3 flex-wrap">
           <div className="relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/25" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: t.textMut }} />
             <Input placeholder="Fahrzeug suchen ..." value={search} onChange={(e) => setSearch(e.target.value)}
-              className="pl-10 w-[240px] bg-[#111111] border-white/10 text-white placeholder:text-white/25 rounded-lg h-10 text-sm" />
+              className="pl-10 w-[240px] rounded-lg h-10 text-sm" style={{ backgroundColor: t.surface, borderColor: t.border, color: t.text }} />
           </div>
           <Button className="bg-[#00E5FF] text-black hover:bg-[#00c8e0] font-semibold rounded-lg h-10 px-5 text-sm gap-2">
             <SlidersHorizontal className="w-4 h-4" />Filter
@@ -91,7 +87,7 @@ export const DashboardMarket = () => {
         </div>
       </div>
 
-      {/* Stats Row */}
+      {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {[
           { label: 'Gesamt Listings', value: '1.247', change: '+34 heute', up: true },
@@ -100,9 +96,9 @@ export const DashboardMarket = () => {
           { label: 'Watchlist', value: '8', change: '3 neue Treffer', up: true },
         ].map((stat, i) => (
           <motion.div key={stat.label} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-            className="bg-[#111111] border border-[#00E5FF]/10 rounded-2xl p-5 hover:border-[#00E5FF]/25 transition-colors">
-            <div className="text-white/40 text-sm mb-1">{stat.label}</div>
-            <div className="font-['Space_Grotesk'] text-2xl font-bold text-white tracking-tight">{stat.value}</div>
+            className={`${surface()} p-5`}>
+            <div className="text-sm mb-1" style={{ color: t.textSec }}>{stat.label}</div>
+            <div className="font-['Space_Grotesk'] text-2xl font-bold tracking-tight" style={{ color: t.text }}>{stat.value}</div>
             <div className={`text-xs mt-1 flex items-center gap-1 ${stat.up ? 'text-[#00E5FF]' : 'text-red-400'}`}>
               {stat.up ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}{stat.change}
             </div>
@@ -110,71 +106,67 @@ export const DashboardMarket = () => {
         ))}
       </div>
 
-      {/* Price Trend Chart */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-[#111111] border border-[#00E5FF]/10 rounded-2xl p-6 mb-6">
-        <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white mb-1">Preisentwicklung BMW 3er Touring</h3>
-        <p className="text-white/30 text-xs mb-6">Durchschnittspreis der letzten 7 Monate</p>
+      {/* Price Chart */}
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={`${surface()} p-6 mb-6`}>
+        <h3 className="font-['Space_Grotesk'] text-lg font-bold mb-1" style={{ color: t.text }}>Preisentwicklung BMW 3er Touring</h3>
+        <p className="text-xs mb-6" style={{ color: t.textMut }}>Durchschnittspreis der letzten 7 Monate</p>
         <div className="h-[200px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={priceHistory}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
-              <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'rgba(255,255,255,0.25)', fontSize: 12 }} />
-              <YAxis axisLine={false} tickLine={false} tick={{ fill: 'rgba(255,255,255,0.25)', fontSize: 12 }} domain={['dataMin - 500', 'dataMax + 500']} tickFormatter={(v) => `€${(v/1000).toFixed(0)}k`} />
-              <Tooltip content={<ChartTooltip />} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--d-chart-grid)" />
+              <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'var(--d-chart-tick)', fontSize: 12 }} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fill: 'var(--d-chart-tick)', fontSize: 12 }} domain={['dataMin - 500', 'dataMax + 500']} tickFormatter={(v) => `€${(v/1000).toFixed(0)}k`} />
+              <Tooltip content={<PriceTooltip />} />
               <Line type="monotone" dataKey="avg" stroke="#00E5FF" strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
         </div>
       </motion.div>
 
-      {/* Listings as Cards */}
+      {/* Listings */}
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white">Aktuelle Listings</h3>
-        <span className="text-white/30 text-sm">{listings.length} Ergebnisse</span>
+        <h3 className="font-['Space_Grotesk'] text-lg font-bold" style={{ color: t.text }}>Aktuelle Listings</h3>
+        <span className="text-sm" style={{ color: t.textMut }}>{listings.length} Ergebnisse</span>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-        {listings.map((item, i) => (
-          <motion.div key={item.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.05 }}
-            className="bg-[#111111] border border-white/10 rounded-2xl overflow-hidden hover:border-[#00E5FF]/20 transition-colors duration-200 cursor-pointer group">
-            {/* Image */}
-            <div className="relative">
-              <img src={item.image} alt={item.car} className="w-full h-[140px] object-cover" />
-              <div className={`absolute top-3 right-3 w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs backdrop-blur-sm ${getScoreColor(item.score)}`}>
-                {item.score}
+        {listings.map((item, i) => {
+          const sc = getScoreColor(item.score);
+          return (
+            <motion.div key={item.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.05 }}
+              className={`${surface()} overflow-hidden cursor-pointer group`}>
+              <div className="relative">
+                <img src={item.image} alt={item.car} className="w-full h-[140px] object-cover" />
+                <div className="absolute top-3 right-3 w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs backdrop-blur-sm"
+                  style={{ backgroundColor: sc.bg, color: sc.color }}>{item.score}</div>
+                <div className="absolute top-3 left-3"><BrandBadge brand={item.brand} /></div>
+                <div className="absolute bottom-0 left-0 right-0 h-12" style={{ background: `linear-gradient(to top, var(--d-surface), transparent)` }} />
               </div>
-              {/* Brand Logo */}
-              <div className="absolute top-3 left-3">
-                <BrandBadge brand={item.brand} />
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#111111] to-transparent" />
-            </div>
-            {/* Content */}
-            <div className="p-3.5 pt-1">
-              <div className="flex items-center justify-between mb-1.5">
-                <h4 className="text-white font-semibold text-[13px] truncate">{item.car}</h4>
-                <span className="text-white/30 text-xs shrink-0 ml-2">{item.year}</span>
-              </div>
-              <div className="flex items-center gap-2 text-[11px] text-white/40 mb-3">
-                <span className="flex items-center gap-0.5"><MapPin className="w-3 h-3" />{item.location}</span>
-                <span>{item.km}</span>
-                <span className="flex items-center gap-0.5"><Calendar className="w-3 h-3" />vor {item.days}d</span>
-              </div>
-              <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                <div>
-                  <div className="font-['Space_Grotesk'] text-lg font-bold text-white">€{item.price.toLocaleString('de-DE')}</div>
-                  <div className="text-[10px] text-white/25 line-through">Markt: €{item.marketPrice.toLocaleString('de-DE')}</div>
+              <div className="p-3.5 pt-1">
+                <div className="flex items-center justify-between mb-1.5">
+                  <h4 className="font-semibold text-[13px] truncate" style={{ color: t.text }}>{item.car}</h4>
+                  <span className="text-xs shrink-0 ml-2" style={{ color: t.textMut }}>{item.year}</span>
                 </div>
-                <div className="text-right">
-                  <div className="text-[#00E5FF] font-semibold text-xs flex items-center gap-1">
-                    <TrendingDown className="w-3 h-3" />
-                    -€{(item.marketPrice - item.price).toLocaleString('de-DE')}
+                <div className="flex items-center gap-2 text-[11px] mb-3" style={{ color: t.textSec }}>
+                  <span className="flex items-center gap-0.5"><MapPin className="w-3 h-3" />{item.location}</span>
+                  <span>{item.km}</span>
+                  <span className="flex items-center gap-0.5"><Calendar className="w-3 h-3" />vor {item.days}d</span>
+                </div>
+                <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid var(--d-border-sub)' }}>
+                  <div>
+                    <div className="font-['Space_Grotesk'] text-lg font-bold" style={{ color: t.text }}>€{item.price.toLocaleString('de-DE')}</div>
+                    <div className="text-[10px] line-through" style={{ color: t.textDim }}>Markt: €{item.marketPrice.toLocaleString('de-DE')}</div>
                   </div>
-                  <div className="text-white/20 text-[10px] truncate max-w-[90px]">{item.dealer}</div>
+                  <div className="text-right">
+                    <div className="text-[#00E5FF] font-semibold text-xs flex items-center gap-1">
+                      <TrendingDown className="w-3 h-3" />-€{(item.marketPrice - item.price).toLocaleString('de-DE')}
+                    </div>
+                    <div className="text-[10px] truncate max-w-[90px]" style={{ color: t.textDim }}>{item.dealer}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </div>
     </>
   );

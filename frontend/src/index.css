@@ -172,3 +172,45 @@ h1, h2, h3, h4, h5, h6 {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+
+/* ── Dashboard Theme Variables ── */
+[data-dash-theme="dark"] {
+    --d-bg: #050505;
+    --d-surface: #111111;
+    --d-surface-alt: #0A0A0A;
+    --d-text: #ffffff;
+    --d-text-sec: rgba(255,255,255,0.4);
+    --d-text-mut: rgba(255,255,255,0.25);
+    --d-text-dim: rgba(255,255,255,0.20);
+    --d-border: rgba(255,255,255,0.1);
+    --d-border-sub: rgba(255,255,255,0.05);
+    --d-hover: rgba(255,255,255,0.05);
+    --d-chart-grid: rgba(255,255,255,0.04);
+    --d-chart-tick: rgba(255,255,255,0.25);
+    --d-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    --d-noise: block;
+    --d-tooltip-bg: #111111;
+}
+
+[data-dash-theme="light"] {
+    --d-bg: #f4f5f9;
+    --d-surface: #ffffff;
+    --d-surface-alt: #f0f1f5;
+    --d-text: #1a1a2e;
+    --d-text-sec: #6b7280;
+    --d-text-mut: #9ca3af;
+    --d-text-dim: #c0c4cc;
+    --d-border: #e2e5eb;
+    --d-border-sub: #f0f0f2;
+    --d-hover: rgba(0,0,0,0.03);
+    --d-chart-grid: rgba(0,0,0,0.06);
+    --d-chart-tick: rgba(0,0,0,0.35);
+    --d-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    --d-noise: none;
+    --d-tooltip-bg: #ffffff;
+}
+
+[data-dash-theme="light"] .noise-overlay {
+    display: none !important;
+}
