@@ -626,11 +626,18 @@ export const TuningPage = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-[#CCFF00] flex items-center justify-center">
-              <span className="font-bold text-black text-sm">AI</span>
+              <span className="font-bold text-black text-sm font-['Space_Grotesk']">iA</span>
             </div>
-            <span className="text-white font-semibold">AutoIntel</span>
+            <div className="flex flex-col leading-none">
+              <span className="text-white font-semibold text-xs font-['Space_Grotesk'] tracking-tight">
+                intelligent
+              </span>
+              <span className="text-[#CCFF00] font-bold text-xs font-['Space_Grotesk'] tracking-tight">
+                automotive
+              </span>
+            </div>
           </div>
-          <p className="text-white/40 text-sm">© 2024 AutoIntel. Tuning Intelligence.</p>
+          <p className="text-white/40 text-sm">© 2024 intelligent-automotive. Tuning Intelligence.</p>
         </div>
       </footer>
     </div>
