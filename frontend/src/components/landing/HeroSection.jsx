@@ -1,9 +1,22 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { ArrowRight, Play, BarChart3, Cpu } from 'lucide-react';
 
 export const HeroSection = () => {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
+  const gridY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -13,21 +26,28 @@ export const HeroSection = () => {
 
   return (
     <section
+      ref={heroRef}
       data-testid="hero-section"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+      {/* Parallax Background Image */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{ y: heroY, scale: heroScale }}
+      >
         <img
           src="https://images.unsplash.com/photo-1764552283704-ed67e7ad6059?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwyfHxkYXJrJTIwc2xlZWslMjBzcG9ydHMlMjBjYXIlMjBoZWFkbGlnaHRzfGVufDB8fHx8MTc3NDE0OTA4MXww&ixlib=rb-4.1.0&q=85"
           alt="Dark sports car"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-[#050505]/80 to-[#050505]" />
-      </div>
+      </motion.div>
 
-      {/* Grid Lines Overlay */}
-      <div className="absolute inset-0 z-0 opacity-10">
+      {/* Parallax Grid Lines Overlay */}
+      <motion.div 
+        className="absolute inset-0 z-0 opacity-10"
+        style={{ y: gridY }}
+      >
         <div className="w-full h-full" style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
@@ -35,14 +55,31 @@ export const HeroSection = () => {
           `,
           backgroundSize: '60px 60px'
         }} />
-      </div>
+      </motion.div>
 
       {/* Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00E5FF]/10 rounded-lg blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#CCFF00]/10 rounded-lg blur-[120px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+      <motion.div 
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00E5FF]/10 rounded-lg blur-[120px]"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3]
+        }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+      <motion.div 
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#CCFF00]/10 rounded-lg blur-[120px]"
+        animate={{ 
+          scale: [1.2, 1, 1.2],
+          opacity: [0.2, 0.4, 0.2]
+        }}
+        transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-left">
+      {/* Parallax Content */}
+      <motion.div 
+        className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-left"
+        style={{ y: textY, opacity: heroOpacity }}
+      >
         {/* Overline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -115,14 +152,14 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-wrap gap-4"
         >
-          <div className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#00E5FF]/30 rounded-lg">
+          <Link to="/market" className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#00E5FF]/30 rounded-lg hover:border-[#00E5FF]/50 transition-colors">
             <BarChart3 className="w-5 h-5 text-[#00E5FF]" />
             <span className="text-white/80 text-sm font-medium">Market Intelligence</span>
-          </div>
-          <div className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#CCFF00]/30 rounded-lg">
+          </Link>
+          <Link to="/tuning" className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#CCFF00]/30 rounded-lg hover:border-[#CCFF00]/50 transition-colors">
             <Cpu className="w-5 h-5 text-[#CCFF00]" />
             <span className="text-white/80 text-sm font-medium">Tuning Intelligence</span>
-          </div>
+          </Link>
         </motion.div>
 
         {/* Stats */}
@@ -146,13 +183,14 @@ export const HeroSection = () => {
             </div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
+        style={{ opacity: heroOpacity }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-white/40 text-xs font-mono uppercase tracking-widest">Scroll</span>
