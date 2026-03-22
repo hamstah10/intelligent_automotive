@@ -1,52 +1,62 @@
-import { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import { Toaster } from "@/components/ui/sonner";
+import { Navigation } from "@/components/landing/Navigation";
+import { HeroSection } from "@/components/landing/HeroSection";
+import { FeaturesMarket } from "@/components/landing/FeaturesMarket";
+import { FeaturesTuning } from "@/components/landing/FeaturesTuning";
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { Pricing } from "@/components/landing/Pricing";
+import { Testimonials } from "@/components/landing/Testimonials";
+import { FAQ } from "@/components/landing/FAQ";
+import { Footer } from "@/components/landing/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden">
+      {/* Noise Texture Overlay */}
+      <div className="noise-overlay" />
+      
+      {/* Navigation */}
+      <Navigation />
+      
+      {/* Main Content */}
+      <main>
+        {/* Hero Section */}
+        <HeroSection />
+        
+        {/* Features - Market Intelligence */}
+        <FeaturesMarket />
+        
+        {/* Features - Tuning Intelligence */}
+        <FeaturesTuning />
+        
+        {/* How It Works */}
+        <HowItWorks />
+        
+        {/* Pricing */}
+        <Pricing />
+        
+        {/* Testimonials */}
+        <Testimonials />
+        
+        {/* FAQ */}
+        <FAQ />
+      </main>
+      
+      {/* Footer with CTA */}
+      <Footer />
+      
+      {/* Toast Notifications */}
+      <Toaster 
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: '#111111',
+            border: '1px solid rgba(255,255,255,0.1)',
+            color: '#fff',
+          },
+        }}
+      />
     </div>
   );
 }
