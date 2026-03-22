@@ -9,7 +9,7 @@ const listings = [
   { id: 1, car: 'BMW 320d Touring', year: 2021, km: '45.000 km', price: 28900, marketPrice: 31200, score: 92, location: 'München', dealer: 'AutoHaus Süd', days: 3, image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=200&h=120&fit=crop' },
   { id: 2, car: 'Audi A4 Avant 40 TDI', year: 2020, km: '62.000 km', price: 26500, marketPrice: 28400, score: 85, location: 'Hamburg', dealer: 'Premium Cars Nord', days: 7, image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=200&h=120&fit=crop' },
   { id: 3, car: 'Mercedes C220d T-Modell', year: 2022, km: '31.000 km', price: 34900, marketPrice: 36100, score: 78, location: 'Berlin', dealer: 'Star Motors Berlin', days: 1, image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=200&h=120&fit=crop' },
-  { id: 4, car: 'VW Golf 8 GTI', year: 2021, km: '38.000 km', price: 29900, marketPrice: 33500, score: 95, location: 'Frankfurt', dealer: 'VW Zentrum FFM', days: 2, image: 'https://images.unsplash.com/photo-1622653902334-23c8a4ee4708?w=200&h=120&fit=crop' },
+  { id: 4, car: 'VW Golf 8 GTI', year: 2021, km: '38.000 km', price: 29900, marketPrice: 33500, score: 95, location: 'Frankfurt', dealer: 'VW Zentrum FFM', days: 2, image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=200&h=120&fit=crop' },
   { id: 5, car: 'Porsche Macan S', year: 2020, km: '55.000 km', price: 48500, marketPrice: 52800, score: 88, location: 'Stuttgart', dealer: 'Porsche Zentrum', days: 5, image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200&h=120&fit=crop' },
   { id: 6, car: 'BMW M340i xDrive', year: 2022, km: '22.000 km', price: 52900, marketPrice: 58700, score: 91, location: 'Köln', dealer: 'BMW Niederlassung', days: 1, image: 'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=200&h=120&fit=crop' },
 ];
@@ -96,35 +96,48 @@ export const DashboardMarket = () => {
         </div>
       </motion.div>
 
-      {/* Listings */}
+      {/* Listings as Cards */}
       <div className="mb-4 flex items-center justify-between">
         <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white">Aktuelle Listings</h3>
         <span className="text-white/30 text-sm">{listings.length} Ergebnisse</span>
       </div>
-      <div className="space-y-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {listings.map((item, i) => (
-          <motion.div key={item.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.04 }}
-            className="bg-[#111111] border border-white/10 rounded-2xl p-4 flex items-center gap-5 hover:border-[#CCFF00]/20 transition-colors duration-200 cursor-pointer group">
-            <img src={item.image} alt={item.car} className="w-[140px] h-[85px] object-cover rounded-xl shrink-0" />
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-3 mb-1">
-                <span className="text-white font-semibold text-sm">{item.car}</span>
-                <span className="text-white/30 text-xs">{item.year} · {item.km}</span>
+          <motion.div key={item.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.05 }}
+            className="bg-[#111111] border border-white/10 rounded-2xl overflow-hidden hover:border-[#CCFF00]/20 transition-colors duration-200 cursor-pointer group">
+            {/* Image */}
+            <div className="relative">
+              <img src={item.image} alt={item.car} className="w-full h-[160px] object-cover" />
+              <div className={`absolute top-3 right-3 w-11 h-11 rounded-xl flex items-center justify-center font-bold text-sm backdrop-blur-sm ${getScoreColor(item.score)}`}>
+                {item.score}
               </div>
-              <div className="flex items-center gap-4 text-xs text-white/40">
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#111111] to-transparent" />
+            </div>
+            {/* Content */}
+            <div className="p-4 pt-1">
+              <div className="flex items-center justify-between mb-2">
+                <h4 className="text-white font-semibold text-sm truncate">{item.car}</h4>
+                <span className="text-white/30 text-xs shrink-0 ml-2">{item.year}</span>
+              </div>
+              <div className="flex items-center gap-3 text-xs text-white/40 mb-4">
                 <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{item.location}</span>
-                <span>{item.dealer}</span>
+                <span>{item.km}</span>
                 <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />vor {item.days}d</span>
               </div>
+              <div className="flex items-center justify-between pt-3 border-t border-white/5">
+                <div>
+                  <div className="font-['Space_Grotesk'] text-xl font-bold text-white">€{item.price.toLocaleString('de-DE')}</div>
+                  <div className="text-[11px] text-white/25 line-through">Markt: €{item.marketPrice.toLocaleString('de-DE')}</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-green-400 font-semibold text-sm flex items-center gap-1">
+                    <TrendingDown className="w-3.5 h-3.5" />
+                    -€{(item.marketPrice - item.price).toLocaleString('de-DE')}
+                  </div>
+                  <div className="text-white/25 text-[11px]">{item.dealer}</div>
+                </div>
+              </div>
             </div>
-            <div className="text-right shrink-0">
-              <div className="font-['Space_Grotesk'] text-xl font-bold text-white">€{item.price.toLocaleString('de-DE')}</div>
-              <div className="text-xs text-white/30 line-through">€{item.marketPrice.toLocaleString('de-DE')}</div>
-            </div>
-            <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-sm ${getScoreColor(item.score)}`}>
-              {item.score}
-            </div>
-            <Eye className="w-4 h-4 text-white/20 group-hover:text-[#CCFF00] transition-colors shrink-0" />
           </motion.div>
         ))}
       </div>
