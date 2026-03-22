@@ -58,19 +58,17 @@ export const Navigation = () => {
           <a
             href="#"
             data-testid="nav-logo"
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-3 group"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <div className="w-10 h-10 rounded-lg bg-[#050505] flex items-center justify-center overflow-hidden">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
-                alt="intelligent automotive"
-                className="w-8 h-8 object-contain"
-              />
-            </div>
+            <img 
+              src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
+              alt="intelligent automotive"
+              className="w-10 h-10 object-contain"
+            />
             <div className="flex flex-col leading-none">
               <span className="text-white font-semibold text-sm font-['Space_Grotesk'] tracking-tight">
                 intelligent

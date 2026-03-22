@@ -559,14 +559,12 @@ export const MarketPage = () => {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#050505] flex items-center justify-center overflow-hidden">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
-                alt="intelligent automotive"
-                className="w-6 h-6 object-contain"
-              />
-            </div>
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
+              alt="intelligent automotive"
+              className="w-8 h-8 object-contain"
+            />
             <div className="flex flex-col leading-none">
               <span className="text-white font-semibold text-xs font-['Space_Grotesk'] tracking-tight">
                 intelligent
