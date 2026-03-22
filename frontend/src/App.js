@@ -83,7 +83,6 @@ function App() {
         <Route path="/demo" element={<DemoPage />} />
         <Route path="/support" element={<SupportPage />} />
         <Route path="/system-status" element={<StatusPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/dashboard/*" element={<DashboardPage />} />
       </Routes>
       <Toaster 
