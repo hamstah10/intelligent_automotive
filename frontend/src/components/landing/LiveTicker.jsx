@@ -24,7 +24,7 @@ export const LiveTicker = () => {
       id: Date.now(),
       time: 'Gerade eben',
     };
-    setDeals(prev => [deal, ...prev].slice(0, 5));
+    setDeals(prev => [deal, ...prev].slice(0, 4));
     indexRef.current = idx + 1;
   }, []);
 
@@ -47,18 +47,18 @@ export const LiveTicker = () => {
           </div>
         </div>
         
-        <div className="relative h-[180px] overflow-hidden">
+        <div className="relative h-[280px] overflow-hidden">
           <AnimatePresence>
             {deals.map((deal, index) => (
               <motion.div
                 key={deal.id}
-                initial={{ opacity: 0, y: -50, scale: 0.95 }}
+                initial={{ opacity: 0, y: -60, scale: 0.97 }}
                 animate={{ 
-                  opacity: index === 0 ? 1 : 0.5 - (index * 0.1),
-                  y: index * 36,
+                  opacity: index === 0 ? 1 : Math.max(0.15, 0.6 - (index * 0.15)),
+                  y: index * 64,
                   scale: 1
                 }}
-                exit={{ opacity: 0, y: 200 }}
+                exit={{ opacity: 0, y: 300 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
                 className="absolute left-0 right-0"
               >
