@@ -5,13 +5,44 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+const brandLogos = {
+  BMW: 'https://static.prod-images.emergentagent.com/jobs/75c63187-f714-4297-8bd0-b3bae932661f/images/180bbe474591d40156ff9ca850911c777640e049637418cbcd1245695206ac72.png',
+  Audi: 'https://static.prod-images.emergentagent.com/jobs/75c63187-f714-4297-8bd0-b3bae932661f/images/5e6c139b20069d400e137b86483d1e995c0c15c21977fa96e4dd7fc3c92bc6c6.png',
+};
+
+const brandColors = {
+  BMW: 'from-blue-500 to-blue-700',
+  Audi: 'from-gray-400 to-gray-600',
+  Mercedes: 'from-gray-300 to-gray-500',
+  VW: 'from-blue-600 to-blue-800',
+  Porsche: 'from-red-600 to-red-800',
+};
+
+const BrandBadge = ({ brand }) => {
+  if (brandLogos[brand]) {
+    return (
+      <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center p-1 shadow-lg">
+        <img src={brandLogos[brand]} alt={brand} className="w-full h-full object-contain" />
+      </div>
+    );
+  }
+  const initials = brand === 'Mercedes' ? 'MB' : brand;
+  return (
+    <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${brandColors[brand]} flex items-center justify-center shadow-lg`}>
+      <span className="text-white text-[10px] font-bold">{initials}</span>
+    </div>
+  );
+};
+
 const listings = [
-  { id: 1, car: 'BMW 320d Touring', year: 2021, km: '45.000 km', price: 28900, marketPrice: 31200, score: 92, location: 'München', dealer: 'AutoHaus Süd', days: 3, image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=200&h=120&fit=crop' },
-  { id: 2, car: 'Audi A4 Avant 40 TDI', year: 2020, km: '62.000 km', price: 26500, marketPrice: 28400, score: 85, location: 'Hamburg', dealer: 'Premium Cars Nord', days: 7, image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=200&h=120&fit=crop' },
-  { id: 3, car: 'Mercedes C220d T-Modell', year: 2022, km: '31.000 km', price: 34900, marketPrice: 36100, score: 78, location: 'Berlin', dealer: 'Star Motors Berlin', days: 1, image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=200&h=120&fit=crop' },
-  { id: 4, car: 'VW Golf 8 GTI', year: 2021, km: '38.000 km', price: 29900, marketPrice: 33500, score: 95, location: 'Frankfurt', dealer: 'VW Zentrum FFM', days: 2, image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=200&h=120&fit=crop' },
-  { id: 5, car: 'Porsche Macan S', year: 2020, km: '55.000 km', price: 48500, marketPrice: 52800, score: 88, location: 'Stuttgart', dealer: 'Porsche Zentrum', days: 5, image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200&h=120&fit=crop' },
-  { id: 6, car: 'BMW M340i xDrive', year: 2022, km: '22.000 km', price: 52900, marketPrice: 58700, score: 91, location: 'Köln', dealer: 'BMW Niederlassung', days: 1, image: 'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=200&h=120&fit=crop' },
+  { id: 1, brand: 'BMW', car: 'BMW 320d Touring', year: 2021, km: '45.000 km', price: 28900, marketPrice: 31200, score: 92, location: 'München', dealer: 'AutoHaus Süd', days: 3, image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=240&fit=crop' },
+  { id: 2, brand: 'Audi', car: 'Audi A4 Avant 40 TDI', year: 2020, km: '62.000 km', price: 26500, marketPrice: 28400, score: 85, location: 'Hamburg', dealer: 'Premium Cars Nord', days: 7, image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=240&fit=crop' },
+  { id: 3, brand: 'Mercedes', car: 'Mercedes C220d T-Modell', year: 2022, km: '31.000 km', price: 34900, marketPrice: 36100, score: 78, location: 'Berlin', dealer: 'Star Motors Berlin', days: 1, image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=240&fit=crop' },
+  { id: 4, brand: 'VW', car: 'VW Golf 8 GTI', year: 2021, km: '38.000 km', price: 29900, marketPrice: 33500, score: 95, location: 'Frankfurt', dealer: 'VW Zentrum FFM', days: 2, image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&h=240&fit=crop' },
+  { id: 5, brand: 'Porsche', car: 'Porsche Macan S', year: 2020, km: '55.000 km', price: 48500, marketPrice: 52800, score: 88, location: 'Stuttgart', dealer: 'Porsche Zentrum', days: 5, image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=240&fit=crop' },
+  { id: 6, brand: 'BMW', car: 'BMW M340i xDrive', year: 2022, km: '22.000 km', price: 52900, marketPrice: 58700, score: 91, location: 'Köln', dealer: 'BMW Niederlassung', days: 1, image: 'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=400&h=240&fit=crop' },
+  { id: 7, brand: 'Audi', car: 'Audi RS3 Sportback', year: 2022, km: '18.000 km', price: 54900, marketPrice: 59200, score: 89, location: 'Düsseldorf', dealer: 'Audi Zentrum', days: 4, image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=400&h=240&fit=crop' },
+  { id: 8, brand: 'Mercedes', car: 'Mercedes AMG A35', year: 2021, km: '42.000 km', price: 38900, marketPrice: 41500, score: 83, location: 'Leipzig', dealer: 'Star Motors Leipzig', days: 6, image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=400&h=240&fit=crop' },
 ];
 
 const priceHistory = [
@@ -101,40 +132,44 @@ export const DashboardMarket = () => {
         <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white">Aktuelle Listings</h3>
         <span className="text-white/30 text-sm">{listings.length} Ergebnisse</span>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {listings.map((item, i) => (
           <motion.div key={item.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.05 }}
             className="bg-[#111111] border border-white/10 rounded-2xl overflow-hidden hover:border-[#CCFF00]/20 transition-colors duration-200 cursor-pointer group">
             {/* Image */}
             <div className="relative">
-              <img src={item.image} alt={item.car} className="w-full h-[160px] object-cover" />
-              <div className={`absolute top-3 right-3 w-11 h-11 rounded-xl flex items-center justify-center font-bold text-sm backdrop-blur-sm ${getScoreColor(item.score)}`}>
+              <img src={item.image} alt={item.car} className="w-full h-[140px] object-cover" />
+              <div className={`absolute top-3 right-3 w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs backdrop-blur-sm ${getScoreColor(item.score)}`}>
                 {item.score}
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#111111] to-transparent" />
+              {/* Brand Logo */}
+              <div className="absolute top-3 left-3">
+                <BrandBadge brand={item.brand} />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#111111] to-transparent" />
             </div>
             {/* Content */}
-            <div className="p-4 pt-1">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="text-white font-semibold text-sm truncate">{item.car}</h4>
+            <div className="p-3.5 pt-1">
+              <div className="flex items-center justify-between mb-1.5">
+                <h4 className="text-white font-semibold text-[13px] truncate">{item.car}</h4>
                 <span className="text-white/30 text-xs shrink-0 ml-2">{item.year}</span>
               </div>
-              <div className="flex items-center gap-3 text-xs text-white/40 mb-4">
-                <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{item.location}</span>
+              <div className="flex items-center gap-2 text-[11px] text-white/40 mb-3">
+                <span className="flex items-center gap-0.5"><MapPin className="w-3 h-3" />{item.location}</span>
                 <span>{item.km}</span>
-                <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />vor {item.days}d</span>
+                <span className="flex items-center gap-0.5"><Calendar className="w-3 h-3" />vor {item.days}d</span>
               </div>
               <div className="flex items-center justify-between pt-3 border-t border-white/5">
                 <div>
-                  <div className="font-['Space_Grotesk'] text-xl font-bold text-white">€{item.price.toLocaleString('de-DE')}</div>
-                  <div className="text-[11px] text-white/25 line-through">Markt: €{item.marketPrice.toLocaleString('de-DE')}</div>
+                  <div className="font-['Space_Grotesk'] text-lg font-bold text-white">€{item.price.toLocaleString('de-DE')}</div>
+                  <div className="text-[10px] text-white/25 line-through">Markt: €{item.marketPrice.toLocaleString('de-DE')}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-green-400 font-semibold text-sm flex items-center gap-1">
-                    <TrendingDown className="w-3.5 h-3.5" />
+                  <div className="text-green-400 font-semibold text-xs flex items-center gap-1">
+                    <TrendingDown className="w-3 h-3" />
                     -€{(item.marketPrice - item.price).toLocaleString('de-DE')}
                   </div>
-                  <div className="text-white/25 text-[11px]">{item.dealer}</div>
+                  <div className="text-white/20 text-[10px] truncate max-w-[90px]">{item.dealer}</div>
                 </div>
               </div>
             </div>
