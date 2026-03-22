@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, BarChart2, Cpu } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useModals } from '@/App';
 
 const navLinks = [
   { name: 'Features', href: '#features' },
@@ -21,6 +22,7 @@ export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showProductMenu, setShowProductMenu] = useState(false);
   const location = useLocation();
+  const { openLogin, openDemo } = useModals();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -147,14 +149,14 @@ export const Navigation = () => {
               variant="ghost"
               data-testid="nav-login-btn"
               className="text-white/80 hover:text-white hover:bg-white/5"
-              onClick={() => scrollToSection('#cta')}
+              onClick={openLogin}
             >
               Anmelden
             </Button>
             <Button
               data-testid="nav-demo-btn"
               className="bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold px-5 rounded-lg transition-transform duration-200 active:scale-95"
-              onClick={() => scrollToSection('#cta')}
+              onClick={openDemo}
             >
               Demo buchen
             </Button>
@@ -215,13 +217,13 @@ export const Navigation = () => {
                 <Button
                   variant="outline"
                   className="w-full border-white/20 text-white"
-                  onClick={() => scrollToSection('#cta')}
+                  onClick={() => { setIsMobileMenuOpen(false); openLogin(); }}
                 >
                   Anmelden
                 </Button>
                 <Button
                   className="w-full bg-[#CCFF00] text-black hover:bg-[#B3E600] font-semibold"
-                  onClick={() => scrollToSection('#cta')}
+                  onClick={() => { setIsMobileMenuOpen(false); openDemo(); }}
                 >
                   Demo buchen
                 </Button>
