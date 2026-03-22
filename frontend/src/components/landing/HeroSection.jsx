@@ -60,7 +60,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-['Outfit'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] mb-6 max-w-4xl"
+          className="font-['Syne'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] mb-6 max-w-4xl"
         >
           Die{' '}
           <span className="text-gradient-cyan">Daten</span>
@@ -137,7 +137,7 @@ export const HeroSection = () => {
             { value: '< 1s', label: 'API Response' },
           ].map((stat, index) => (
             <div key={index}>
-              <div className="text-2xl lg:text-3xl font-bold font-['Outfit'] tracking-tight text-white">
+              <div className="text-2xl lg:text-3xl font-bold font-['Syne'] tracking-tight text-white">
                 {stat.value}
               </div>
               <div className="text-white/50 text-sm mt-1">{stat.label}</div>

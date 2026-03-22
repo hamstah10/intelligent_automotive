@@ -48,7 +48,7 @@ export const Footer = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Outfit'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-6">
+          <h2 className="font-['Syne'] text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-6">
             STARTEN SIE{' '}
             <span className="text-gradient-yellow">JETZT</span>
           </h2>
@@ -138,9 +138,9 @@ export const Footer = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-[#CCFF00] flex items-center justify-center">
-              <span className="font-bold text-black text-sm font-['Outfit']">AI</span>
+              <span className="font-bold text-black text-sm font-['Syne']">AI</span>
             </div>
-            <span className="text-white font-semibold font-['Outfit'] tracking-tight">
+            <span className="text-white font-semibold font-['Syne'] tracking-tight">
               AutoIntel
             </span>
           </div>
