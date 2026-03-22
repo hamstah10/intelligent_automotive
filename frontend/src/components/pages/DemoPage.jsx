@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Calendar as CalendarIcon, Clock, User, Mail, Building, 
-  MessageSquare, Check, ArrowRight, ArrowLeft, BarChart2, Cpu
+  MessageSquare, Check, ArrowRight, ArrowLeft, BarChart2, Cpu, Download
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -51,6 +51,50 @@ export const DemoPage = () => {
 
   const disabledDays = (date) => {
     return isBefore(date, new Date()) || isWeekend(date);
+  };
+
+  const generateICSFile = () => {
+    if (!selectedDate || !selectedTime) return;
+
+    const [hours, minutes] = selectedTime.split(':');
+    const startDate = new Date(selectedDate);
+    startDate.setHours(parseInt(hours), parseInt(minutes), 0);
+    
+    const endDate = new Date(startDate);
+    endDate.setMinutes(endDate.getMinutes() + 30); // 30 min Demo
+
+    const formatICSDate = (date) => {
+      return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    };
+
+    const productName = demoTypes.find(t => t.id === selectedType)?.name || 'Produkt Demo';
+
+    const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//intelligent-automotive//Demo//DE
+BEGIN:VEVENT
+UID:${Date.now()}@intelligent-automotive.com
+DTSTAMP:${formatICSDate(new Date())}
+DTSTART:${formatICSDate(startDate)}
+DTEND:${formatICSDate(endDate)}
+SUMMARY:intelligent automotive - ${productName} Demo
+DESCRIPTION:Demo-Termin mit intelligent automotive.\\n\\nProdukt: ${productName}\\nKontakt: ${formData.name}\\nE-Mail: ${formData.email}${formData.company ? '\\nFirma: ' + formData.company : ''}
+LOCATION:Online (Link folgt per E-Mail)
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `intelligent-automotive-demo-${format(selectedDate, 'yyyy-MM-dd')}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    toast.success('Kalenderdatei heruntergeladen!');
   };
 
   return (
@@ -383,6 +427,19 @@ export const DemoPage = () => {
                   <Clock className="w-5 h-5 text-[#CCFF00]" />
                   {selectedTime} Uhr
                 </div>
+              </div>
+
+              {/* Download Calendar Button */}
+              <div className="mb-8">
+                <Button
+                  onClick={generateICSFile}
+                  variant="outline"
+                  className="border-[#CCFF00]/30 text-[#CCFF00] hover:bg-[#CCFF00]/10 px-6 py-5 rounded-lg"
+                  data-testid="download-calendar-btn"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Zum Kalender hinzufügen (.ics)
+                </Button>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
