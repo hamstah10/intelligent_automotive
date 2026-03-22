@@ -563,7 +563,7 @@ export const MarketPage = () => {
             <img 
               src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
               alt="intelligent automotive"
-              className="w-8 h-8 object-contain"
+              className="w-10 h-10 object-contain"
             />
             <div className="flex flex-col leading-none">
               <span className="text-white font-semibold text-xs font-['Space_Grotesk'] tracking-tight">

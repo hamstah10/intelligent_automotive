@@ -76,7 +76,7 @@ export const DemoPage = () => {
             <img 
               src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
               alt="intelligent automotive"
-              className="w-14 h-14 object-contain"
+              className="w-16 h-16 object-contain"
             />
           </div>
           <h1 className="font-['Space_Grotesk'] text-4xl font-bold text-white mb-4">

@@ -50,7 +50,7 @@ export const LoginPage = () => {
             <img 
               src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" 
               alt="intelligent automotive"
-              className="w-14 h-14 object-contain"
+              className="w-16 h-16 object-contain"
             />
             <div className="flex flex-col leading-none">
               <span className="text-white font-semibold text-base">intelligent</span>
