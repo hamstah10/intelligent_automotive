@@ -48,8 +48,18 @@ const CodeBlock = ({ lines }) => {
 
 export const TuningPage = () => {
   const containerRef = useRef(null);
+  const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const heroY = useTransform(heroScrollProgress, [0, 1], ["0%", "50%"]);
+  const heroOpacity = useTransform(heroScrollProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(heroScrollProgress, [0, 1], [1, 1.2]);
+  const textY = useTransform(heroScrollProgress, [0, 1], ["0%", "100%"]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -78,16 +88,19 @@ export const TuningPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{ y: heroY, scale: heroScale }}
+        >
           <img
             src="https://images.pexels.com/photos/1409999/pexels-photo-1409999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             alt="Engine"
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/80 to-[#050505]" />
-        </div>
+        </motion.div>
 
         {/* Floating Elements */}
         <motion.div 
@@ -107,8 +120,11 @@ export const TuningPage = () => {
           transition={{ duration: 5, repeat: Infinity, delay: 1 }}
         />
 
-        {/* Circuit Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        {/* Circuit Pattern with Parallax */}
+        <motion.div 
+          className="absolute inset-0 opacity-10"
+          style={{ y: useTransform(heroScrollProgress, [0, 1], ["0%", "30%"]) }}
+        >
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
               <path d="M0 50h40M60 50h40M50 0v40M50 60v40" stroke="#CCFF00" strokeWidth="0.5" fill="none"/>
@@ -116,10 +132,13 @@ export const TuningPage = () => {
             </pattern>
             <rect width="100%" height="100%" fill="url(#circuit)"/>
           </svg>
-        </div>
+        </motion.div>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        {/* Content with Parallax */}
+        <motion.div 
+          className="relative z-10 max-w-5xl mx-auto px-6 text-center"
+          style={{ y: textY, opacity: heroOpacity }}
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -168,7 +187,7 @@ export const TuningPage = () => {
               Scroll für die Story
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Problem Section */}

@@ -66,8 +66,18 @@ const AnimatedCounter = ({ value, suffix = '', prefix = '' }) => {
 
 export const MarketPage = () => {
   const containerRef = useRef(null);
+  const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const heroY = useTransform(heroScrollProgress, [0, 1], ["0%", "50%"]);
+  const heroOpacity = useTransform(heroScrollProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(heroScrollProgress, [0, 1], [1, 1.2]);
+  const textY = useTransform(heroScrollProgress, [0, 1], ["0%", "100%"]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -96,16 +106,19 @@ export const MarketPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{ y: heroY, scale: heroScale }}
+        >
           <img
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2ODl8MHwxfHNlYXJjaHwyfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwZGFya3xlbnwwfHx8fDE3NzQxNDkwODR8MA&ixlib=rb-4.1.0&q=85"
             alt="Data Analytics"
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/80 to-[#050505]" />
-        </div>
+        </motion.div>
 
         {/* Floating Elements */}
         <motion.div 
@@ -118,7 +131,10 @@ export const MarketPage = () => {
         />
 
         {/* Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <motion.div 
+          className="relative z-10 max-w-5xl mx-auto px-6 text-center"
+          style={{ y: textY, opacity: heroOpacity }}
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -169,7 +185,7 @@ export const MarketPage = () => {
               Scroll für die Story
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Problem Section */}
