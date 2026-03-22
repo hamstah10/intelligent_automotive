@@ -16,6 +16,14 @@ Automotive Intelligence SaaS platform with Market Intelligence and Tuning Intell
 - [x] FeaturesTuning, ECU Visualizer
 - [x] **AI Deal Analyzer** — Interactive form + AI-powered deal evaluation (GPT-4o)
 - [x] HowItWorks, Pricing, Testimonials, FAQ, Footer
+- [x] **IntegrationShowcase** — Scrolling partner logos (mobile.de, AutoScout24, DAT, etc.)
+- [x] **RealtimeCounter** — 4 animated live stat counters
+- [x] **ParallaxDataWall** — 6 stat cards with parallax scroll effect
+- [x] **DealQuiz** — 3-question interactive deal finder quiz
+- [x] **VehicleConfigurator** — Brand/model Marktwert-Check (BMW, Audi, Mercedes, VW, Porsche)
+- [x] **BeforeAfterSlider** — Vorher/Nachher comparison slider
+- [x] **CompetitorRadar** — SVG radar chart AutoIntel vs Manuelle Suche
+- [x] **MarketHeatmap** — Germany map with deal hotspots (8 cities)
 
 ### Customer Dashboard (/dashboard/*)
 - [x] Uebersicht — KPIs, Charts, Alert-Zentrale, Tabs, Feed
@@ -56,13 +64,15 @@ Automotive Intelligence SaaS platform with Market Intelligence and Tuning Intell
 ### P1
 - [ ] Market Intelligence real data pipeline
 - [ ] ECU Database CRUD in MongoDB
+- [ ] Chat History Persistence (MongoDB)
 
 ### P2
 - [ ] Crawler System, Deal Score Algorithm
-- [ ] Chat history persistence (MongoDB)
+- [ ] Admin Panel for Tenants, Crawl Jobs, Logs
 
 ### P3
-- [ ] Admin Panel, Multi-Tenant, Multi-Language
+- [ ] Multi-Tenant database separation
+- [ ] Multi-Language Support
 
 ## Project Health
 - **Broken**: None
