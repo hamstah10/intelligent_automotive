@@ -69,6 +69,10 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
+# AI routes
+from ai_routes import router as ai_router
+app.include_router(ai_router)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,

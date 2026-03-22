@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Search, Cpu, Wrench, Check, X, Clock, ChevronRight, Shield, Zap } from 'lucide-react';
 import { Input } from '../ui/input';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { ECUKnowledgeBot } from './ECUKnowledgeBot';
 
 const ecuDatabase = [
   { id: 1, brand: 'BMW', model: '320d (G20)', ecu: 'Bosch EDC17C50', tcu: 'ZF 8HP50', tools: ['Autotuner', 'KESSv3', 'KTAG'], methods: ['OBD', 'Bench'], risk: 'Niedrig', lastUpdate: 'vor 2d' },
@@ -92,6 +93,7 @@ export const DashboardTuning = () => {
         })}
       </div>
 
+      {/* ECU Knowledge Bot + Tool Matrix */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-6">
         {/* Tool Matrix */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="lg:col-span-3 bg-[#111111] border border-white/10 rounded-2xl p-6">
@@ -139,6 +141,11 @@ export const DashboardTuning = () => {
             </ResponsiveContainer>
           </div>
         </motion.div>
+      </div>
+
+      {/* ECU Knowledge Bot */}
+      <div className="mb-6">
+        <ECUKnowledgeBot />
       </div>
 
       {/* ECU Database Table */}

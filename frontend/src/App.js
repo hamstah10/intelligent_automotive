@@ -8,6 +8,7 @@ import { FeaturesMarket } from "@/components/landing/FeaturesMarket";
 import { ROICalculator } from "@/components/landing/ROICalculator";
 import { FeaturesTuning } from "@/components/landing/FeaturesTuning";
 import { ECUVisualizer } from "@/components/landing/ECUVisualizer";
+import { AIDealAnalyzer } from "@/components/landing/AIDealAnalyzer";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Pricing } from "@/components/landing/Pricing";
 import { Testimonials } from "@/components/landing/Testimonials";
@@ -51,6 +52,9 @@ const HomePage = () => {
         
         {/* ECU Visualizer */}
         <ECUVisualizer />
+
+        {/* AI Deal Analyzer */}
+        <AIDealAnalyzer />
         
         {/* How It Works */}
         <HowItWorks />

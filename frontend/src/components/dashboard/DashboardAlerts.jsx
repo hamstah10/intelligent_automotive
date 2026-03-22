@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Bell, TrendingDown, Cpu, AlertTriangle, Eye, Clock, Check, Filter, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Bell, TrendingDown, Cpu, AlertTriangle, Eye, Clock, Check, Filter, ChevronDown, Brain, Sparkles, Loader2 } from 'lucide-react';
+import { Button } from '../ui/button';
+
+const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 const allAlerts = [
   { id: 1, type: 'price', title: 'BMW 320d Touring unter Marktwert', desc: 'Preis: €28.900 — Marktwert: €31.200 (−7,4%)', time: 'vor 12 Min', read: false, severity: 'high' },
@@ -41,6 +44,29 @@ export const DashboardAlerts = () => {
     return true;
   });
 
+  const [aiAnalysis, setAiAnalysis] = useState(null);
+  const [aiLoading, setAiLoading] = useState(false);
+
+  const analyzeAlerts = async () => {
+    setAiLoading(true);
+    setAiAnalysis(null);
+    try {
+      const alertData = allAlerts.slice(0, 8).map(a => ({ title: a.title, desc: a.desc, severity: a.severity, type: a.type }));
+      const res = await fetch(`${API_URL}/api/ai/smart-alerts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ alerts: alertData }),
+      });
+      if (!res.ok) throw new Error('Fehler');
+      const data = await res.json();
+      setAiAnalysis(data.analysis);
+    } catch {
+      setAiAnalysis('Analyse konnte nicht durchgeführt werden.');
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
   const unread = allAlerts.filter(a => !a.read).length;
 
   return (
@@ -51,12 +77,39 @@ export const DashboardAlerts = () => {
           <p className="text-white/40 text-sm mt-1.5">{unread} ungelesene Benachrichtigungen</p>
         </div>
         <div className="flex items-center gap-3">
+          <Button onClick={analyzeAlerts} disabled={aiLoading} data-testid="smart-alert-btn"
+            className="bg-[#CCFF00] text-black hover:bg-[#b8e600] font-semibold rounded-lg h-10 px-5 text-sm gap-2 disabled:opacity-50">
+            {aiLoading ? <><Loader2 className="w-4 h-4 animate-spin" />Analysiere...</> : <><Brain className="w-4 h-4" />AI Muster-Analyse</>}
+          </Button>
           <button onClick={() => setShowRead(!showRead)}
             className={`h-10 px-4 rounded-lg text-sm font-medium border transition-colors ${!showRead ? 'bg-[#CCFF00] text-black border-[#CCFF00]' : 'bg-[#111111] text-white/50 border-white/10 hover:border-white/20'}`}>
             {showRead ? 'Nur ungelesene' : 'Alle anzeigen'}
           </button>
         </div>
       </div>
+
+      {/* AI Analysis Result */}
+      <AnimatePresence>
+        {(aiAnalysis || aiLoading) && (
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+            className="mb-6 bg-[#111111] border border-[#CCFF00]/20 rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Sparkles className="w-5 h-5 text-[#CCFF00]" />
+              <h3 className="font-['Space_Grotesk'] text-base font-bold text-white">Smart Alert Analyse</h3>
+            </div>
+            {aiLoading ? (
+              <div className="flex items-center gap-3 py-4 justify-center">
+                <Loader2 className="w-5 h-5 text-[#CCFF00] animate-spin" />
+                <span className="text-white/50 text-sm">AI erkennt Muster in deinen Alerts...</span>
+              </div>
+            ) : (
+              <div data-testid="smart-alert-result" className="text-white/70 text-sm leading-relaxed whitespace-pre-wrap">
+                {aiAnalysis}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Filter Tabs */}
       <div className="flex items-center gap-1 mb-6 bg-[#111111] border border-white/10 rounded-xl p-1 w-fit">

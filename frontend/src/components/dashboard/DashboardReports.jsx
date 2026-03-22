@@ -1,7 +1,10 @@
-import { motion } from 'framer-motion';
-import { FileText, Download, Calendar, TrendingUp, BarChart3, PieChart, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FileText, Download, Calendar, TrendingUp, BarChart3, PieChart, Clock, Sparkles, Loader2, Brain } from 'lucide-react';
 import { Button } from '../ui/button';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+
+const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 const monthlyData = [
   { month: 'Okt', listings: 890, deals: 34, alerts: 120 },
@@ -47,12 +50,89 @@ const ChartTooltip = ({ active, payload, label }) => {
 };
 
 export const DashboardReports = () => {
+  const [aiReport, setAiReport] = useState(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiFocus, setAiFocus] = useState('general');
+
+  const generateReport = async () => {
+    setAiLoading(true);
+    setAiReport(null);
+    try {
+      const res = await fetch(`${API_URL}/api/ai/market-report`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ focus: aiFocus }),
+      });
+      if (!res.ok) throw new Error('Fehler');
+      const data = await res.json();
+      setAiReport(data.report);
+    } catch {
+      setAiReport('Report konnte nicht generiert werden. Bitte versuche es erneut.');
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
+  const focusOptions = [
+    { id: 'general', label: 'Allgemein' },
+    { id: 'premium', label: 'Premium' },
+    { id: 'compact', label: 'Kompakt' },
+    { id: 'suv', label: 'SUV' },
+    { id: 'electric', label: 'E-Autos' },
+  ];
+
   return (
     <>
-      <div className="mb-8">
-        <h1 data-testid="reports-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight text-white">Reports</h1>
-        <p className="text-white/40 text-sm mt-1.5">Automatische Berichte und Analytics.</p>
+      <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6 mb-8">
+        <div>
+          <h1 data-testid="reports-title" className="font-['Space_Grotesk'] text-3xl font-bold tracking-tight text-white">Reports</h1>
+          <p className="text-white/40 text-sm mt-1.5">Automatische Berichte und Analytics.</p>
+        </div>
       </div>
+
+      {/* AI Report Generator */}
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-[#111111] border border-[#CCFF00]/20 rounded-2xl p-6 mb-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-[#CCFF00]/10 flex items-center justify-center">
+            <Brain className="w-5 h-5 text-[#CCFF00]" />
+          </div>
+          <div>
+            <h3 className="font-['Space_Grotesk'] text-lg font-bold text-white">AI Market Report</h3>
+            <p className="text-white/30 text-xs">Generiere einen AI-gestützten Marktbericht auf Knopfdruck</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-1 bg-[#0A0A0A] border border-white/10 rounded-xl p-1">
+            {focusOptions.map(f => (
+              <button key={f.id} onClick={() => setAiFocus(f.id)} data-testid={`report-focus-${f.id}`}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${aiFocus === f.id ? 'bg-[#CCFF00] text-black' : 'text-white/40 hover:text-white/70'}`}>
+                {f.label}
+              </button>
+            ))}
+          </div>
+          <Button onClick={generateReport} disabled={aiLoading} data-testid="generate-ai-report-btn"
+            className="bg-[#CCFF00] text-black hover:bg-[#b8e600] font-semibold rounded-lg h-9 px-5 text-sm gap-2 disabled:opacity-50">
+            {aiLoading ? <><Loader2 className="w-4 h-4 animate-spin" />Generiere...</> : <><Sparkles className="w-4 h-4" />Report generieren</>}
+          </Button>
+        </div>
+        <AnimatePresence>
+          {(aiReport || aiLoading) && (
+            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+              className="border-t border-white/5 pt-4 mt-2">
+              {aiLoading ? (
+                <div className="flex items-center gap-3 py-8 justify-center">
+                  <Loader2 className="w-5 h-5 text-[#CCFF00] animate-spin" />
+                  <span className="text-white/50 text-sm">AI analysiert Marktdaten...</span>
+                </div>
+              ) : (
+                <div data-testid="ai-report-result" className="text-white/70 text-sm leading-relaxed whitespace-pre-wrap max-h-[400px] overflow-y-auto">
+                  {aiReport}
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
 
       {/* KPIs */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
