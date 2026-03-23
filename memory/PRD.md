@@ -32,6 +32,8 @@ Central Automotive Intelligence SaaS platform with two specialized products:
 │   │   │   ├── DashboardThemeContext, themeUtils.js
 │   │   │   ├── DashboardToolWrapper.jsx (generic tool container)
 │   │   │   ├── DashboardEmpfehlungen.jsx
+│   │   │   ├── BeispielVergleich, BeispielPreisTracker, BeispielFlotte
+│   │   │   ├── BeispielMarktReport, BeispielTuningShowcase
 │   │   │   ├── 7 standard dashboard pages
 ```
 
@@ -46,16 +48,16 @@ Central Automotive Intelligence SaaS platform with two specialized products:
 ### Dashboard (DONE)
 - 7-page layout: Overview, Market, Tuning, Alerts, Reports, Teams, Tenants
 - **Tools Menu** (7 tools from landing page embedded via DashboardToolWrapper):
-  - Deal Analyzer (`/dashboard/tools/deal-analyzer`)
-  - ROI Rechner (`/dashboard/tools/roi-rechner`)
-  - Marktwert-Check (`/dashboard/tools/marktwert`)
-  - Deal Quiz (`/dashboard/tools/deal-quiz`)
-  - Vorher/Nachher (`/dashboard/tools/vorher-nachher`)
-  - Wettbewerb-Radar (`/dashboard/tools/radar`)
-  - Markt-Heatmap (`/dashboard/tools/heatmap`)
-- **Empfehlungen** page (`/dashboard/empfehlungen`) with AI tuning recommendations
-- Collapsible Tools dropdown in sidebar with AnimatePresence
-- 3-way theme system (Dark/Light/Gradient) for dashboard + website
+  - Deal Analyzer, ROI Rechner, Marktwert-Check, Deal Quiz, Vorher/Nachher, Wettbewerb-Radar, Markt-Heatmap
+- **Beispiele Menu** (5 interactive demo pages):
+  - Fahrzeug-Vergleich (`/dashboard/beispiele/vergleich`) — Side-by-side comparison with RadarChart
+  - Preis-Tracker (`/dashboard/beispiele/preis-tracker`) — Multi-vehicle price history with AreaCharts
+  - Flotten-Übersicht (`/dashboard/beispiele/flotte`) — Fleet management with KPIs, cost analysis, vehicle cards
+  - Markt-Report (`/dashboard/beispiele/markt-report`) — Complete market analysis report with charts + tables
+  - Tuning Showcase (`/dashboard/beispiele/tuning-showcase`) — Stage 1/2 performance gains with animated gauges
+- **Empfehlungen** page with AI tuning recommendations
+- Collapsible sidebar menus (Tools + Beispiele) with AnimatePresence
+- 3-way theme system (Dark/Light/Gradient) across all pages
 - ECU Knowledge Bot
 
 ### Product Pages (DONE)
@@ -69,8 +71,8 @@ Central Automotive Intelligence SaaS platform with two specialized products:
 
 ## Mocked Data
 - All Dashboard data (overview stats, market listings, tuning entries, alerts, reports)
+- All Beispiele pages (vehicle comparison, fleet, price tracker, reports, tuning showcase)
 - Authentication (login/register pages exist but not connected)
-- Vehicle listings
 
 ## API Endpoints
 - `POST /api/ai/analyze-deal` — AI deal analysis
