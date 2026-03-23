@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { LayoutDashboard, Car, Wrench, Bell, FileText, Users, Building2, Sun, Moon } from 'lucide-react';
+import { LayoutDashboard, Car, Wrench, Bell, FileText, Users, Building2, Sun, Moon, Layers } from 'lucide-react';
 import { useDashTheme } from './DashboardThemeContext';
 
 const navItems = [
@@ -13,15 +13,20 @@ const navItems = [
   { name: 'Tenants', href: '/dashboard/tenants', icon: Building2, color: null },
 ];
 
+const themeOptions = [
+  { id: 'dark', icon: Moon, label: 'Dark' },
+  { id: 'light', icon: Sun, label: 'Light' },
+  { id: 'gradient', icon: Layers, label: 'Gradient' },
+];
+
 export const DashboardSidebar = () => {
   const location = useLocation();
-  const { theme, toggleTheme } = useDashTheme();
-  const isLight = theme === 'light';
+  const { theme, setTheme } = useDashTheme();
 
   return (
     <aside
       data-testid="dashboard-sidebar"
-      className="fixed left-0 top-0 bottom-0 w-[220px] flex flex-col z-40 transition-colors duration-300"
+      className="dash-sidebar fixed left-0 top-0 bottom-0 w-[220px] flex flex-col z-40 transition-all duration-300"
       style={{ backgroundColor: 'var(--d-bg)', borderRight: '1px solid var(--d-border)' }}
     >
       {/* Logo */}
@@ -78,36 +83,51 @@ export const DashboardSidebar = () => {
         })}
       </nav>
 
-      {/* Theme Toggle + Plan Status */}
+      {/* Theme Switch + Plan Status */}
       <div className="px-3 pb-5 space-y-3">
-        {/* Theme Toggle */}
-        <button
-          data-testid="theme-toggle-btn"
-          onClick={toggleTheme}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-300"
-          style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)', color: 'var(--d-text-sec)' }}
+        {/* 3-Way Theme Switch */}
+        <div
+          data-testid="theme-switch"
+          className="dash-card relative flex items-center p-1 rounded-xl transition-all duration-300"
+          style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)' }}
         >
-          <div className="relative w-10 h-[22px] rounded-full transition-colors duration-300"
-            style={{ backgroundColor: isLight ? '#00E5FF' : 'rgba(255,255,255,0.1)' }}>
-            <motion.div
-              className="absolute top-[3px] w-4 h-4 rounded-full flex items-center justify-center"
-              animate={{ left: isLight ? '22px' : '3px' }}
-              transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-              style={{ backgroundColor: isLight ? '#ffffff' : '#CCFF00' }}
-            >
-              {isLight
-                ? <Sun className="w-2.5 h-2.5 text-[#00E5FF]" />
-                : <Moon className="w-2.5 h-2.5 text-black" />
-              }
-            </motion.div>
-          </div>
-          <span>{isLight ? 'Light Mode' : 'Dark Mode'}</span>
-        </button>
+          {/* Animated Indicator */}
+          <motion.div
+            className="absolute top-1 bottom-1 rounded-lg z-0"
+            animate={{
+              left: theme === 'dark' ? '4px' : theme === 'light' ? 'calc(33.33% + 1px)' : 'calc(66.66% - 1px)',
+              width: 'calc(33.33% - 4px)',
+            }}
+            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            style={{
+              background: theme === 'dark' ? 'rgba(204,255,0,0.15)' : theme === 'light' ? 'rgba(0,229,255,0.15)' : 'linear-gradient(135deg, rgba(204,255,0,0.15), rgba(0,229,255,0.15))',
+              border: `1px solid ${theme === 'dark' ? 'rgba(204,255,0,0.2)' : theme === 'light' ? 'rgba(0,229,255,0.2)' : 'rgba(204,255,0,0.15)'}`,
+            }}
+          />
+
+          {themeOptions.map((opt) => {
+            const Icon = opt.icon;
+            const isActive = theme === opt.id;
+            const activeColor = opt.id === 'dark' ? '#CCFF00' : opt.id === 'light' ? '#00E5FF' : '#CCFF00';
+            return (
+              <button
+                key={opt.id}
+                data-testid={`theme-btn-${opt.id}`}
+                onClick={() => setTheme(opt.id)}
+                className="relative z-10 flex-1 flex flex-col items-center gap-0.5 py-2 rounded-lg text-[10px] font-medium transition-colors duration-200"
+                style={{ color: isActive ? activeColor : 'var(--d-text-mut)' }}
+              >
+                <Icon className="w-3.5 h-3.5" />
+                <span>{opt.label}</span>
+              </button>
+            );
+          })}
+        </div>
 
         {/* Plan Status */}
         <div
           data-testid="plan-status-card"
-          className="p-4 rounded-2xl transition-colors duration-300"
+          className="dash-card p-4 rounded-2xl transition-all duration-300"
           style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)' }}
         >
           <div className="font-semibold text-sm mb-0.5" style={{ color: 'var(--d-text)' }}>Plan Status</div>

@@ -229,7 +229,7 @@ export const DashboardOverview = () => {
       </div>
 
       {/* Tab Bar */}
-      <div className="flex items-center gap-1 mb-6 rounded-xl p-1 w-fit transition-colors duration-300" style={{ backgroundColor: t.surface, border: `1px solid ${t.border}` }}>
+      <div className="dash-tab-bar flex items-center gap-1 mb-6 rounded-xl p-1 w-fit transition-all duration-300" style={{ backgroundColor: t.surface, border: `1px solid ${t.border}` }}>
         {tabs.map((tab) => (
           <button key={tab.id} data-testid={`tab-${tab.id}`} onClick={() => setActiveTab(tab.id)}
             className="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"

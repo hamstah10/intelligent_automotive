@@ -16,15 +16,15 @@ export const t = {
 };
 
 export const surface = (extra = '') =>
-  `bg-[var(--d-surface)] border border-[var(--d-border)] rounded-2xl transition-colors duration-300 ${extra}`.trim();
+  `dash-card bg-[var(--d-surface)] border border-[var(--d-border)] rounded-2xl transition-all duration-300 ${extra}`.trim();
 
 export const surfaceAlt = (extra = '') =>
-  `bg-[var(--d-surface-alt)] border border-[var(--d-border-sub)] rounded-xl transition-colors duration-300 ${extra}`.trim();
+  `dash-card-alt bg-[var(--d-surface-alt)] border border-[var(--d-border-sub)] rounded-xl transition-all duration-300 ${extra}`.trim();
 
 export const ThemedTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="px-4 py-2.5 text-xs rounded-xl" style={{ backgroundColor: t.tooltipBg, border: `1px solid ${t.border}`, boxShadow: t.shadow }}>
+      <div className="dash-card px-4 py-2.5 text-xs rounded-xl" style={{ backgroundColor: t.tooltipBg, border: `1px solid ${t.border}`, boxShadow: t.shadow }}>
         <p className="mb-1" style={{ color: t.textSec }}>{label}</p>
         {payload.map((p, i) => (
           <p key={i} style={{ color: p.color || p.stroke || t.text }} className="font-semibold">
