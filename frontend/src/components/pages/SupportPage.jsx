@@ -88,7 +88,7 @@ export const SupportPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white">
+    <div className="site-subpage min-h-screen bg-[#050505] text-white">
       {/* Header */}
       <header className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">

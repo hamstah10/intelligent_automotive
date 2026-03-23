@@ -1,7 +1,7 @@
 import { DashboardSidebar } from './DashboardSidebar';
-import { DashboardThemeProvider, useDashTheme } from './DashboardThemeContext';
+import { useDashTheme } from './DashboardThemeContext';
 
-const DashboardInner = ({ children }) => {
+export const DashboardLayout = ({ children }) => {
   const { theme } = useDashTheme();
 
   return (
@@ -12,13 +12,5 @@ const DashboardInner = ({ children }) => {
         {children}
       </main>
     </div>
-  );
-};
-
-export const DashboardLayout = ({ children }) => {
-  return (
-    <DashboardThemeProvider>
-      <DashboardInner>{children}</DashboardInner>
-    </DashboardThemeProvider>
   );
 };

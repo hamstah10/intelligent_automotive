@@ -125,7 +125,7 @@ END:VCALENDAR`;
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] py-12 px-6">
+    <div className="site-subpage min-h-screen bg-[#050505] py-12 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Back Link */}
         <Link 

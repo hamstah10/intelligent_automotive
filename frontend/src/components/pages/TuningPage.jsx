@@ -66,7 +66,7 @@ export const TuningPage = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#050505] text-white">
+    <div ref={containerRef} className="site-subpage min-h-screen bg-[#050505] text-white">
       {/* Progress Bar */}
       <motion.div 
         className="fixed top-0 left-0 h-1 bg-[#CCFF00] z-50"

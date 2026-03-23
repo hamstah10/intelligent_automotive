@@ -26,7 +26,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] flex">
+    <div className="site-subpage min-h-screen bg-[#050505] flex">
       {/* Left Side - Form */}
       <div className="flex-1 flex items-center justify-center p-8">
         <motion.div

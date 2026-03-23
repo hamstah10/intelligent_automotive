@@ -35,7 +35,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] flex">
+    <div className="site-subpage min-h-screen bg-[#050505] flex">
       {/* Left Side - Image */}
       <div className="hidden lg:block flex-1 relative">
         <div className="absolute inset-0 bg-gradient-to-l from-[#050505] to-transparent z-10" />

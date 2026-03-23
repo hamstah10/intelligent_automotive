@@ -1,6 +1,7 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
+import { DashboardThemeProvider, useDashTheme } from "@/components/dashboard/DashboardThemeContext";
 import { Navigation } from "@/components/landing/Navigation";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { LiveTicker } from "@/components/landing/LiveTicker";
@@ -31,85 +32,42 @@ import { SupportPage } from "@/components/pages/SupportPage";
 import { StatusPage } from "@/components/pages/StatusPage";
 import DashboardPage from "@/components/dashboard/DashboardPage";
 
-// Home Page Component
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden">
-      {/* Noise Texture Overlay */}
+    <div className="site-page min-h-screen overflow-x-hidden">
       <div className="noise-overlay" />
-      
-      {/* Navigation */}
       <Navigation />
-      
-      {/* Main Content */}
       <main>
-        {/* Hero Section */}
         <HeroSection />
-
-        {/* Integration Partners Showcase */}
         <IntegrationShowcase />
-        
-        {/* Live Deal Ticker */}
         <LiveTicker />
-
-        {/* Realtime Counter Stats */}
         <RealtimeCounter />
-        
-        {/* Features - Market Intelligence */}
         <FeaturesMarket />
-
-        {/* Market Heatmap - Deal Hotspots */}
         <MarketHeatmap />
-
-        {/* Parallax Data Wall */}
         <ParallaxDataWall />
-        
-        {/* ROI Calculator */}
         <ROICalculator />
-
-        {/* Vehicle Configurator - Marktwert Check */}
         <VehicleConfigurator />
-
-        {/* Deal Finder Quiz */}
         <DealQuiz />
-        
-        {/* Features - Tuning Intelligence */}
         <FeaturesTuning />
-        
-        {/* ECU Visualizer */}
         <ECUVisualizer />
-
-        {/* AI Deal Analyzer */}
         <AIDealAnalyzer />
-
-        {/* Before / After Comparison */}
         <BeforeAfterSlider />
-
-        {/* Competitor Radar */}
         <CompetitorRadar />
-        
-        {/* How It Works */}
         <HowItWorks />
-        
-        {/* Pricing */}
         <Pricing />
-        
-        {/* Testimonials */}
         <Testimonials />
-        
-        {/* FAQ */}
         <FAQ />
       </main>
-      
-      {/* Footer with CTA */}
       <Footer />
     </div>
   );
 };
 
-function App() {
+const AppInner = () => {
+  const { theme } = useDashTheme();
+
   return (
-    <BrowserRouter>
+    <div data-site-theme={theme}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/market" element={<MarketPage />} />
@@ -121,16 +79,26 @@ function App() {
         <Route path="/system-status" element={<StatusPage />} />
         <Route path="/dashboard/*" element={<DashboardPage />} />
       </Routes>
-      <Toaster 
+      <Toaster
         position="bottom-right"
         toastOptions={{
           style: {
-            background: '#111111',
-            border: '1px solid rgba(255,255,255,0.1)',
-            color: '#fff',
+            background: theme === 'light' ? '#ffffff' : '#111111',
+            border: `1px solid ${theme === 'light' ? '#e2e5eb' : 'rgba(255,255,255,0.1)'}`,
+            color: theme === 'light' ? '#1a1a2e' : '#fff',
           },
         }}
       />
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <DashboardThemeProvider>
+        <AppInner />
+      </DashboardThemeProvider>
     </BrowserRouter>
   );
 }
