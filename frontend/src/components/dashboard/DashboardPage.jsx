@@ -19,6 +19,12 @@ import { BeforeAfterSlider } from '../landing/BeforeAfterSlider';
 import { CompetitorRadar } from '../landing/CompetitorRadar';
 import { MarketHeatmap } from '../landing/MarketHeatmap';
 
+import { BeispielVergleich } from './BeispielVergleich';
+import { BeispielPreisTracker } from './BeispielPreisTracker';
+import { BeispielFlotte } from './BeispielFlotte';
+import { BeispielMarktReport } from './BeispielMarktReport';
+import { BeispielTuningShowcase } from './BeispielTuningShowcase';
+
 export default function DashboardPage() {
   return (
     <DashboardLayout>
@@ -68,6 +74,13 @@ export default function DashboardPage() {
             <MarketHeatmap />
           </DashboardToolWrapper>
         } />
+
+        {/* Beispiele */}
+        <Route path="beispiele/vergleich" element={<BeispielVergleich />} />
+        <Route path="beispiele/preis-tracker" element={<BeispielPreisTracker />} />
+        <Route path="beispiele/flotte" element={<BeispielFlotte />} />
+        <Route path="beispiele/markt-report" element={<BeispielMarktReport />} />
+        <Route path="beispiele/tuning-showcase" element={<BeispielTuningShowcase />} />
       </Routes>
     </DashboardLayout>
   );

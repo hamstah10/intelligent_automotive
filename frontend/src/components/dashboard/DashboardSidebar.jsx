@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   LayoutDashboard, Car, Wrench, Bell, FileText, Users, Building2,
   Sun, Moon, Layers, ChevronDown, Brain, Calculator, Search, HelpCircle,
-  ArrowLeftRight, Radar, Map, Sparkles
+  ArrowLeftRight, Radar, Map, Sparkles, Boxes, GitCompare, TrendingUp,
+  Truck, BarChart3, Zap
 } from 'lucide-react';
 import { useDashTheme } from './DashboardThemeContext';
 
@@ -26,6 +27,14 @@ const toolNav = [
   { name: 'Markt-Heatmap', href: '/dashboard/tools/heatmap', icon: Map, color: '#00E5FF' },
 ];
 
+const beispielNav = [
+  { name: 'Fahrzeug-Vergleich', href: '/dashboard/beispiele/vergleich', icon: GitCompare, color: '#00E5FF' },
+  { name: 'Preis-Tracker', href: '/dashboard/beispiele/preis-tracker', icon: TrendingUp, color: '#CCFF00' },
+  { name: 'Flotten-Übersicht', href: '/dashboard/beispiele/flotte', icon: Truck, color: '#00E5FF' },
+  { name: 'Markt-Report', href: '/dashboard/beispiele/markt-report', icon: BarChart3, color: '#CCFF00' },
+  { name: 'Tuning Showcase', href: '/dashboard/beispiele/tuning-showcase', icon: Zap, color: '#00E5FF' },
+];
+
 const bottomNav = [
   { name: 'Empfehlungen', href: '/dashboard/empfehlungen', icon: Sparkles, color: '#CCFF00' },
   { name: 'Teams', href: '/dashboard/teams', icon: Users },
@@ -42,8 +51,10 @@ export const DashboardSidebar = () => {
   const location = useLocation();
   const { theme, setTheme } = useDashTheme();
   const [toolsOpen, setToolsOpen] = useState(() => location.pathname.includes('/tools/'));
+  const [beispieleOpen, setBeispieleOpen] = useState(() => location.pathname.includes('/beispiele/'));
 
   const isToolActive = toolNav.some(t => location.pathname === t.href);
+  const isBeispielActive = beispielNav.some(b => location.pathname === b.href);
 
   const NavLink = ({ item }) => {
     const Icon = item.icon;
@@ -128,6 +139,59 @@ export const DashboardSidebar = () => {
                     return (
                       <Link key={item.href} to={item.href}
                         data-testid={`sidebar-tool-${item.name.toLowerCase().replace(/[\s\/]/g, '-')}`}
+                        className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
+                        style={isActive ? { backgroundColor: item.color, color: '#000' } : { color: 'var(--d-text-mut)' }}
+                        onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.backgroundColor = 'var(--d-hover)'; e.currentTarget.style.color = 'var(--d-text-sec)'; } }}
+                        onMouseLeave={(e) => { if (!isActive) { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--d-text-mut)'; } }}
+                      >
+                        <Icon className="w-3.5 h-3.5" style={!isActive ? { color: `${item.color}60` } : {}} />
+                        <span>{item.name}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Beispiele Section */}
+        <div className="pb-1">
+          <button
+            data-testid="sidebar-beispiele-toggle"
+            onClick={() => setBeispieleOpen(!beispieleOpen)}
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+            style={{ color: isBeispielActive ? '#00E5FF' : 'var(--d-text-sec)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--d-hover)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+          >
+            <Boxes className="w-[18px] h-[18px]" style={{ color: isBeispielActive ? '#00E5FF' : undefined }} />
+            <span className="flex-1 text-left">Beispiele</span>
+            <span className="min-w-[24px] h-[20px] flex items-center justify-center rounded-md text-[10px] font-semibold"
+              style={{ backgroundColor: 'var(--d-hover)', color: 'var(--d-text-sec)' }}>
+              {beispielNav.length}
+            </span>
+            <motion.div animate={{ rotate: beispieleOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+              <ChevronDown className="w-3.5 h-3.5" />
+            </motion.div>
+          </button>
+
+          <AnimatePresence initial={false}>
+            {beispieleOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+              >
+                <div className="pl-3 pt-1 space-y-0.5">
+                  {beispielNav.map(item => {
+                    const Icon = item.icon;
+                    const isActive = location.pathname === item.href;
+                    return (
+                      <Link key={item.href} to={item.href}
+                        data-testid={`sidebar-beispiel-${item.name.toLowerCase().replace(/[\s\/\-]/g, '-')}`}
                         className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
                         style={isActive ? { backgroundColor: item.color, color: '#000' } : { color: 'var(--d-text-mut)' }}
                         onMouseEnter={(e) => { if (!isActive) { e.currentTarget.style.backgroundColor = 'var(--d-hover)'; e.currentTarget.style.color = 'var(--d-text-sec)'; } }}
