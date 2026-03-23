@@ -120,6 +120,23 @@ export const TuningPage = () => {
           transition={{ duration: 5, repeat: Infinity, delay: 1 }}
         />
 
+        {/* Giant Logo A - Tuning Original Green */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+            className="relative"
+          >
+            <img
+              src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png"
+              alt=""
+              className="w-[420px] h-[420px] lg:w-[520px] lg:h-[520px] object-contain opacity-[0.12]"
+            />
+            <div className="absolute inset-0 bg-[#CCFF00]/5 blur-[60px] rounded-full" />
+          </motion.div>
+        </div>
+
         {/* Circuit Pattern with Parallax */}
         <motion.div 
           className="absolute inset-0 opacity-10"

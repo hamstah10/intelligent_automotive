@@ -130,6 +130,24 @@ export const MarketPage = () => {
           transition={{ duration: 4, repeat: Infinity }}
         />
 
+        {/* Giant Logo A - Market Blue */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+            className="relative"
+          >
+            <img
+              src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png"
+              alt=""
+              className="w-[420px] h-[420px] lg:w-[520px] lg:h-[520px] object-contain opacity-[0.12]"
+              style={{ filter: 'brightness(0) saturate(100%) invert(72%) sepia(98%) saturate(1200%) hue-rotate(152deg) brightness(104%) contrast(104%)' }}
+            />
+            <div className="absolute inset-0 bg-[#00E5FF]/5 blur-[60px] rounded-full" />
+          </motion.div>
+        </div>
+
         {/* Content */}
         <motion.div 
           className="relative z-10 max-w-5xl mx-auto px-6 text-center"
