@@ -5,7 +5,7 @@ import {
   LayoutDashboard, Car, Wrench, Bell, FileText, Users, Building2,
   Sun, Moon, Layers, ChevronDown, Brain, Calculator, Search, HelpCircle,
   ArrowLeftRight, Radar, Map, Sparkles, Boxes, GitCompare, TrendingUp,
-  Truck, BarChart3, Zap
+  Truck, BarChart3, Zap, Globe
 } from 'lucide-react';
 import { useDashTheme } from './DashboardThemeContext';
 
@@ -34,6 +34,7 @@ const beispielNav = [
   { name: 'Markt-Report', href: '/dashboard/beispiele/markt-report', icon: BarChart3, color: '#CCFF00' },
   { name: 'Tuning Showcase', href: '/dashboard/beispiele/tuning-showcase', icon: Zap, color: '#00E5FF' },
   { name: 'Dashboard Widgets', href: '/dashboard/beispiele/widgets', icon: Boxes, color: '#CCFF00' },
+  { name: 'Fahrzeugsuche', href: '/dashboard/beispiele/fahrzeugsuche', icon: Globe, color: '#00E5FF' },
 ];
 
 const bottomNav = [
