@@ -29,6 +29,11 @@ class ECUChatRequest(BaseModel):
     message: str
     session_id: Optional[str] = None
 
+class CodingAssistantRequest(BaseModel):
+    query: str
+    expert_mode: bool = False
+    session_id: Optional[str] = None
+
 # ─── AI Deal Analyzer ────────────────────────────────
 
 @router.post("/deal-analyzer")
@@ -154,3 +159,89 @@ Halte Antworten kompakt und praxisnah."""
     msg = UserMessage(text=req.message)
     response = await chat.send_message(msg)
     return {"response": response, "session_id": session}
+
+
+# ─── Coding Intelligence Assistant ────────────────────
+
+@router.post("/coding-assistant")
+async def coding_assistant(req: CodingAssistantRequest):
+    session = req.session_id or f"coding-{uuid.uuid4().hex[:8]}"
+
+    expert_instruction = ""
+    if req.expert_mode:
+        expert_instruction = """
+Der User ist im EXPERT-Modus. Gib detaillierte technische Informationen:
+- Exakte Byte/Bit-Adressen und Werte (original und codiert)
+- Moduldetails (Adresse, Protokoll)
+- Voraussetzungen und Abhängigkeiten
+- Mögliche Nebenwirkungen
+- Rückgängig-Anleitung"""
+    else:
+        expert_instruction = """
+Der User ist im STANDARD-Modus. Gib verständliche, einfache Erklärungen.
+Vermeide zu viele technische Details. Fokus auf: Was macht die Codierung, wie schwierig ist sie, welches Tool braucht man."""
+
+    chat = LlmChat(
+        api_key=EMERGENT_KEY,
+        session_id=session,
+        system_message=f"""Du bist der Coding Intelligence AI Assistant — der führende Experte für Fahrzeug-Codierungen.
+
+Dein Wissen umfasst:
+- Alle VAG-Plattformen (MQB, MQB Evo, MLB Evo, PPC)
+- BMW-Plattformen (CLAR, UKL, FAAR)
+- Mercedes-Plattformen (MRA2, MHA2)
+- Steuergeräte: BCM (09), ECM (01), TCU (02), ABS (03), MIB (5F), IC (17), HVAC (08)
+- Tools: VCDS, OBD11, Carly, BimmerCode, Xentry, E-Sys
+- Codierungen: Komfort, Licht, Infotainment, Assistenzsysteme, Fahrwerk
+
+{expert_instruction}
+
+WICHTIG: Antworte IMMER auf Deutsch und IMMER im folgenden JSON-Format:
+{{
+  "summary": "Kurze Zusammenfassung (2-3 Sätze)",
+  "codings": [
+    {{
+      "name": "Name der Codierung",
+      "module": "Modul / Adresse",
+      "tool": "Empfohlenes Tool",
+      "byte": "Byte-Nummer",
+      "bit": "Bit-Position",
+      "original": "Originalwert",
+      "coded": "Codierter Wert",
+      "risk": "low|medium|high",
+      "notes": "Wichtige Hinweise"
+    }}
+  ],
+  "evidence": ["Quelle 1", "Quelle 2"],
+  "confidence": 85,
+  "suggestions": ["Verwandte Codierung 1", "Verwandte Codierung 2", "Verwandte Codierung 3"]
+}}
+
+Gib NUR valides JSON zurück, keinen weiteren Text davor oder danach."""
+    ).with_model("openai", "gpt-4o")
+
+    msg = UserMessage(text=req.query)
+    response = await chat.send_message(msg)
+
+    import json
+    import re
+    
+    # Clean up response - remove markdown code blocks if present
+    cleaned_response = response.strip()
+    if cleaned_response.startswith("```"):
+        # Remove ```json or ``` at start and ``` at end
+        cleaned_response = re.sub(r'^```(?:json)?\s*', '', cleaned_response)
+        cleaned_response = re.sub(r'\s*```$', '', cleaned_response)
+    
+    try:
+        parsed = json.loads(cleaned_response)
+    except (json.JSONDecodeError, TypeError):
+        parsed = {
+            "summary": response,
+            "codings": [],
+            "evidence": ["AI-generiert"],
+            "confidence": 70,
+            "suggestions": []
+        }
+
+    return {"result": parsed, "session_id": session}

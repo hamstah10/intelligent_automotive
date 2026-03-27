@@ -3,11 +3,14 @@ import { motion } from 'framer-motion';
 import {
   Code, Cpu, Monitor, Car, Zap, Search, ChevronDown, Lightbulb,
   Eye, Music, Shield, Settings2, Thermometer, Lock, Wifi, Battery,
-  Clock, TrendingUp, Star, ArrowRight, Gauge, Database, Activity
+  Clock, TrendingUp, Star, ArrowRight, Gauge, Database, Activity,
+  Flame, AlertTriangle, Bookmark
 } from 'lucide-react';
 import { Input } from '../ui/input';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { t, surface, surfaceAlt, ThemedTooltip } from './themeUtils';
+import { CodingAssistant } from './CodingAssistant';
+import { CodingUploads } from './CodingUploads';
 
 const PURPLE = '#c084fc';
 const BLUE = '#00E5FF';
@@ -39,25 +42,59 @@ const modules = [
   { name: 'Batterie-Mgmt', code: 'BMS / 8C', count: 62, icon: Battery, color: GREEN },
 ];
 
-/* ── Coding Kategorien ── */
+/* ── Coding Kategorien with highlight labels ── */
 const categories = [
   {
     name: 'Komfortfunktionen', icon: Settings2, color: PURPLE, count: 486,
-    items: ['Fensterheber Komfortbedienung', 'Spiegel anklappen bei Verriegelung', 'Akustische Verriegelung', 'Sitzheizung-Speicher', 'Automatische Heckklappe', 'Begrüßungslicht'],
+    items: [
+      { name: 'Fensterheber Komfortbedienung', label: 'empfohlen' },
+      { name: 'Spiegel anklappen bei Verriegelung', label: 'beliebt' },
+      { name: 'Akustische Verriegelung', label: 'beliebt' },
+      { name: 'Sitzheizung-Speicher', label: null },
+      { name: 'Automatische Heckklappe', label: null },
+      { name: 'Begrüßungslicht', label: 'empfohlen' },
+    ],
   },
   {
     name: 'Licht & Beleuchtung', icon: Lightbulb, color: '#facc15', count: 312,
-    items: ['Tagfahrlicht Anpassung', 'Ambiente-Beleuchtung erweitert', 'Coming Home Dauer', 'Blinker Lauflicht', 'Fernlichtassistent-Empfindlichkeit', 'Nebelschlusslicht als Bremslicht'],
+    items: [
+      { name: 'Tagfahrlicht Anpassung', label: 'beliebt' },
+      { name: 'Ambiente-Beleuchtung erweitert', label: 'empfohlen' },
+      { name: 'Coming Home Dauer', label: null },
+      { name: 'Blinker Lauflicht', label: 'beliebt' },
+      { name: 'Fernlichtassistent-Empfindlichkeit', label: 'risiko' },
+      { name: 'Nebelschlusslicht als Bremslicht', label: 'risiko' },
+    ],
   },
   {
     name: 'Infotainment', icon: Music, color: BLUE, count: 278,
-    items: ['Video in Motion (ViM)', 'Navigation Geschwindigkeitslimit', 'Apple CarPlay Fullscreen', 'Startbild anpassen', 'Equalizer-Erweiterung', 'Display Helligkeit'],
+    items: [
+      { name: 'Video in Motion (ViM)', label: 'risiko' },
+      { name: 'Navigation Geschwindigkeitslimit', label: null },
+      { name: 'Apple CarPlay Fullscreen', label: 'beliebt' },
+      { name: 'Startbild anpassen', label: null },
+      { name: 'Equalizer-Erweiterung', label: null },
+      { name: 'Display Helligkeit', label: null },
+    ],
   },
   {
     name: 'Assistenzsysteme', icon: Eye, color: GREEN, count: 195,
-    items: ['Lane Assist Anpassung', 'ACC Abstandsregelung', 'Park Assist Konfiguration', 'Rückfahrkamera Linien', 'Totwinkelassistent', 'Speed Limiter Warnung'],
+    items: [
+      { name: 'Lane Assist Anpassung', label: 'risiko' },
+      { name: 'ACC Abstandsregelung', label: null },
+      { name: 'Park Assist Konfiguration', label: 'empfohlen' },
+      { name: 'Rückfahrkamera Linien', label: null },
+      { name: 'Totwinkelassistent', label: null },
+      { name: 'Speed Limiter Warnung', label: null },
+    ],
   },
 ];
+
+const labelConfig = {
+  beliebt: { icon: Flame, color: '#f97316', bg: '#f9731612', text: 'Beliebt' },
+  risiko: { icon: AlertTriangle, color: '#ef4444', bg: '#ef444412', text: 'Risiko' },
+  empfohlen: { icon: Star, color: '#facc15', bg: '#facc1512', text: 'Empfohlen' },
+};
 
 /* ── Coverage Chart ── */
 const coverageData = [
@@ -134,6 +171,11 @@ export const DashboardCoding = () => {
         })}
       </div>
 
+      {/* AI Assistant */}
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-6">
+        <CodingAssistant />
+      </motion.div>
+
       {/* Quick Finder */}
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
         data-testid="quick-finder" className={`${surface('p-5')} mb-6`}>
@@ -196,11 +238,21 @@ export const DashboardCoding = () => {
                   <ArrowRight className="w-4 h-4" style={{ color: t.textMut }} />
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-1.5">
-                  {cat.items.map(item => (
-                    <div key={item} className={`text-[11px] px-2.5 py-1.5 rounded-lg ${surfaceAlt()}`} style={{ color: t.textSec }}>
-                      {item}
-                    </div>
-                  ))}
+                  {cat.items.map(item => {
+                    const lbl = item.label ? labelConfig[item.label] : null;
+                    const LblIcon = lbl?.icon;
+                    return (
+                      <div key={item.name} className={`text-[11px] px-2.5 py-1.5 rounded-lg flex items-center justify-between gap-1 ${surfaceAlt()}`} style={{ color: t.textSec }}>
+                        <span className="truncate">{item.name}</span>
+                        {lbl && (
+                          <span className="flex items-center gap-0.5 shrink-0 text-[8px] font-bold px-1.5 py-0.5 rounded-md"
+                            style={{ backgroundColor: lbl.bg, color: lbl.color }}>
+                            <LblIcon className="w-2.5 h-2.5" /> {lbl.text}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.div>
             );
@@ -260,6 +312,11 @@ export const DashboardCoding = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Upload Areas */}
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-6">
+        <CodingUploads />
+      </motion.div>
     </>
   );
 };
