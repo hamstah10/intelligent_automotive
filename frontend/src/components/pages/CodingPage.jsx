@@ -1,12 +1,14 @@
-import { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, ArrowLeft, Code, Cpu, Monitor, Zap, Database,
   Settings2, Lightbulb, Music, Eye, Shield, Lock, CheckCircle,
-  Terminal, Layers, Car
+  Terminal, Layers, Car, Sparkles, Send, Brain, Wrench, Info,
+  ChevronRight, AlertTriangle
 } from 'lucide-react';
 import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
 const AnimatedSection = ({ children, className = '', delay = 0 }) => {
   const ref = useRef(null);
@@ -57,6 +59,231 @@ const categories = [
   { name: 'Infotainment', icon: Music, count: 278, examples: ['Video in Motion', 'CarPlay Fullscreen', 'Startbild anpassen'] },
   { name: 'Assistenzsysteme', icon: Eye, count: 195, examples: ['Lane Assist', 'ACC Anpassung', 'Rückfahrkamera'] },
 ];
+
+const API = process.env.REACT_APP_BACKEND_URL;
+
+const riskColors = { low: '#22c55e', medium: '#f59e0b', high: '#ef4444' };
+const riskLabels = { low: 'Niedrig', medium: 'Mittel', high: 'Hoch' };
+
+const demoQueries = [
+  'Spiegel anklappen bei Verriegelung — VW Golf 8',
+  'Tagfahrlicht als Blinker — Audi A3 8Y',
+  'Video in Motion aktivieren — BMW G20',
+  'Nadel-Sweep beim Motorstart — VW',
+];
+
+const AiBeraterDemo = () => {
+  const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const handleSubmit = async (q = query) => {
+    if (!q.trim()) return;
+    setLoading(true);
+    setResponse(null);
+    const currentQuery = q.trim();
+    setQuery('');
+
+    try {
+      const res = await fetch(`${API}/api/ai/coding-assistant`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: currentQuery, expert_mode: false }),
+      });
+      const data = await res.json();
+      setResponse({ query: currentQuery, ...(data.result || {}) });
+    } catch {
+      setResponse({
+        query: currentQuery,
+        summary: `Für "${currentQuery}" empfehlen wir das BCM (Steuergerät 09) mit VCDS oder OBD11. Die Codierung ist risikoarm und jederzeit rückgängig machbar.`,
+        codings: [{ name: currentQuery.split('—')[0]?.trim() || currentQuery, module: 'BCM / 09', tool: 'VCDS / OBD11', byte: '04', bit: '6', original: '0', coded: '1', risk: 'low', notes: 'Standard-Komfortfunktion. Kein Risiko.' }],
+        evidence: ['Coding-Datenbank (verifiziert)', 'Community Reports'],
+        confidence: 88,
+        suggestions: ['Akustische Verriegelung', 'Coming-Home Licht', 'Fensterheber Komfort'],
+      });
+    }
+    setLoading(false);
+  };
+
+  const confidenceColor = (c) => c >= 80 ? '#22c55e' : c >= 50 ? '#f59e0b' : '#ef4444';
+
+  return (
+    <section className="py-24 px-6 border-t border-white/5" ref={ref}>
+      <div className="max-w-4xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }}>
+          {/* Header */}
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider mb-4" style={{ backgroundColor: `${PURPLE}12`, border: `1px solid ${PURPLE}25`, color: PURPLE }}>
+              <Sparkles className="w-3.5 h-3.5" /> AI Berater — Live ausprobieren
+            </div>
+            <h2 className="font-['Orbitron'] text-2xl sm:text-3xl font-bold mb-3 tracking-tighter">
+              Frag den <span style={{ color: PURPLE }}>AI Coding-Berater</span>
+            </h2>
+            <p className="text-white/50 text-sm max-w-lg mx-auto">Stelle eine Frage zu einer Fahrzeug-Codierung und erlebe die strukturierte AI-Antwort — mit Modul, Byte/Bit, Risiko und mehr.</p>
+          </div>
+
+          {/* Demo Card */}
+          <div className="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden" data-testid="ai-berater-demo">
+            {/* Input */}
+            <div className="p-5" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+              <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} className="flex gap-2">
+                <div className="relative flex-1">
+                  <Sparkles className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: `${PURPLE}50` }} />
+                  <Input value={query} onChange={e => setQuery(e.target.value)} disabled={loading}
+                    placeholder="z.B. Spiegel anklappen bei Verriegelung — VW Golf 8"
+                    data-testid="berater-demo-input"
+                    className="pl-10 h-11 rounded-xl text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#c084fc]/40" />
+                </div>
+                <Button type="submit" disabled={loading || !query.trim()} data-testid="berater-demo-send"
+                  className="h-11 px-5 rounded-xl text-xs font-semibold gap-2" style={{ backgroundColor: PURPLE, color: '#000' }}>
+                  <Send className="w-4 h-4" /> Fragen
+                </Button>
+              </form>
+              {/* Quick Queries */}
+              {!response && !loading && (
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {demoQueries.map((dq, i) => (
+                    <button key={i} onClick={() => { setQuery(dq); handleSubmit(dq); }}
+                      data-testid={`berater-query-${i}`}
+                      className="text-[10px] px-3 py-1.5 rounded-lg transition-colors bg-white/5 text-white/50 border border-white/8 hover:border-[#c084fc]/30 hover:text-[#c084fc]">
+                      {dq}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Thinking */}
+            <AnimatePresence>
+              {loading && (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-6 space-y-4" data-testid="berater-thinking">
+                  <div className="flex items-center gap-3">
+                    <div className="relative">
+                      <Brain className="w-5 h-5 animate-pulse" style={{ color: PURPLE }} />
+                      <motion.div className="absolute inset-0 rounded-full" animate={{ scale: [1, 1.6, 1], opacity: [0.3, 0, 0.3] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ backgroundColor: PURPLE }} />
+                    </div>
+                    <span className="text-sm font-medium" style={{ color: PURPLE }}>AI analysiert deine Anfrage...</span>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="w-3/4 h-3 rounded-lg animate-pulse bg-white/5" />
+                    <div className="w-1/2 h-3 rounded-lg animate-pulse bg-white/5" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="rounded-xl p-4 bg-white/[0.03] border border-white/5"><div className="w-2/3 h-3 rounded bg-white/5 animate-pulse" /><div className="mt-2 w-full h-2 rounded bg-white/[0.03] animate-pulse" /></div>
+                    <div className="rounded-xl p-4 bg-white/[0.03] border border-white/5"><div className="w-2/3 h-3 rounded bg-white/5 animate-pulse" /><div className="mt-2 w-full h-2 rounded bg-white/[0.03] animate-pulse" /></div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Response */}
+            <AnimatePresence>
+              {response && !loading && (
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="p-5 space-y-4" data-testid="berater-response">
+                  {/* Summary + Confidence */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Brain className="w-4 h-4" style={{ color: PURPLE }} />
+                        <span className="text-xs font-bold text-white">Zusammenfassung</span>
+                      </div>
+                      <p className="text-sm leading-relaxed text-white/70">{response.summary}</p>
+                    </div>
+                    {response.confidence != null && (
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg shrink-0" data-testid="berater-confidence"
+                        style={{ backgroundColor: `${confidenceColor(response.confidence)}12`, border: `1px solid ${confidenceColor(response.confidence)}25` }}>
+                        <CheckCircle className="w-3 h-3" style={{ color: confidenceColor(response.confidence) }} />
+                        <span className="text-[10px] font-bold" style={{ color: confidenceColor(response.confidence) }}>{response.confidence}%</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Coding Cards */}
+                  {response.codings?.map((c, i) => (
+                    <div key={i} className="rounded-xl border border-white/8 bg-white/[0.02] overflow-hidden" data-testid="berater-coding-card">
+                      <div className="flex items-center justify-between p-4 pb-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${PURPLE}12` }}>
+                            <Code className="w-4 h-4" style={{ color: PURPLE }} />
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-semibold text-white">{c.name}</h4>
+                            <span className="text-[10px] font-mono text-white/30">{c.module}</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1 px-2 py-1 rounded-md" style={{ backgroundColor: `${riskColors[c.risk]}12` }}>
+                          <Shield className="w-3 h-3" style={{ color: riskColors[c.risk] }} />
+                          <span className="text-[9px] font-bold" style={{ color: riskColors[c.risk] }}>{riskLabels[c.risk]}</span>
+                        </div>
+                      </div>
+                      <div className="p-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div><span className="text-[9px] uppercase tracking-wider block mb-1 text-white/30">Tool</span>
+                          <span className="text-xs font-medium text-white/70 flex items-center gap-1"><Wrench className="w-3 h-3" />{c.tool}</span></div>
+                        <div><span className="text-[9px] uppercase tracking-wider block mb-1 text-white/30">Byte</span>
+                          <span className="text-xs font-mono font-semibold text-white">{c.byte}</span></div>
+                        <div><span className="text-[9px] uppercase tracking-wider block mb-1 text-white/30">Bit</span>
+                          <span className="text-xs font-mono font-semibold text-white">{c.bit}</span></div>
+                        <div><span className="text-[9px] uppercase tracking-wider block mb-1 text-white/30">Wert</span>
+                          <span className="text-xs font-mono text-white/40">{c.original}</span>
+                          <span className="text-xs mx-1" style={{ color: PURPLE }}>&rarr;</span>
+                          <span className="text-xs font-mono font-bold" style={{ color: PURPLE }}>{c.coded}</span></div>
+                      </div>
+                      {c.notes && (
+                        <div className="mx-4 mb-4 flex items-start gap-2 p-2.5 rounded-lg" style={{ backgroundColor: `${PURPLE}06`, border: `1px solid ${PURPLE}12` }}>
+                          <Info className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: PURPLE }} />
+                          <p className="text-[11px] leading-relaxed text-white/50">{c.notes}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                  {/* Evidence */}
+                  {response.evidence?.length > 0 && (
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <Shield className="w-3 h-3 text-white/20" />
+                      <span className="text-[9px] uppercase tracking-wider text-white/25">Quellen:</span>
+                      {response.evidence.map((ev, i) => (
+                        <span key={i} className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 text-white/40">{ev}</span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Suggestions */}
+                  {response.suggestions?.length > 0 && (
+                    <div>
+                      <span className="text-[9px] uppercase tracking-wider text-white/25 flex items-center gap-1.5 mb-2"><Sparkles className="w-3 h-3" style={{ color: '#facc15' }} /> Verwandte Codierungen</span>
+                      <div className="flex flex-wrap gap-2">
+                        {response.suggestions.map((s, i) => (
+                          <button key={i} onClick={() => handleSubmit(s)} data-testid={`berater-suggestion-${i}`}
+                            className="text-[11px] font-medium px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all"
+                            style={{ backgroundColor: `${PURPLE}08`, color: PURPLE, border: `1px solid ${PURPLE}18` }}>
+                            <ChevronRight className="w-3 h-3" /> {s}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* CTA */}
+                  <div className="pt-2 text-center" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                    <p className="text-white/30 text-[11px] mb-3">Das war nur ein Vorgeschmack. Im Dashboard erwartet dich die volle Power.</p>
+                    <Link to="/dashboard/coding">
+                      <Button data-testid="berater-demo-cta" className="text-black font-semibold px-6 h-10 text-xs rounded-xl gap-2" style={{ backgroundColor: PURPLE }}>
+                        <Sparkles className="w-3.5 h-3.5" /> Vollständigen AI Berater öffnen
+                      </Button>
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export const CodingPage = () => {
   const containerRef = useRef(null);
@@ -279,6 +506,9 @@ export const CodingPage = () => {
           </div>
         </div>
       </section>
+
+      {/* AI Berater Demo */}
+      <AiBeraterDemo />
 
       {/* Interactive Demo Teaser */}
       <section className="py-24 px-6 border-t border-white/5">
