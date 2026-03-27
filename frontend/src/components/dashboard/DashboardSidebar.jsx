@@ -5,7 +5,7 @@ import {
   LayoutDashboard, Car, Wrench, Bell, FileText, Users, Building2,
   Sun, Moon, Layers, ChevronDown, Brain, Calculator, Search, HelpCircle,
   ArrowLeftRight, Radar, Map, Sparkles, Boxes, GitCompare, TrendingUp,
-  Truck, BarChart3, Zap, Globe, CreditCard, Code
+  Truck, BarChart3, Zap, Globe, CreditCard, Code, Mail
 } from 'lucide-react';
 import { useDashTheme } from './DashboardThemeContext';
 
@@ -17,6 +17,7 @@ const mainNav = [
   { name: 'Alerts', href: '/dashboard/alerts', icon: Bell, badge: 61 },
   { name: 'Reports', href: '/dashboard/reports', icon: FileText },
   { name: 'Pakete & Addons', href: '/dashboard/pakete', icon: CreditCard, color: '#CCFF00' },
+  { name: 'E-Mail Templates', href: '/dashboard/emails', icon: Mail, color: '#c084fc' },
 ];
 
 const toolNav = [

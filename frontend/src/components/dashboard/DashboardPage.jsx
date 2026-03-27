@@ -28,6 +28,7 @@ import { BeispielWidgets } from './BeispielWidgets';
 import { BeispielFahrzeugsuche } from './BeispielFahrzeugsuche';
 import { DashboardPakete } from './DashboardPakete';
 import { DashboardCoding } from './DashboardCoding';
+import { DashboardEmails } from './DashboardEmails';
 
 export default function DashboardPage() {
   return (
@@ -42,6 +43,7 @@ export default function DashboardPage() {
         <Route path="teams" element={<DashboardTeams />} />
         <Route path="tenants" element={<DashboardTenants />} />
         <Route path="pakete" element={<DashboardPakete />} />
+        <Route path="emails" element={<DashboardEmails />} />
         <Route path="empfehlungen" element={<DashboardEmpfehlungen />} />
 
         {/* Tools */}
