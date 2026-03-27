@@ -29,6 +29,8 @@ import { BeispielFahrzeugsuche } from './BeispielFahrzeugsuche';
 import { DashboardPakete } from './DashboardPakete';
 import { DashboardCoding } from './DashboardCoding';
 import { DashboardEmails } from './DashboardEmails';
+import { DashboardGarage } from './DashboardGarage';
+import { DashboardProfil } from './DashboardProfil';
 
 export default function DashboardPage() {
   return (
@@ -44,6 +46,8 @@ export default function DashboardPage() {
         <Route path="tenants" element={<DashboardTenants />} />
         <Route path="pakete" element={<DashboardPakete />} />
         <Route path="emails" element={<DashboardEmails />} />
+        <Route path="garage" element={<DashboardGarage />} />
+        <Route path="profil" element={<DashboardProfil />} />
         <Route path="empfehlungen" element={<DashboardEmpfehlungen />} />
 
         {/* Tools */}

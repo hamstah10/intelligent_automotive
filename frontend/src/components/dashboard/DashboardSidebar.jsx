@@ -18,6 +18,7 @@ const mainNav = [
   { name: 'Reports', href: '/dashboard/reports', icon: FileText },
   { name: 'Pakete & Addons', href: '/dashboard/pakete', icon: CreditCard, color: '#CCFF00' },
   { name: 'E-Mail Templates', href: '/dashboard/emails', icon: Mail, color: '#c084fc' },
+  { name: 'Meine Garage', href: '/dashboard/garage', icon: Car, color: '#c084fc' },
 ];
 
 const toolNav = [
@@ -242,7 +243,7 @@ export const DashboardSidebar = () => {
           })}
         </div>
 
-        <div data-testid="plan-status-card" className="dash-card p-3 rounded-xl transition-all duration-300"
+        <Link to="/dashboard/profil" data-testid="plan-status-card" className="dash-card p-3 rounded-xl transition-all duration-300 block"
           style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)' }}>
           <div className="font-semibold text-xs mb-0.5" style={{ color: 'var(--d-text)' }}>Combined Elite</div>
           <div className="h-1 rounded-full overflow-hidden mb-1" style={{ backgroundColor: 'var(--d-border-sub)' }}>
@@ -252,7 +253,7 @@ export const DashboardSidebar = () => {
             <span style={{ color: 'var(--d-text-sec)' }}>API Nutzung</span>
             <span className="font-semibold" style={{ color: 'var(--d-text)' }}>78%</span>
           </div>
-        </div>
+        </Link>
       </div>
     </aside>
   );
