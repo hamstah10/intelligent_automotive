@@ -14,72 +14,81 @@ const GREEN = '#CCFF00';
 /* ── Plans ── */
 const plans = [
   {
-    id: 'starter',
-    name: 'Starter',
-    sub: 'Für Einzelhändler',
+    id: 'basic',
+    name: 'Basic',
+    sub: 'Perfekt für Einsteiger',
     price: 49,
     icon: Rocket,
+    color: 'rgba(255,255,255,0.3)',
+    popular: false,
+    cta: 'Jetzt starten',
+    ctaIcon: ArrowRight,
+    features: [
+      'Market Intelligence Zugang',
+      '1.000 Listings/Monat',
+      'Basic Deal Score',
+      '3 Suchprofile',
+      'E-Mail Alerts',
+      'Standard Support',
+    ],
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    sub: 'Für professionelle Händler',
+    price: 99,
+    icon: Zap,
     color: BLUE,
     popular: false,
+    cta: 'Jetzt starten',
+    ctaIcon: Zap,
     features: [
-      { text: 'Bis zu 50 Fahrzeuge', included: true },
-      { text: 'Deal Analyzer (10/Monat)', included: true },
-      { text: 'Marktwert-Check', included: true },
-      { text: 'Basic Alerts (5 aktive)', included: true },
-      { text: 'Dashboard Übersicht', included: true },
-      { text: 'Email Support', included: true },
-      { text: 'Preis-Tracker', included: false },
-      { text: 'Flotten-Management', included: false },
-      { text: 'API-Zugang', included: false },
-      { text: 'Markt-Reports', included: false },
-      { text: 'Tuning Intelligence', included: false },
-      { text: 'Dedicated Support', included: false },
+      'Alles aus Basic',
+      '10.000 Listings/Monat',
+      'Advanced Deal Score',
+      'Unbegrenzte Suchprofile',
+      'Real-time Alerts',
+      'API Zugang',
+      'Priority Support',
     ],
   },
   {
-    id: 'professional',
-    name: 'Professional',
-    sub: 'Für mittelgroße Händler',
-    price: 149,
-    icon: Zap,
+    id: 'elite',
+    name: 'Elite',
+    sub: 'Maximale Power',
+    price: 199,
+    icon: Crown,
+    color: BLUE,
+    popular: false,
+    cta: 'Kontakt aufnehmen',
+    ctaIcon: Headphones,
+    features: [
+      'Alles aus Pro',
+      'Unbegrenzte Listings',
+      'Konkurrenz-Monitoring',
+      'Custom Alerts',
+      'Dedicated Account Manager',
+      'White-Label Reports',
+    ],
+  },
+  {
+    id: 'combined',
+    name: 'Combined',
+    sub: 'Market + Tuning Intelligence',
+    price: 299,
+    icon: Star,
     color: GREEN,
     popular: true,
+    cta: 'Demo buchen',
+    ctaIcon: Sparkles,
     features: [
-      { text: 'Bis zu 500 Fahrzeuge', included: true },
-      { text: 'Deal Analyzer (unbegrenzt)', included: true },
-      { text: 'Marktwert-Check', included: true },
-      { text: 'Smart Alerts (50 aktive)', included: true },
-      { text: 'Vollständiges Dashboard', included: true },
-      { text: 'Priority Email Support', included: true },
-      { text: 'Preis-Tracker (20 Fahrzeuge)', included: true },
-      { text: 'Flotten-Management (Basic)', included: true },
-      { text: 'API-Zugang (1.000 Calls/Tag)', included: true },
-      { text: 'Markt-Reports (5/Monat)', included: true },
-      { text: 'Tuning Intelligence', included: false },
-      { text: 'Dedicated Support', included: false },
-    ],
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise',
-    sub: 'Für Großhändler & Ketten',
-    price: null,
-    icon: Crown,
-    color: '#c084fc',
-    popular: false,
-    features: [
-      { text: 'Unbegrenzte Fahrzeuge', included: true },
-      { text: 'Deal Analyzer (unbegrenzt)', included: true },
-      { text: 'Marktwert-Check', included: true },
-      { text: 'Smart Alerts (unbegrenzt)', included: true },
-      { text: 'Vollständiges Dashboard', included: true },
-      { text: 'Dedicated Account Manager', included: true },
-      { text: 'Preis-Tracker (unbegrenzt)', included: true },
-      { text: 'Flotten-Management (Erweitert)', included: true },
-      { text: 'API-Zugang (unbegrenzt)', included: true },
-      { text: 'Markt-Reports (unbegrenzt)', included: true },
-      { text: 'Tuning Intelligence (Full)', included: true },
-      { text: 'Dedicated Support + SLA', included: true },
+      'Vollständiger Market Zugang',
+      'Vollständiger Tuning Zugang',
+      'ECU/TCU Datenbank',
+      'Tool Matrix & Protokolle',
+      'Cross-Platform Insights',
+      'Enterprise Support',
+      'Custom Integrationen',
     ],
   },
 ];
@@ -101,28 +110,28 @@ const comparisonCategories = [
   {
     name: 'Kernfunktionen',
     rows: [
-      { feature: 'Fahrzeug-Listings', starter: '50', pro: '500', enterprise: 'Unbegrenzt' },
-      { feature: 'Deal Analyzer', starter: '10/Mo.', pro: 'Unbegrenzt', enterprise: 'Unbegrenzt' },
-      { feature: 'Aktive Alerts', starter: '5', pro: '50', enterprise: 'Unbegrenzt' },
-      { feature: 'Dashboard-Module', starter: 'Basic', pro: 'Alle', enterprise: 'Alle + Custom' },
+      { feature: 'Listings/Monat', basic: '1.000', pro: '10.000', elite: 'Unbegrenzt', combined: 'Unbegrenzt' },
+      { feature: 'Deal Score', basic: 'Basic', pro: 'Advanced', elite: 'Advanced', combined: 'Advanced' },
+      { feature: 'Suchprofile', basic: '3', pro: 'Unbegrenzt', elite: 'Unbegrenzt', combined: 'Unbegrenzt' },
+      { feature: 'Tuning Zugang', basic: '-', pro: '-', elite: '-', combined: 'Vollständig' },
     ],
   },
   {
     name: 'Daten & API',
     rows: [
-      { feature: 'API-Calls/Tag', starter: '-', pro: '1.000', enterprise: 'Unbegrenzt' },
-      { feature: 'Preis-Tracker', starter: '-', pro: '20 Fahrzeuge', enterprise: 'Unbegrenzt' },
-      { feature: 'Markt-Reports', starter: '-', pro: '5/Mo.', enterprise: 'Unbegrenzt' },
-      { feature: 'Daten-Export', starter: '-', pro: 'CSV', enterprise: 'CSV/Excel/API' },
+      { feature: 'API Zugang', basic: '-', pro: 'Ja', elite: 'Ja', combined: 'Ja' },
+      { feature: 'White-Label Reports', basic: '-', pro: '-', elite: 'Ja', combined: 'Ja' },
+      { feature: 'ECU/TCU Datenbank', basic: '-', pro: '-', elite: '-', combined: 'Ja' },
+      { feature: 'Custom Integrationen', basic: '-', pro: '-', elite: '-', combined: 'Ja' },
     ],
   },
   {
     name: 'Support & SLA',
     rows: [
-      { feature: 'Support-Kanal', starter: 'Email', pro: 'Priority Email', enterprise: 'Dedicated Manager' },
-      { feature: 'Response Time', starter: '48h', pro: '12h', enterprise: '2h SLA' },
-      { feature: 'Onboarding', starter: 'Self-Service', pro: 'Guided Setup', enterprise: 'White-Glove' },
-      { feature: 'Uptime SLA', starter: '99%', pro: '99.5%', enterprise: '99.9%' },
+      { feature: 'Support-Kanal', basic: 'Standard', pro: 'Priority', elite: 'Dedicated', combined: 'Enterprise' },
+      { feature: 'Account Manager', basic: '-', pro: '-', elite: 'Ja', combined: 'Ja' },
+      { feature: 'Alerts', basic: 'E-Mail', pro: 'Real-time', elite: 'Custom', combined: 'Custom' },
+      { feature: 'Konkurrenz-Monitoring', basic: '-', pro: '-', elite: 'Ja', combined: 'Ja' },
     ],
   },
 ];
@@ -170,80 +179,61 @@ export const DashboardPakete = () => {
       </div>
 
       {/* Plan Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
         {plans.map((plan, i) => {
           const Icon = plan.icon;
-          const displayPrice = plan.price ? getPrice(plan.price) : null;
+          const CtaIcon = plan.ctaIcon;
+          const displayPrice = getPrice(plan.price);
           return (
             <motion.div key={plan.id} data-testid={`plan-card-${plan.id}`} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }}
-              className={`${surface()} overflow-hidden relative ${plan.popular ? 'ring-1' : ''}`}
-              style={plan.popular ? { borderColor: GREEN, boxShadow: `0 0 20px ${GREEN}10` } : {}}>
+              className={`${surface()} overflow-hidden relative ${plan.popular ? 'ring-1' : plan.color === BLUE ? 'ring-1' : ''}`}
+              style={plan.popular ? { borderColor: GREEN, boxShadow: `0 0 20px ${GREEN}10` } : plan.color === BLUE && plan.id === 'pro' ? { borderColor: `${BLUE}40` } : {}}>
               {plan.popular && (
-                <div className="absolute top-0 right-0 px-3 py-1 rounded-bl-xl text-[10px] font-bold" style={{ backgroundColor: GREEN, color: '#000' }}>
-                  Beliebt
+                <div className="absolute top-0 right-0 px-3 py-1 rounded-bl-xl text-[10px] font-bold flex items-center gap-1" style={{ backgroundColor: GREEN, color: '#000' }}>
+                  <Zap className="w-3 h-3" /> Beliebt
                 </div>
               )}
               <div className="p-6">
                 {/* Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${plan.color}12` }}>
-                    <Icon className="w-5 h-5" style={{ color: plan.color }} />
-                  </div>
-                  <div>
-                    <h3 className="font-['Orbitron'] text-sm font-bold" style={{ color: t.text }}>{plan.name}</h3>
-                    <p className="text-[10px]" style={{ color: t.textDim }}>{plan.sub}</p>
-                  </div>
+                <div className="mb-1">
+                  <h3 className="font-['Orbitron'] text-sm font-bold" style={{ color: t.text }}>{plan.name}</h3>
+                  <p className="text-[10px] mt-0.5" style={{ color: t.textDim }}>{plan.sub}</p>
                 </div>
 
                 {/* Price */}
-                <div className="mb-5">
-                  {displayPrice ? (
-                    <div className="flex items-end gap-1">
-                      <span className="font-['Orbitron'] text-3xl font-bold" style={{ color: t.text }}>€{displayPrice}</span>
-                      <span className="text-xs mb-1" style={{ color: t.textMut }}>/ Monat</span>
-                    </div>
-                  ) : (
-                    <div>
-                      <span className="font-['Orbitron'] text-lg font-bold" style={{ color: t.text }}>Individuell</span>
-                      <p className="text-[10px] mt-0.5" style={{ color: t.textDim }}>Kontaktiere uns für ein Angebot</p>
-                    </div>
-                  )}
-                  {billing === 'yearly' && displayPrice && (
+                <div className="mb-5 mt-4">
+                  <div className="flex items-end gap-1">
+                    <span className="font-['Orbitron'] text-3xl font-bold" style={{ color: t.text }}>€{displayPrice}</span>
+                    <span className="text-xs mb-1" style={{ color: t.textMut }}>/Monat</span>
+                  </div>
+                  {billing === 'yearly' && (
                     <p className="text-[10px] mt-1" style={{ color: GREEN }}>Spare €{(plan.price - displayPrice) * 12}/Jahr</p>
                   )}
                 </div>
 
-                {/* CTA */}
-                <Button data-testid={`plan-cta-${plan.id}`}
-                  className="w-full h-10 text-xs font-semibold rounded-xl mb-5 gap-2"
-                  style={plan.popular
-                    ? { backgroundColor: GREEN, color: '#000' }
-                    : plan.price === null
-                      ? { backgroundColor: `${plan.color}15`, color: plan.color, border: `1px solid ${plan.color}30` }
-                      : { backgroundColor: `${BLUE}15`, color: BLUE, border: `1px solid ${BLUE}30` }
-                  }>
-                  {plan.price === null ? (
-                    <><Headphones className="w-3.5 h-3.5" /> Kontakt aufnehmen</>
-                  ) : plan.popular ? (
-                    <><Zap className="w-3.5 h-3.5" /> Jetzt starten</>
-                  ) : (
-                    <><ArrowRight className="w-3.5 h-3.5" /> Auswählen</>
-                  )}
-                </Button>
-
                 {/* Features */}
-                <div className="space-y-2">
+                <div className="space-y-3 mb-6">
                   {plan.features.map((f, fi) => (
-                    <div key={fi} className="flex items-center gap-2.5 text-xs">
-                      {f.included ? (
-                        <Check className="w-3.5 h-3.5 shrink-0" style={{ color: plan.color }} />
-                      ) : (
-                        <X className="w-3.5 h-3.5 shrink-0" style={{ color: t.textDim }} />
-                      )}
-                      <span style={{ color: f.included ? t.textSec : t.textDim }}>{f.text}</span>
+                    <div key={fi} className="flex items-start gap-2.5 text-xs">
+                      <Check className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: plan.popular ? GREEN : plan.color === BLUE ? BLUE : 'rgba(255,255,255,0.4)' }} />
+                      <span style={{ color: t.textSec }}>{f}</span>
                     </div>
                   ))}
                 </div>
+
+                {/* CTA */}
+                <Button data-testid={`plan-cta-${plan.id}`}
+                  className="w-full h-10 text-xs font-semibold rounded-xl gap-2"
+                  style={plan.popular
+                    ? { backgroundColor: GREEN, color: '#000' }
+                    : plan.id === 'pro'
+                      ? { backgroundColor: `${BLUE}15`, color: BLUE, border: `1px solid ${BLUE}30` }
+                      : plan.id === 'elite'
+                        ? { backgroundColor: `${BLUE}10`, color: BLUE, border: `1px solid ${BLUE}20` }
+                        : { backgroundColor: 'var(--d-surface-alt)', color: t.textSec, border: '1px solid var(--d-border)' }
+                  }>
+                  <CtaIcon className="w-3.5 h-3.5" /> {plan.cta}
+                </Button>
               </div>
             </motion.div>
           );
@@ -324,10 +314,11 @@ export const DashboardPakete = () => {
                       <table className="w-full text-xs">
                         <thead>
                           <tr>
-                            <th className="text-left py-2 px-3 font-medium w-[200px]" style={{ color: t.textDim }}>Feature</th>
-                            <th className="text-center py-2 px-3 font-medium" style={{ color: BLUE }}>Starter</th>
-                            <th className="text-center py-2 px-3 font-medium" style={{ color: GREEN }}>Professional</th>
-                            <th className="text-center py-2 px-3 font-medium" style={{ color: '#c084fc' }}>Enterprise</th>
+                            <th className="text-left py-2 px-3 font-medium w-[180px]" style={{ color: t.textDim }}>Feature</th>
+                            <th className="text-center py-2 px-3 font-medium" style={{ color: t.textSec }}>Basic</th>
+                            <th className="text-center py-2 px-3 font-medium" style={{ color: BLUE }}>Pro</th>
+                            <th className="text-center py-2 px-3 font-medium" style={{ color: BLUE }}>Elite</th>
+                            <th className="text-center py-2 px-3 font-medium" style={{ color: GREEN }}>Combined</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -335,9 +326,10 @@ export const DashboardPakete = () => {
                             <tr key={row.feature} data-testid={`comparison-row-${ci}-${ri}`}
                               style={{ borderTop: '1px solid var(--d-border-sub)' }}>
                               <td className="py-2.5 px-3 font-medium" style={{ color: t.textSec }}>{row.feature}</td>
-                              <td className="py-2.5 px-3 text-center" style={{ color: row.starter === '-' ? t.textDim : t.text }}>{row.starter}</td>
-                              <td className="py-2.5 px-3 text-center font-medium" style={{ color: t.text }}>{row.pro}</td>
-                              <td className="py-2.5 px-3 text-center font-medium" style={{ color: t.text }}>{row.enterprise}</td>
+                              <td className="py-2.5 px-3 text-center" style={{ color: row.basic === '-' ? t.textDim : t.text }}>{row.basic}</td>
+                              <td className="py-2.5 px-3 text-center font-medium" style={{ color: row.pro === '-' ? t.textDim : t.text }}>{row.pro}</td>
+                              <td className="py-2.5 px-3 text-center font-medium" style={{ color: row.elite === '-' ? t.textDim : t.text }}>{row.elite}</td>
+                              <td className="py-2.5 px-3 text-center font-medium" style={{ color: row.combined === '-' ? t.textDim : t.text }}>{row.combined}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -345,6 +337,13 @@ export const DashboardPakete = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* Footer Note */}
+                <div className="mt-6 pt-4 text-center" style={{ borderTop: '1px solid var(--d-border-sub)' }}>
+                  <p className="text-[11px]" style={{ color: t.textDim }}>
+                    Alle Preise zzgl. MwSt. · Monatlich kündbar · 14 Tage Geld-zurück-Garantie
+                  </p>
+                </div>
               </div>
             </motion.div>
           )}
