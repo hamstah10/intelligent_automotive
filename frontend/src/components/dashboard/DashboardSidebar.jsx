@@ -5,7 +5,7 @@ import {
   LayoutDashboard, Car, Wrench, Bell, FileText, Users, Building2,
   Sun, Moon, Layers, ChevronDown, Brain, Calculator, Search, HelpCircle,
   ArrowLeftRight, Radar, Map, Sparkles, Boxes, GitCompare, TrendingUp,
-  Truck, BarChart3, Zap, Globe, CreditCard
+  Truck, BarChart3, Zap, Globe, CreditCard, Code
 } from 'lucide-react';
 import { useDashTheme } from './DashboardThemeContext';
 
@@ -13,6 +13,7 @@ const mainNav = [
   { name: 'Übersicht', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Market', href: '/dashboard/market', icon: Car, badge: 0, color: '#00E5FF' },
   { name: 'Tuning', href: '/dashboard/tuning', icon: Wrench, badge: 17, color: '#CCFF00' },
+  { name: 'Coding', href: '/dashboard/coding', icon: Code, badge: 38, color: '#c084fc' },
   { name: 'Alerts', href: '/dashboard/alerts', icon: Bell, badge: 61 },
   { name: 'Reports', href: '/dashboard/reports', icon: FileText },
   { name: 'Pakete & Addons', href: '/dashboard/pakete', icon: CreditCard, color: '#CCFF00' },

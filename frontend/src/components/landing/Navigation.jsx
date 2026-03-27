@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, BarChart2, Cpu, Moon, Sun, Layers } from 'lucide-react';
+import { Menu, X, ChevronDown, BarChart2, Cpu, Code, Moon, Sun, Layers } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useDashTheme } from '../dashboard/DashboardThemeContext';
 
@@ -15,6 +15,7 @@ const navLinks = [
 const productLinks = [
   { name: 'Market Intelligence', href: '/market', icon: BarChart2, color: '#00E5FF' },
   { name: 'Tuning Intelligence', href: '/tuning', icon: Cpu, color: '#CCFF00' },
+  { name: 'Coding Intelligence', href: '/coding', icon: Code, color: '#c084fc' },
 ];
 
 const themeIcons = { dark: Moon, light: Sun, gradient: Layers };

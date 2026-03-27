@@ -27,6 +27,7 @@ import { BeispielTuningShowcase } from './BeispielTuningShowcase';
 import { BeispielWidgets } from './BeispielWidgets';
 import { BeispielFahrzeugsuche } from './BeispielFahrzeugsuche';
 import { DashboardPakete } from './DashboardPakete';
+import { DashboardCoding } from './DashboardCoding';
 
 export default function DashboardPage() {
   return (
@@ -35,6 +36,7 @@ export default function DashboardPage() {
         <Route index element={<DashboardOverview />} />
         <Route path="market" element={<DashboardMarket />} />
         <Route path="tuning" element={<DashboardTuning />} />
+        <Route path="coding" element={<DashboardCoding />} />
         <Route path="alerts" element={<DashboardAlerts />} />
         <Route path="reports" element={<DashboardReports />} />
         <Route path="teams" element={<DashboardTeams />} />
