@@ -41,6 +41,8 @@ const helpArticles = [
   { title: 'Alerts konfigurieren', category: 'Features', views: '980' },
   { title: 'Account und Billing verwalten', category: 'Account', views: '756' },
   { title: 'ECU Finder Tutorial', category: 'Tuning', views: '1.5k' },
+  { title: 'Erste Schritte mit Coding Intelligence', category: 'Coding', views: '1.3k' },
+  { title: 'Byte/Bit Codierungen verstehen', category: 'Coding', views: '1.1k' },
 ];
 
 const docSections = [
@@ -60,6 +62,11 @@ const docSections = [
     articles: ['ECU Finder', 'Tool Matrix', 'Protokolle', 'Support Matrix'] 
   },
   { 
+    title: 'Coding Intelligence', 
+    icon: Code, 
+    articles: ['Codierungen suchen', 'Byte/Bit Datenbank', 'Steuergeräte-Module', 'Risiko-Bewertung'] 
+  },
+  { 
     title: 'Account & Sicherheit', 
     icon: Lock, 
     articles: ['Profil verwalten', 'Zwei-Faktor-Auth', 'API Keys', 'Team-Verwaltung'] 
@@ -73,6 +80,9 @@ const apiEndpoints = [
   { method: 'GET', path: '/api/v1/ecus', description: 'ECU Datenbank abfragen' },
   { method: 'GET', path: '/api/v1/tools', description: 'Tool Matrix abrufen' },
   { method: 'POST', path: '/api/v1/alerts', description: 'Alert erstellen' },
+  { method: 'GET', path: '/api/v1/codings', description: 'Codierungen abrufen' },
+  { method: 'GET', path: '/api/v1/codings/{ecu}', description: 'Codierungen pro Steuergerät' },
+  { method: 'GET', path: '/api/v1/modules', description: 'Steuergeräte-Module abrufen' },
 ];
 
 export const SupportPage = () => {
@@ -403,7 +413,7 @@ export const SupportPage = () => {
               <span className="text-[#CCFF00] font-bold text-xs">automotive</span>
             </div>
           </Link>
-          <p className="text-white/40 text-sm">© 2024 intelligent-automotive. Support Center.</p>
+          <p className="text-white/40 text-sm">© 2026 intelligent-automotive. Support Center.</p>
         </div>
       </footer>
     </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Calendar as CalendarIcon, Clock, User, Mail, Building, 
-  MessageSquare, Check, ArrowRight, ArrowLeft, BarChart2, Cpu, Download
+  MessageSquare, Check, ArrowRight, ArrowLeft, BarChart2, Cpu, Code, Download
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -22,7 +22,8 @@ const timeSlots = [
 const demoTypes = [
   { id: 'market', name: 'Market Intelligence', icon: BarChart2, color: '#00E5FF', desc: 'Fahrzeugmarkt analysieren' },
   { id: 'tuning', name: 'Tuning Intelligence', icon: Cpu, color: '#CCFF00', desc: 'ECU/TCU Datenbank' },
-  { id: 'both', name: 'Beide Produkte', icon: null, color: '#CCFF00', desc: 'Komplette Plattform' },
+  { id: 'coding', name: 'Coding Intelligence', icon: Code, color: '#c084fc', desc: 'Codierungen & Byte/Bit' },
+  { id: 'all', name: 'Alle Produkte', icon: null, color: '#CCFF00', desc: 'Komplette Plattform' },
 ];
 
 export const DemoPage = () => {
@@ -52,7 +53,7 @@ export const DemoPage = () => {
     // Konfetti-Animation
     const duration = 3000;
     const end = Date.now() + duration;
-    const colors = ['#CCFF00', '#00E5FF', '#ffffff'];
+    const colors = ['#CCFF00', '#00E5FF', '#c084fc', '#ffffff'];
 
     const frame = () => {
       confetti({
@@ -197,7 +198,7 @@ END:VCALENDAR`;
               <h2 className="text-xl font-semibold text-white mb-6">
                 Welches Produkt interessiert dich?
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {demoTypes.map((type) => {
                   const Icon = type.icon;
                   return (
@@ -216,6 +217,7 @@ END:VCALENDAR`;
                         <div className="flex gap-1 mb-4">
                           <BarChart2 className="w-6 h-6 text-[#00E5FF]" />
                           <Cpu className="w-6 h-6 text-[#CCFF00]" />
+                          <Code className="w-6 h-6 text-[#c084fc]" />
                         </div>
                       )}
                       <div className="text-white font-semibold mb-1">{type.name}</div>
@@ -336,7 +338,8 @@ END:VCALENDAR`;
                   <div className="flex items-center gap-2 text-white">
                     {selectedType === 'market' && <BarChart2 className="w-4 h-4 text-[#00E5FF]" />}
                     {selectedType === 'tuning' && <Cpu className="w-4 h-4 text-[#CCFF00]" />}
-                    {selectedType === 'both' && <Check className="w-4 h-4 text-[#CCFF00]" />}
+                    {selectedType === 'coding' && <Code className="w-4 h-4 text-[#c084fc]" />}
+                    {selectedType === 'all' && <Check className="w-4 h-4 text-[#CCFF00]" />}
                     {demoTypes.find(t => t.id === selectedType)?.name}
                   </div>
                 </div>

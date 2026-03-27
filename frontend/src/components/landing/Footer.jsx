@@ -178,7 +178,7 @@ export const Footer = () => {
 
           {/* Copyright */}
           <p className="text-white/40 text-sm">
-            © 2024 intelligent-automotive. Alle Rechte vorbehalten.
+            © 2026 intelligent-automotive. Alle Rechte vorbehalten.
           </p>
 
           {/* Social Links */}

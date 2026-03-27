@@ -19,39 +19,52 @@ Central Automotive Intelligence SaaS platform with three specialized products:
 ├── frontend/src/
 │   ├── App.js, index.css
 │   ├── components/
-│   │   ├── landing/ (8 tool components, HeroCanvas, Navigation, FeaturesCoding, etc.)
-│   │   ├── pages/ (MarketPage, TuningPage, CodingPage, LoginPage, etc.)
-│   │   ├── dashboard/
-│   │   │   ├── Layout, Sidebar, Page, ThemeContext, themeUtils
-│   │   │   ├── DashboardCoding.jsx
-│   │   │   ├── DashboardToolWrapper.jsx, DashboardEmpfehlungen.jsx
-│   │   │   ├── DashboardPakete.jsx (with Coding addon), VehicleDetailView.jsx
-│   │   │   ├── Beispiel: Vergleich, PreisTracker, Flotte, MarktReport, TuningShowcase, Widgets, Fahrzeugsuche
-│   │   │   ├── 7 standard dashboard pages
+│   │   ├── landing/ (Navigation, HeroCanvas, HeroSection, FeaturesMarket, FeaturesTuning, FeaturesCoding, Pricing, Footer, etc.)
+│   │   ├── pages/ (MarketPage, TuningPage, CodingPage, CodingDemoPage, DemoPage, LoginPage, SupportPage, etc.)
+│   │   ├── dashboard/ (Layout, Sidebar, Page, Pakete, Coding, Tools, Beispiele, etc.)
 ```
 
 ## Implemented Features
 
-### Products (3) — All visible on Landing Page
-- **Market Intelligence** — Product page (/market) + Dashboard (/dashboard/market) + Landing Features Section
-- **Tuning Intelligence** — Product page (/tuning) + Dashboard (/dashboard/tuning) + Landing Features Section
-- **Coding Intelligence** — Product page (/coding) + Dashboard (/dashboard/coding) + Landing Features Section (NEW)
+### Products (3) — All visible across entire platform
+- **Market Intelligence** — Landing + Product page + Dashboard + Demo + Support + Footer
+- **Tuning Intelligence** — Landing + Product page + Dashboard + Demo + Support + Footer
+- **Coding Intelligence** — Landing + Product page + Dashboard + Demo + Support + Footer + Interactive Live-Demo
 
 ### Landing Page
-- Hero with AI Neural Network animation, 3 product pills (Market, Tuning, Coding), 8 interactive tools
+- Hero with 3 product pills (Market, Tuning, Coding)
 - Navigation with 3 products dropdown and color-fading "automotive" logo
-- FeaturesCoding section with 6 purple-themed bento grid cards
-- Pricing with Combined plan (Market + Tuning + Coding) at €349/Monat
+- FeaturesCoding section (purple bento grid, 6 cards)
+- Pricing with Combined plan (Market + Tuning + Coding) at 349/Mo
+
+### Coding Intelligence Live-Demo (/coding/demo)
+- Email gate for lead generation
+- Fahrzeug → Steuergerät → Codierung → Byte/Bit Visualisierung → Anwenden-Simulation
+- Realistic VW/Audi MQB data (BCM, MIB, IC, ABS ECUs)
+- Risk levels (low/medium/high) with warnings
+- Teaser section on /coding product page
+
+### Demo buchen (/demo)
+- 4 product options: Market, Tuning, Coding, Alle Produkte
+- Calendar + time slot picker + contact form + ICS download
+
+### Support (/support)
+- Hilfe Center with Coding articles
+- Dokumentation with Coding Intelligence section
+- API Doku with Coding endpoints (/codings, /codings/{ecu}, /modules)
 
 ### Dashboard
-- Main Nav: Overview, Market, Tuning, Coding, Alerts, Reports, Pakete & Addons
-- Tools Menu (7): Deal Analyzer, ROI Rechner, Marktwert-Check, Deal Quiz, Vorher/Nachher, Wettbewerb-Radar, Markt-Heatmap
-- Beispiele Menu (7): Vergleich, Preis-Tracker, Flotte, Markt-Report, Tuning Showcase, Widgets, Fahrzeugsuche (with Detail View)
-- Pakete & Addons: 4 Plans (Basic/Pro/Elite/Combined incl. Coding), 9 Addons (incl. Coding Intelligence), Feature Comparison Table with Coding rows
-- Empfehlungen, ECU Knowledge Bot, 3-way theme
+- Overview, Market, Tuning, Coding, Alerts, Reports, Pakete & Addons
+- 7 AI Tools, 7 Beispiele pages, Fahrzeugsuche with detail view
+- Pakete: 4 Plans (Basic/Pro/Elite/Combined incl. Coding), 9 Addons (incl. Coding Intelligence)
+- Comparison table with Coding Zugang + Coding-Datenbank rows
+
+### Footer
+- Year: 2026
+- Coding Intelligence in Produkt links
 
 ## Mocked Data
-- All Dashboard + Beispiele data, Authentication, Vehicle listings, Coding database
+- All Dashboard + Beispiele data, Authentication, Vehicle listings, Coding database, Demo booking
 
 ## API Endpoints
 - POST /api/ai/analyze-deal, /api/ai/ecu-knowledge, /api/ai/generate-report
@@ -62,7 +75,7 @@ Central Automotive Intelligence SaaS platform with three specialized products:
 - User Authentication (JWT login/register)
 ### P1
 - Chat History Persistence (MongoDB)
-- Autohändler-Pakete Backend (Stripe integration)
+- Stripe integration for Pakete
 ### P2
 - Crawler System, Admin Panel
 ### P3
