@@ -280,6 +280,56 @@ export const CodingPage = () => {
         </div>
       </section>
 
+      {/* Interactive Demo Teaser */}
+      <section className="py-24 px-6 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <AnimatedSection>
+            <div className="relative rounded-3xl border border-white/10 overflow-hidden bg-white/[0.02]" data-testid="coding-demo-teaser">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-[0.04] overflow-hidden">
+                <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <pattern id="demogrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                      <text x="10" y="20" fill={PURPLE} fontSize="10" fontFamily="monospace">0x09</text>
+                      <text x="45" y="50" fill={PURPLE} fontSize="10" fontFamily="monospace">bit[3]</text>
+                      <text x="15" y="70" fill={PURPLE} fontSize="10" fontFamily="monospace">BCM</text>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#demogrid)"/>
+                </svg>
+              </div>
+              <div className="relative z-10 p-8 sm:p-12 text-center">
+                <motion.div initial={{ scale: 0.9 }} whileInView={{ scale: 1 }} viewport={{ once: true }}
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: `${PURPLE}15`, border: `1px solid ${PURPLE}30` }}>
+                  <Terminal className="w-8 h-8" style={{ color: PURPLE }} />
+                </motion.div>
+                <h3 className="font-['Orbitron'] text-xl sm:text-2xl font-bold mb-3 tracking-tighter">
+                  Interaktive <span style={{ color: PURPLE }}>Live-Demo</span>
+                </h3>
+                <p className="text-white/50 text-sm max-w-lg mx-auto mb-8 leading-relaxed">
+                  Wähle ein Fahrzeug, ein Steuergerät und simuliere eine echte Codierung — 
+                  Byte für Byte. Erlebe die Datenbank bevor du dich entscheidest.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+                  {['Fahrzeug wählen', 'Steuergerät finden', 'Byte/Bit sehen', 'Codierung simulieren'].map((s, i) => (
+                    <div key={s} className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold" style={{ backgroundColor: `${PURPLE}20`, color: PURPLE }}>{i + 1}</div>
+                      <span className="text-xs text-white/60">{s}</span>
+                      {i < 3 && <ArrowRight className="w-3 h-3 text-white/20" />}
+                    </div>
+                  ))}
+                </div>
+                <Link to="/coding/demo">
+                  <Button data-testid="coding-demo-teaser-cta" className="text-black font-semibold px-8 h-12 text-sm rounded-xl gap-2" style={{ backgroundColor: PURPLE }}>
+                    <Terminal className="w-4 h-4" /> Demo starten
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 px-6 border-t border-white/5">
         <div className="max-w-3xl mx-auto text-center">

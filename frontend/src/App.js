@@ -32,6 +32,7 @@ import { DemoPage } from "@/components/pages/DemoPage";
 import { SupportPage } from "@/components/pages/SupportPage";
 import { StatusPage } from "@/components/pages/StatusPage";
 import { CodingPage } from "@/components/pages/CodingPage";
+import { CodingDemoPage } from "@/components/pages/CodingDemoPage";
 import DashboardPage from "@/components/dashboard/DashboardPage";
 
 const HomePage = () => {
@@ -76,6 +77,7 @@ const AppInner = () => {
         <Route path="/market" element={<MarketPage />} />
         <Route path="/tuning" element={<TuningPage />} />
         <Route path="/coding" element={<CodingPage />} />
+        <Route path="/coding/demo" element={<CodingDemoPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/demo" element={<DemoPage />} />
