@@ -8,6 +8,7 @@ import {
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { t, surface, surfaceAlt } from './themeUtils';
+import { VehicleDetailView } from './VehicleDetailView';
 
 const BLUE = '#00E5FF';
 const GREEN = '#CCFF00';
@@ -79,6 +80,7 @@ export const BeispielFahrzeugsuche = () => {
   const [tracked, setTracked] = useState(new Set());
   const [tab, setTab] = useState('search');
   const [showFilters, setShowFilters] = useState(true);
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
 
   const toggle = (id) => setTracked(prev => {
     const next = new Set(prev);
@@ -122,7 +124,7 @@ export const BeispielFahrzeugsuche = () => {
     const isTracked = tracked.has(v.id);
     return (
       <motion.div key={v.id} data-testid={`listing-card-${v.id}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.04 }}
-        className={surface('overflow-hidden group')}>
+        className={surface('overflow-hidden group cursor-pointer')} onClick={() => setSelectedVehicle(v)}>
         {/* Image */}
         <div className="relative h-40 overflow-hidden">
           <img src={v.image} alt={v.model} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -133,7 +135,7 @@ export const BeispielFahrzeugsuche = () => {
             <Clock className="w-3 h-3" />{v.daysOnline === 1 ? 'Heute' : `vor ${v.daysOnline} Tagen`}
           </span>
           {/* Track Button */}
-          <button data-testid={`track-btn-${v.id}`} onClick={() => toggle(v.id)}
+          <button data-testid={`track-btn-${v.id}`} onClick={(e) => { e.stopPropagation(); toggle(v.id); }}
             className="absolute top-2.5 right-2.5 w-8 h-8 rounded-lg flex items-center justify-center backdrop-blur-sm transition-all"
             style={{ backgroundColor: isTracked ? 'rgba(204,255,0,0.2)' : 'rgba(0,0,0,0.5)', border: `1px solid ${isTracked ? 'rgba(204,255,0,0.4)' : 'rgba(255,255,255,0.1)'}` }}>
             {isTracked ? <Star className="w-4 h-4 fill-[#CCFF00] text-[#CCFF00]" /> : <StarOff className="w-4 h-4 text-white/60" />}
@@ -175,6 +177,19 @@ export const BeispielFahrzeugsuche = () => {
       </motion.div>
     );
   };
+
+  /* ── Detail View ── */
+  if (selectedVehicle) {
+    return (
+      <VehicleDetailView
+        vehicle={selectedVehicle}
+        onBack={() => setSelectedVehicle(null)}
+        isTracked={tracked.has(selectedVehicle.id)}
+        onToggleTrack={toggle}
+        allListings={mockListings}
+      />
+    );
+  }
 
   return (
     <>
