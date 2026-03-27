@@ -104,11 +104,12 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-['Orbitron'] text-2xl sm:text-3xl lg:text-6xl font-bold tracking-tighter leading-[1.1] mb-6 max-w-4xl"
         >
-          Die{' '}
-          <span className="text-gradient-cyan">Daten</span>
-          , die dein{' '}
-          <span className="text-gradient-yellow">Geschäft</span>
-          {' '}antreiben
+          <span className="text-gradient-cyan">Analysiere</span>
+          {' '}Märkte.{' '}
+          <span className="text-gradient-yellow">Tune</span>
+          {' '}Steuergeräte.{' '}
+          <span className="text-gradient-purple">Codiere</span>
+          {' '}Fahrzeuge.
         </motion.h1>
 
         {/* Subheadline */}
@@ -118,8 +119,8 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-white/60 text-base lg:text-lg leading-relaxed max-w-2xl mb-10"
         >
-          Eine zentrale Plattform für die Automotive-Branche. Analysiere Fahrzeugmärkte, 
-          erkenne Deals unter Marktwert, verstehe jedes Steuergerät und codiere jedes Fahrzeug.
+          Die zentrale AI-Plattform für Autohäuser, Tuner und Fahrzeug-Profis.
+          Marktdaten in Echtzeit, ECU-Datenbanken und über 2.800 Codierungen — alles in einem Dashboard.
         </motion.p>
 
         {/* CTA Buttons */}
