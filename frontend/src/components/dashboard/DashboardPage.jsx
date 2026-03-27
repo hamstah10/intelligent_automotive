@@ -24,6 +24,7 @@ import { BeispielPreisTracker } from './BeispielPreisTracker';
 import { BeispielFlotte } from './BeispielFlotte';
 import { BeispielMarktReport } from './BeispielMarktReport';
 import { BeispielTuningShowcase } from './BeispielTuningShowcase';
+import { BeispielWidgets } from './BeispielWidgets';
 
 export default function DashboardPage() {
   return (
@@ -81,6 +82,7 @@ export default function DashboardPage() {
         <Route path="beispiele/flotte" element={<BeispielFlotte />} />
         <Route path="beispiele/markt-report" element={<BeispielMarktReport />} />
         <Route path="beispiele/tuning-showcase" element={<BeispielTuningShowcase />} />
+        <Route path="beispiele/widgets" element={<BeispielWidgets />} />
       </Routes>
     </DashboardLayout>
   );

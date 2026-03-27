@@ -33,6 +33,7 @@ const beispielNav = [
   { name: 'Flotten-Übersicht', href: '/dashboard/beispiele/flotte', icon: Truck, color: '#00E5FF' },
   { name: 'Markt-Report', href: '/dashboard/beispiele/markt-report', icon: BarChart3, color: '#CCFF00' },
   { name: 'Tuning Showcase', href: '/dashboard/beispiele/tuning-showcase', icon: Zap, color: '#00E5FF' },
+  { name: 'Dashboard Widgets', href: '/dashboard/beispiele/widgets', icon: Boxes, color: '#CCFF00' },
 ];
 
 const bottomNav = [
