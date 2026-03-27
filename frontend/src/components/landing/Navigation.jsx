@@ -25,14 +25,22 @@ export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showProductMenu, setShowProductMenu] = useState(false);
+  const [colorIdx, setColorIdx] = useState(0);
   const location = useLocation();
   const { theme, setTheme } = useDashTheme();
   const isLight = theme === 'light';
+
+  const brandColors = ['#00E5FF', '#CCFF00', '#c084fc'];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => setColorIdx(i => (i + 1) % 3), 3000);
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToSection = (href) => {
@@ -78,7 +86,13 @@ export const Navigation = () => {
             />
             <div className="flex flex-col leading-none">
               <span className={`font-semibold text-sm font-['Orbitron'] tracking-tight ${textClass}`}>intelligent</span>
-              <span className="text-[#CCFF00] font-bold text-sm font-['Orbitron'] tracking-tight">automotive</span>
+              <motion.span
+                animate={{ color: brandColors[colorIdx] }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
+                className="font-bold text-sm font-['Orbitron'] tracking-tight"
+              >
+                automotive
+              </motion.span>
             </div>
           </a>
 
