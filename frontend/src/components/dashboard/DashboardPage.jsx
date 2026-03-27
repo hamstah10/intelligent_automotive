@@ -26,6 +26,7 @@ import { BeispielMarktReport } from './BeispielMarktReport';
 import { BeispielTuningShowcase } from './BeispielTuningShowcase';
 import { BeispielWidgets } from './BeispielWidgets';
 import { BeispielFahrzeugsuche } from './BeispielFahrzeugsuche';
+import { DashboardPakete } from './DashboardPakete';
 
 export default function DashboardPage() {
   return (
@@ -38,6 +39,7 @@ export default function DashboardPage() {
         <Route path="reports" element={<DashboardReports />} />
         <Route path="teams" element={<DashboardTeams />} />
         <Route path="tenants" element={<DashboardTenants />} />
+        <Route path="pakete" element={<DashboardPakete />} />
         <Route path="empfehlungen" element={<DashboardEmpfehlungen />} />
 
         {/* Tools */}
