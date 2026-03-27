@@ -12,62 +12,42 @@ Central Automotive Intelligence SaaS platform with three specialized products:
 - Typography: Orbitron (Headings), Exo 2 (Body)
 - Themes: 3-way system (Dark / Light / Black Gradient)
 
-## Architecture
-```
-/app/
-├── backend/ (server.py, ai_routes.py)
-├── frontend/src/
-│   ├── App.js, index.css
-│   ├── components/
-│   │   ├── landing/ (Navigation, HeroCanvas, HeroSection, FeaturesMarket, FeaturesTuning, FeaturesCoding, Pricing, Footer, etc.)
-│   │   ├── pages/ (MarketPage, TuningPage, CodingPage, CodingDemoPage, DemoPage, LoginPage, SupportPage, etc.)
-│   │   ├── dashboard/ (Layout, Sidebar, Page, Pakete, Coding, Tools, Beispiele, etc.)
-```
-
 ## Implemented Features
 
-### Products (3) — All visible across entire platform
-- **Market Intelligence** — Landing + Product page + Dashboard + Demo + Support + Footer
-- **Tuning Intelligence** — Landing + Product page + Dashboard + Demo + Support + Footer
-- **Coding Intelligence** — Landing + Product page + Dashboard + Demo + Support + Footer + Interactive Live-Demo
-
 ### Landing Page
-- Hero with 3 product pills (Market, Tuning, Coding)
-- Navigation with 3 products dropdown and color-fading "automotive" logo
-- FeaturesCoding section (purple bento grid, 6 cards)
-- Pricing with Combined plan (Market + Tuning + Coding) at 349/Mo
+- Hero with 3 product pills, Navigation with color-fading logo
+- FeaturesCoding section, Pricing with Combined plan (Market + Tuning + Coding)
+- Footer with 2026 copyright
 
 ### Coding Intelligence Live-Demo (/coding/demo)
-- Email gate for lead generation
-- Fahrzeug → Steuergerät → Codierung → Byte/Bit Visualisierung → Anwenden-Simulation
-- Realistic VW/Audi MQB data (BCM, MIB, IC, ABS ECUs)
-- Risk levels (low/medium/high) with warnings
-- Teaser section on /coding product page
+- Email gate → Vehicle → ECU → Byte/Bit Visualization → Apply simulation
 
-### Demo buchen (/demo)
-- 4 product options: Market, Tuning, Coding, Alle Produkte
-- Calendar + time slot picker + contact form + ICS download
+### Coding Intelligence Dashboard (PREMIUM AI UPGRADE)
+- **AI Assistant**: Structured responses (Summary + Confidence badge + Coding Cards + Evidence)
+- **Quick Actions**: Details anzeigen, Ähnliche Codings, Anderes Tool, Risiko anzeigen — all inline panels, no re-query
+- **Smart Suggestions**: Clickable related coding pills
+- **Expert Mode Toggle**: Standard/Expert with different AI prompts
+- **History Panel**: Last 10 queries, clickable to re-run
+- **Favorites/Bookmarks**: Save codings with star icon
+- **Coding Highlight Cards**: Labels (Beliebt/Risiko/Empfohlen) on category items
+- **Upload & Analyse**: Screenshot + Document dropzones (preparation, "Bald verfügbar")
+- **Module Visualization**: 10 ECU module cards with counts
+- **Loading/Thinking State**: "AI analysiert..." with skeleton loaders
 
-### Support (/support)
-- Hilfe Center with Coding articles
-- Dokumentation with Coding Intelligence section
-- API Doku with Coding endpoints (/codings, /codings/{ecu}, /modules)
-
-### Dashboard
+### Dashboard General
 - Overview, Market, Tuning, Coding, Alerts, Reports, Pakete & Addons
-- 7 AI Tools, 7 Beispiele pages, Fahrzeugsuche with detail view
-- Pakete: 4 Plans (Basic/Pro/Elite/Combined incl. Coding), 9 Addons (incl. Coding Intelligence)
-- Comparison table with Coding Zugang + Coding-Datenbank rows
+- 7 AI Tools, 7 Beispiele, Fahrzeugsuche with detail view, Pakete with Coding addon
 
-### Footer
-- Year: 2026
-- Coding Intelligence in Produkt links
-
-## Mocked Data
-- All Dashboard + Beispiele data, Authentication, Vehicle listings, Coding database, Demo booking
+### Other Pages
+- Demo buchen: 4 products (Market, Tuning, Coding, Alle)
+- Support: Coding help articles, API docs, Coding documentation section
 
 ## API Endpoints
+- POST /api/ai/coding-assistant (structured JSON with codings, confidence, evidence, suggestions)
 - POST /api/ai/analyze-deal, /api/ai/ecu-knowledge, /api/ai/generate-report
+
+## Mocked Data
+- Dashboard stats, Vehicle listings, Pricing checkouts, Auth
 
 ## Backlog
 ### P0
@@ -76,6 +56,7 @@ Central Automotive Intelligence SaaS platform with three specialized products:
 ### P1
 - Chat History Persistence (MongoDB)
 - Stripe integration for Pakete
+- PWA App for customers
 ### P2
 - Crawler System, Admin Panel
 ### P3

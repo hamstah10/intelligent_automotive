@@ -126,6 +126,9 @@ export const CodingAssistant = () => {
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
   const [sessionId, setSessionId] = useState(null);
+  const [showDetails, setShowDetails] = useState(false);
+  const [showRisk, setShowRisk] = useState(false);
+  const [showTools, setShowTools] = useState(false);
   const inputRef = useRef(null);
 
   const exampleQueries = [
@@ -139,6 +142,9 @@ export const CodingAssistant = () => {
     if (!q.trim()) return;
     setLoading(true);
     setResponse(null);
+    setShowDetails(false);
+    setShowRisk(false);
+    setShowTools(false);
     const currentQuery = q.trim();
     setQuery('');
 
@@ -398,31 +404,121 @@ export const CodingAssistant = () => {
 
             {/* Quick Actions */}
             <div className="flex flex-wrap gap-2" data-testid="quick-actions">
-              <button onClick={() => { setQuery(`Details zu ${response.codings?.[0]?.name || response.query}`); handleSubmit(`Details zu ${response.codings?.[0]?.name || response.query}`); }}
+              <button onClick={() => { setShowDetails(!showDetails); setShowRisk(false); setShowTools(false); }}
                 className="flex items-center gap-1.5 text-[10px] font-medium px-3 py-2 rounded-lg transition-colors"
-                style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)', color: t.textSec }}
+                style={{ backgroundColor: showDetails ? `${PURPLE}15` : 'var(--d-surface)', border: `1px solid ${showDetails ? `${PURPLE}40` : 'var(--d-border)'}`, color: showDetails ? PURPLE : t.textSec }}
                 data-testid="action-details">
                 <Eye className="w-3 h-3" style={{ color: PURPLE }} /> Details anzeigen
               </button>
-              <button onClick={() => { const s = response.suggestions?.[0] || 'ähnliche Codings'; handleSubmit(s); }}
+              <button onClick={() => { const suggestionsEl = document.querySelector('[data-testid="smart-suggestions"]'); if (suggestionsEl) suggestionsEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); }}
                 className="flex items-center gap-1.5 text-[10px] font-medium px-3 py-2 rounded-lg transition-colors"
                 style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)', color: t.textSec }}
                 data-testid="action-similar">
                 <Layers className="w-3 h-3" style={{ color: PURPLE }} /> Ähnliche Codings
               </button>
-              <button onClick={() => handleSubmit(`Welches Tool brauche ich für ${response.codings?.[0]?.name || response.query}?`)}
+              <button onClick={() => { setShowTools(!showTools); setShowDetails(false); setShowRisk(false); }}
                 className="flex items-center gap-1.5 text-[10px] font-medium px-3 py-2 rounded-lg transition-colors"
-                style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)', color: t.textSec }}
+                style={{ backgroundColor: showTools ? `${PURPLE}15` : 'var(--d-surface)', border: `1px solid ${showTools ? `${PURPLE}40` : 'var(--d-border)'}`, color: showTools ? PURPLE : t.textSec }}
                 data-testid="action-tool">
                 <Wrench className="w-3 h-3" style={{ color: PURPLE }} /> Anderes Tool
               </button>
-              <button onClick={() => handleSubmit(`Risikobewertung für ${response.codings?.[0]?.name || response.query}`)}
+              <button onClick={() => { setShowRisk(!showRisk); setShowDetails(false); setShowTools(false); }}
                 className="flex items-center gap-1.5 text-[10px] font-medium px-3 py-2 rounded-lg transition-colors"
-                style={{ backgroundColor: 'var(--d-surface)', border: '1px solid var(--d-border)', color: t.textSec }}
+                style={{ backgroundColor: showRisk ? `${PURPLE}15` : 'var(--d-surface)', border: `1px solid ${showRisk ? `${PURPLE}40` : 'var(--d-border)'}`, color: showRisk ? PURPLE : t.textSec }}
                 data-testid="action-risk">
                 <AlertTriangle className="w-3 h-3" style={{ color: PURPLE }} /> Risiko anzeigen
               </button>
             </div>
+
+            {/* Details Panel */}
+            <AnimatePresence>
+              {showDetails && response.codings?.length > 0 && (
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                  className={surface('p-4')} data-testid="details-panel">
+                  <span className="text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 mb-3" style={{ color: t.textDim }}>
+                    <Eye className="w-3 h-3" style={{ color: PURPLE }} /> Erweiterte Details
+                  </span>
+                  {response.codings.map((c, i) => (
+                    <div key={i} className="space-y-2.5">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div className="p-2.5 rounded-lg" style={{ backgroundColor: 'var(--d-surface-alt)' }}>
+                          <span className="text-[9px] uppercase tracking-wider block mb-1" style={{ color: t.textDim }}>Modul</span>
+                          <span className="text-xs font-semibold" style={{ color: t.text }}>{c.module}</span>
+                        </div>
+                        <div className="p-2.5 rounded-lg" style={{ backgroundColor: 'var(--d-surface-alt)' }}>
+                          <span className="text-[9px] uppercase tracking-wider block mb-1" style={{ color: t.textDim }}>Adresse</span>
+                          <span className="text-xs font-mono" style={{ color: t.text }}>Byte {c.byte}, Bit {c.bit}</span>
+                        </div>
+                        <div className="p-2.5 rounded-lg" style={{ backgroundColor: 'var(--d-surface-alt)' }}>
+                          <span className="text-[9px] uppercase tracking-wider block mb-1" style={{ color: t.textDim }}>Änderung</span>
+                          <span className="text-xs font-mono" style={{ color: t.textMut }}>{c.original}</span>
+                          <span className="text-xs mx-1" style={{ color: PURPLE }}>&rarr;</span>
+                          <span className="text-xs font-mono font-bold" style={{ color: PURPLE }}>{c.coded}</span>
+                        </div>
+                      </div>
+                      {c.notes && (
+                        <div className="flex items-start gap-2 p-3 rounded-lg" style={{ backgroundColor: `${PURPLE}08`, border: `1px solid ${PURPLE}15` }}>
+                          <Info className="w-3.5 h-3.5 mt-0.5 shrink-0" style={{ color: PURPLE }} />
+                          <p className="text-[11px] leading-relaxed" style={{ color: t.textSec }}>{c.notes}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Tools Panel */}
+            <AnimatePresence>
+              {showTools && response.codings?.length > 0 && (
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                  className={surface('p-4')} data-testid="tools-panel">
+                  <span className="text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 mb-3" style={{ color: t.textDim }}>
+                    <Wrench className="w-3 h-3" style={{ color: PURPLE }} /> Alternative Tools
+                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {['VCDS', 'OBD11', 'Carly', 'BimmerCode', 'E-Sys', 'Xentry'].map(tool => {
+                      const recommended = response.codings.some(c => c.tool?.toLowerCase().includes(tool.toLowerCase()));
+                      return (
+                        <div key={tool} className="flex items-center gap-2 p-2.5 rounded-lg" style={{ backgroundColor: recommended ? `${PURPLE}10` : 'var(--d-surface-alt)', border: `1px solid ${recommended ? `${PURPLE}30` : 'var(--d-border-sub)'}` }}>
+                          <Wrench className="w-3 h-3" style={{ color: recommended ? PURPLE : t.textDim }} />
+                          <span className="text-[11px] font-medium" style={{ color: recommended ? PURPLE : t.textSec }}>{tool}</span>
+                          {recommended && <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-md ml-auto" style={{ backgroundColor: `${PURPLE}20`, color: PURPLE }}>Empfohlen</span>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Risk Panel */}
+            <AnimatePresence>
+              {showRisk && response.codings?.length > 0 && (
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                  className={surface('p-4')} data-testid="risk-panel">
+                  <span className="text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 mb-3" style={{ color: t.textDim }}>
+                    <Shield className="w-3 h-3" style={{ color: PURPLE }} /> Risikobewertung
+                  </span>
+                  {response.codings.map((c, i) => (
+                    <div key={i} className="p-3 rounded-lg mb-2" style={{ backgroundColor: `${riskColors[c.risk]}08`, border: `1px solid ${riskColors[c.risk]}20` }}>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-semibold" style={{ color: t.text }}>{c.name}</span>
+                        <div className="flex items-center gap-1.5 px-2 py-1 rounded-md" style={{ backgroundColor: `${riskColors[c.risk]}15` }}>
+                          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: riskColors[c.risk] }} />
+                          <span className="text-[10px] font-bold" style={{ color: riskColors[c.risk] }}>{riskLabels[c.risk]}</span>
+                        </div>
+                      </div>
+                      <div className="space-y-1.5 text-[11px]" style={{ color: t.textSec }}>
+                        <p><span className="font-medium" style={{ color: t.textDim }}>TÜV-Relevanz:</span> {c.risk === 'high' ? 'Ja — kann bei HU auffallen' : c.risk === 'medium' ? 'Möglich — je nach Prüfer' : 'Nein — unbedenklich'}</p>
+                        <p><span className="font-medium" style={{ color: t.textDim }}>Rückgängig:</span> Ja — Originalwert {c.original} wiederherstellen</p>
+                        <p><span className="font-medium" style={{ color: t.textDim }}>Garantie:</span> {c.risk === 'high' ? 'Kann Garantieanspruch beeinflussen' : 'In der Regel kein Einfluss'}</p>
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Smart Suggestions */}
             {response.suggestions && response.suggestions.length > 0 && (
