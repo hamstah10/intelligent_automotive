@@ -54,13 +54,14 @@ const plans = [
   },
   {
     name: 'Combined',
-    price: '299',
-    description: 'Market + Tuning Intelligence',
+    price: '349',
+    description: 'Market + Tuning + Coding',
     features: [
       'Vollständiger Market Zugang',
       'Vollständiger Tuning Zugang',
+      'Vollständiger Coding Zugang',
       'ECU/TCU Datenbank',
-      'Tool Matrix & Protokolle',
+      'Coding-Datenbank (2.800+)',
       'Cross-Platform Insights',
       'Enterprise Support',
       'Custom Integrationen',
@@ -107,6 +108,7 @@ export const Pricing = () => {
       {/* Background Glows */}
       <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#00E5FF]/5 rounded-lg blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-[#CCFF00]/5 rounded-lg blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/3 w-[300px] h-[300px] bg-[#c084fc]/5 rounded-lg blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -157,6 +159,7 @@ export const Pricing = () => {
               if (plan.popular) return 'border-[#CCFF00]';
               if (plan.color === 'cyan') return 'border-[#00E5FF]/30';
               if (plan.color === 'yellow') return 'border-[#CCFF00]/30';
+              if (plan.color === 'purple') return 'border-[#c084fc]/30';
               return 'border-white/10';
             };
 
@@ -164,6 +167,7 @@ export const Pricing = () => {
               if (plan.popular) return 'bg-[#CCFF00] text-black hover:bg-[#B3E600]';
               if (plan.color === 'cyan') return 'bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30 hover:bg-[#00E5FF]/20';
               if (plan.color === 'yellow') return 'bg-[#CCFF00]/10 text-[#CCFF00] border border-[#CCFF00]/30 hover:bg-[#CCFF00]/20';
+              if (plan.color === 'purple') return 'bg-[#c084fc]/10 text-[#c084fc] border border-[#c084fc]/30 hover:bg-[#c084fc]/20';
               return 'bg-white/5 text-white border border-white/10 hover:bg-white/10';
             };
 

@@ -10,6 +10,7 @@ import { t, surface, surfaceAlt } from './themeUtils';
 
 const BLUE = '#00E5FF';
 const GREEN = '#CCFF00';
+const PURPLE = '#c084fc';
 
 /* ── Plans ── */
 const plans = [
@@ -74,8 +75,8 @@ const plans = [
   {
     id: 'combined',
     name: 'Combined',
-    sub: 'Market + Tuning Intelligence',
-    price: 299,
+    sub: 'Market + Tuning + Coding',
+    price: 349,
     icon: Star,
     color: GREEN,
     popular: true,
@@ -84,8 +85,9 @@ const plans = [
     features: [
       'Vollständiger Market Zugang',
       'Vollständiger Tuning Zugang',
+      'Vollständiger Coding Zugang',
       'ECU/TCU Datenbank',
-      'Tool Matrix & Protokolle',
+      'Coding-Datenbank (2.800+)',
       'Cross-Platform Insights',
       'Enterprise Support',
       'Custom Integrationen',
@@ -98,8 +100,9 @@ const addons = [
   { id: 'mobile-api', name: 'mobile.de API', desc: 'Live-Anbindung an mobile.de Listings', price: 29, icon: Globe, color: BLUE, tag: 'Beliebt' },
   { id: 'autoscout-api', name: 'AutoScout24 API', desc: 'Zusätzliche Datenquelle für Marktanalyse', price: 29, icon: Globe, color: BLUE, tag: null },
   { id: 'tuning-module', name: 'Tuning Intelligence', desc: 'ECU-Datenbank, Tuning-Empfehlungen & Prognosen', price: 49, icon: Cpu, color: GREEN, tag: 'Pro' },
+  { id: 'coding-module', name: 'Coding Intelligence', desc: 'Codierungen, Byte/Bit-Datenbank & Diagnose-Wissen', price: 49, icon: Cpu, color: PURPLE, tag: 'Neu' },
   { id: 'reports', name: 'Erweiterte Reports', desc: 'Automatische PDF-Reports + White-Label', price: 19, icon: FileText, color: '#facc15', tag: null },
-  { id: 'fleet', name: 'Flotten-Erweiterung', desc: 'Erweiterte Flotte, Kostenkalkulation, Wartungsplaner', price: 39, icon: Car, color: '#c084fc', tag: null },
+  { id: 'fleet', name: 'Flotten-Erweiterung', desc: 'Erweiterte Flotte, Kostenkalkulation, Wartungsplaner', price: 39, icon: Car, color: PURPLE, tag: null },
   { id: 'alerts-pro', name: 'Alerts Pro', desc: 'Unbegrenzte Alerts + Telegram/WhatsApp Push', price: 15, icon: Bell, color: '#f87171', tag: 'Neu' },
   { id: 'multi-tenant', name: 'Multi-Standort', desc: 'Mehrere Standorte separat verwalten', price: 59, icon: Building2, color: BLUE, tag: 'Enterprise' },
   { id: 'db-export', name: 'Daten-Export', desc: 'CSV/Excel/API Export aller Daten', price: 9, icon: Database, color: GREEN, tag: null },
@@ -114,6 +117,7 @@ const comparisonCategories = [
       { feature: 'Deal Score', basic: 'Basic', pro: 'Advanced', elite: 'Advanced', combined: 'Advanced' },
       { feature: 'Suchprofile', basic: '3', pro: 'Unbegrenzt', elite: 'Unbegrenzt', combined: 'Unbegrenzt' },
       { feature: 'Tuning Zugang', basic: '-', pro: '-', elite: '-', combined: 'Vollständig' },
+      { feature: 'Coding Zugang', basic: '-', pro: '-', elite: '-', combined: 'Vollständig' },
     ],
   },
   {
@@ -122,6 +126,7 @@ const comparisonCategories = [
       { feature: 'API Zugang', basic: '-', pro: 'Ja', elite: 'Ja', combined: 'Ja' },
       { feature: 'White-Label Reports', basic: '-', pro: '-', elite: 'Ja', combined: 'Ja' },
       { feature: 'ECU/TCU Datenbank', basic: '-', pro: '-', elite: '-', combined: 'Ja' },
+      { feature: 'Coding-Datenbank', basic: '-', pro: '-', elite: '-', combined: '2.800+' },
       { feature: 'Custom Integrationen', basic: '-', pro: '-', elite: '-', combined: 'Ja' },
     ],
   },

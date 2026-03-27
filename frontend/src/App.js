@@ -8,6 +8,7 @@ import { LiveTicker } from "@/components/landing/LiveTicker";
 import { FeaturesMarket } from "@/components/landing/FeaturesMarket";
 import { ROICalculator } from "@/components/landing/ROICalculator";
 import { FeaturesTuning } from "@/components/landing/FeaturesTuning";
+import { FeaturesCoding } from "@/components/landing/FeaturesCoding";
 import { ECUVisualizer } from "@/components/landing/ECUVisualizer";
 import { AIDealAnalyzer } from "@/components/landing/AIDealAnalyzer";
 import { HowItWorks } from "@/components/landing/HowItWorks";
@@ -50,6 +51,7 @@ const HomePage = () => {
         <VehicleConfigurator />
         <DealQuiz />
         <FeaturesTuning />
+        <FeaturesCoding />
         <ECUVisualizer />
         <AIDealAnalyzer />
         <BeforeAfterSlider />

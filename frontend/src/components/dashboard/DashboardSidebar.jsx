@@ -96,7 +96,7 @@ export const DashboardSidebar = () => {
           <img src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png" alt="AutoIntel" className="w-9 h-9 object-contain" />
           <div className="flex flex-col leading-tight">
             <span className="font-semibold text-xs font-['Orbitron'] tracking-tight" style={{ color: 'var(--d-text)' }}>AutoIntel</span>
-            <span className="text-[9px]" style={{ color: 'var(--d-text-sec)' }}>Market + Tuning</span>
+            <span className="text-[9px]" style={{ color: 'var(--d-text-sec)' }}>Market + Tuning + Coding</span>
           </div>
         </Link>
       </div>

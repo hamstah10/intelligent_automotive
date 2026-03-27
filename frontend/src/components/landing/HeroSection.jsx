@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
-import { ArrowRight, Play, BarChart3, Cpu } from 'lucide-react';
+import { ArrowRight, Play, BarChart3, Cpu, Code } from 'lucide-react';
 import { HeroCanvas } from './HeroCanvas';
 
 export const HeroSection = () => {
@@ -119,7 +119,7 @@ export const HeroSection = () => {
           className="text-white/60 text-base lg:text-lg leading-relaxed max-w-2xl mb-10"
         >
           Eine zentrale Plattform für die Automotive-Branche. Analysiere Fahrzeugmärkte, 
-          erkenne Deals unter Marktwert und verstehe jedes Steuergerät.
+          erkenne Deals unter Marktwert, verstehe jedes Steuergerät und codiere jedes Fahrzeug.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -163,6 +163,10 @@ export const HeroSection = () => {
           <Link to="/tuning" className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#CCFF00]/30 rounded-lg hover:border-[#CCFF00]/50 transition-colors">
             <Cpu className="w-5 h-5 text-[#CCFF00]" />
             <span className="text-white/80 text-sm font-medium">Tuning Intelligence</span>
+          </Link>
+          <Link to="/coding" className="flex items-center gap-3 px-5 py-3 bg-[#111111] border border-[#c084fc]/30 rounded-lg hover:border-[#c084fc]/50 transition-colors">
+            <Code className="w-5 h-5 text-[#c084fc]" />
+            <span className="text-white/80 text-sm font-medium">Coding Intelligence</span>
           </Link>
         </motion.div>
 
