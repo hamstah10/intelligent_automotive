@@ -66,6 +66,8 @@ export const CodingPage = () => {
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const heroY = useTransform(heroScrollProgress, [0, 1], ["0%", "50%"]);
   const heroScale = useTransform(heroScrollProgress, [0, 1], [1, 1.2]);
+  const heroOpacity = useTransform(heroScrollProgress, [0, 0.5], [1, 0]);
+  const textY = useTransform(heroScrollProgress, [0, 1], ["0%", "100%"]);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -79,44 +81,97 @@ export const CodingPage = () => {
 
       {/* Hero */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Parallax Background */}
         <motion.div className="absolute inset-0" style={{ y: heroY, scale: heroScale }}>
           <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&h=1080&fit=crop" alt="Coding Intelligence" className="w-full h-full object-cover opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/80 to-[#050505]" />
         </motion.div>
-        <motion.div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-[120px]" style={{ backgroundColor: `${PURPLE}20` }}
-          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 5, repeat: Infinity }} />
 
-        {/* A Logo Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-          <span className="font-['Orbitron'] font-black text-[40rem] leading-none" style={{ color: `${PURPLE}04` }}>A</span>
-        </div>
+        {/* Floating Blur Elements */}
+        <motion.div className="absolute top-1/3 left-1/4 w-64 h-64 rounded-lg blur-[100px]" style={{ backgroundColor: `${PURPLE}15` }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 4, repeat: Infinity }} />
+        <motion.div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-lg blur-[80px]" style={{ backgroundColor: `${PURPLE}0a` }}
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 5, repeat: Infinity, delay: 1 }} />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${PURPLE}20`, border: `1px solid ${PURPLE}30` }}>
-                <Code className="w-6 h-6" style={{ color: PURPLE }} />
-              </div>
-              <span className="text-sm font-semibold font-['Orbitron'] tracking-widest uppercase" style={{ color: PURPLE }}>Coding Intelligence</span>
-            </div>
-            <h1 className="font-['Orbitron'] text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Codierungen.<br /><span style={{ color: PURPLE }}>Systematisch.</span>
-            </h1>
-            <p className="text-base lg:text-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Die umfassendste Datenbank für Fahrzeug-Codierungen. Steuergeräte, Byte/Bit-Logik und Diagnosewissen — strukturiert und sofort nutzbar.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/dashboard/coding">
-                <Button data-testid="coding-hero-cta" className="text-black font-semibold px-8 h-12 text-sm rounded-xl gap-2" style={{ backgroundColor: PURPLE }}>
-                  Dashboard öffnen <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-              <Link to="/demo">
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/5 px-8 h-12 text-sm rounded-xl">Demo buchen</Button>
-              </Link>
-            </div>
+        {/* Giant Logo A - Coding Purple */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5, ease: 'easeOut' }} className="relative">
+            <img
+              src="https://customer-assets.emergentagent.com/job_market-tuning-hub/artifacts/xfi7h1y0_automotive.png"
+              alt=""
+              className="w-[420px] h-[420px] lg:w-[520px] lg:h-[520px] object-contain opacity-[0.12]"
+              style={{ filter: 'brightness(0) saturate(100%) invert(65%) sepia(40%) saturate(800%) hue-rotate(220deg) brightness(110%) contrast(95%)' }}
+            />
+            <div className="absolute inset-0 blur-[60px] rounded-full" style={{ backgroundColor: `${PURPLE}08` }} />
           </motion.div>
         </div>
+
+        {/* Code Rain / Matrix Animation */}
+        <motion.div className="absolute inset-0 opacity-[0.06] overflow-hidden"
+          style={{ y: useTransform(heroScrollProgress, [0, 1], ["0%", "30%"]) }}>
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="codegrid" x="0" y="0" width="120" height="160" patternUnits="userSpaceOnUse">
+                <text x="10" y="20" fill={PURPLE} fontSize="11" fontFamily="monospace" opacity="0.7">{'{ }'}</text>
+                <text x="60" y="40" fill={PURPLE} fontSize="10" fontFamily="monospace" opacity="0.5">0x5F</text>
+                <text x="15" y="60" fill={PURPLE} fontSize="11" fontFamily="monospace" opacity="0.6">byte</text>
+                <text x="75" y="75" fill={PURPLE} fontSize="9" fontFamily="monospace" opacity="0.4">ECU</text>
+                <text x="5" y="95" fill={PURPLE} fontSize="10" fontFamily="monospace" opacity="0.5">{'</ >'}</text>
+                <text x="65" y="110" fill={PURPLE} fontSize="11" fontFamily="monospace" opacity="0.7">0b11</text>
+                <text x="30" y="130" fill={PURPLE} fontSize="9" fontFamily="monospace" opacity="0.4">BCM</text>
+                <text x="80" y="150" fill={PURPLE} fontSize="10" fontFamily="monospace" opacity="0.6">{'{ }'}</text>
+                <path d="M0 80h40 M80 80h40 M60 0v50 M60 110v50" stroke={PURPLE} strokeWidth="0.3" fill="none" opacity="0.3"/>
+                <circle cx="60" cy="80" r="2" fill={PURPLE} opacity="0.4"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#codegrid)"/>
+          </svg>
+        </motion.div>
+
+        {/* Animated Code Lines floating */}
+        {[0, 1, 2, 3, 4, 5].map(i => (
+          <motion.div key={i} className="absolute text-xs font-mono pointer-events-none select-none whitespace-nowrap" style={{ color: `${PURPLE}20` }}
+            initial={{ x: `${10 + i * 15}%`, y: '-5%', opacity: 0 }}
+            animate={{ y: '105%', opacity: [0, 0.3, 0.3, 0] }}
+            transition={{ duration: 12 + i * 2, repeat: Infinity, delay: i * 1.8, ease: 'linear' }}>
+            {['ECU.write(0x09, 0x5F, 0b11001);', 'BCM.adaptation(channel_42);', 'byte[3] = 0xFF & mask;', 'readDTC(module="ABS");', 'flash(ecu, stage=1);', 'coding.apply(comfort);'][i]}
+          </motion.div>
+        ))}
+
+        {/* Content with Parallax */}
+        <motion.div className="relative z-10 max-w-5xl mx-auto px-6 text-center" style={{ y: textY, opacity: heroOpacity }}>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono uppercase tracking-wider mb-8"
+              style={{ backgroundColor: `${PURPLE}15`, border: `1px solid ${PURPLE}30`, color: PURPLE }}>
+              <Code className="w-4 h-4" />
+              Coding Intelligence
+            </span>
+          </motion.div>
+
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+            data-testid="coding-hero-title"
+            className="font-['Orbitron'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter leading-[0.9] mb-8">
+            Codierungen.{' '}
+            <span style={{ color: PURPLE }}>Systematisch.</span>
+          </motion.h1>
+
+          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-white/60 text-lg lg:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+            Die umfassendste Datenbank für Fahrzeug-Codierungen. Steuergeräte, Byte/Bit-Logik und Diagnosewissen — strukturiert und sofort nutzbar.
+          </motion.p>
+
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link to="/dashboard/coding">
+              <Button data-testid="coding-hero-cta" className="text-black font-semibold px-8 h-12 text-sm rounded-xl gap-2" style={{ backgroundColor: PURPLE }}>
+                Dashboard öffnen <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+            <Link to="/demo">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/5 px-8 h-12 text-sm rounded-xl">Demo buchen</Button>
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Stats */}
