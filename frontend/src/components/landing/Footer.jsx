@@ -10,6 +10,7 @@ const footerLinks = {
   Produkt: [
     { name: 'Market Intelligence', href: '/market' },
     { name: 'Tuning Intelligence', href: '/tuning' },
+    { name: 'Coding Intelligence', href: '/coding' },
     { name: 'Preise', href: '/#pricing' },
     { name: 'API Dokumentation', href: '/support' },
   ],
