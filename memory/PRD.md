@@ -19,78 +19,60 @@ Central Automotive Intelligence SaaS platform with two specialized products:
 ```
 /app/
 ├── backend/
-│   ├── server.py (FastAPI app)
-│   ├── ai_routes.py (AI endpoints)
+│   ├── server.py, ai_routes.py
 ├── frontend/src/
-│   ├── App.js (Routing + ThemeProvider)
-│   ├── index.css (Tailwind, CSS Variables, Fonts)
+│   ├── App.js, index.css
 │   ├── components/
-│   │   ├── landing/ (HeroCanvas, AIResponseRenderer, 8 tool components)
+│   │   ├── landing/ (8 tool components + HeroCanvas etc.)
 │   │   ├── pages/ (MarketPage, TuningPage, LoginPage, etc.)
 │   │   ├── dashboard/
-│   │   │   ├── DashboardLayout, DashboardSidebar, DashboardPage
-│   │   │   ├── DashboardThemeContext, themeUtils.js
-│   │   │   ├── DashboardToolWrapper.jsx (generic tool container)
+│   │   │   ├── Layout, Sidebar, Page, ThemeContext, themeUtils
+│   │   │   ├── DashboardToolWrapper.jsx
 │   │   │   ├── DashboardEmpfehlungen.jsx
-│   │   │   ├── BeispielVergleich, BeispielPreisTracker, BeispielFlotte
-│   │   │   ├── BeispielMarktReport, BeispielTuningShowcase
+│   │   │   ├── Beispiel: Vergleich, PreisTracker, Flotte, MarktReport, TuningShowcase, Widgets, Fahrzeugsuche
 │   │   │   ├── 7 standard dashboard pages
 ```
 
 ## Implemented Features
 
 ### Landing Page (DONE)
-- Hero section with AI Neural Network canvas animation
-- 8 interactive tools: AIDealAnalyzer, ROICalculator, VehicleConfigurator, DealQuiz, BeforeAfterSlider, CompetitorRadar, MarketHeatmap, ECUVisualizer
-- AIResponseRenderer for markdown-formatted AI outputs
-- Live ticker, pricing, testimonials, FAQ, integration showcase
+- Hero with AI Neural Network animation, 8 interactive tools, Live ticker, Pricing, FAQ
 
 ### Dashboard (DONE)
-- 7-page layout: Overview, Market, Tuning, Alerts, Reports, Teams, Tenants
-- **Tools Menu** (7 tools from landing page embedded via DashboardToolWrapper):
-  - Deal Analyzer, ROI Rechner, Marktwert-Check, Deal Quiz, Vorher/Nachher, Wettbewerb-Radar, Markt-Heatmap
-- **Beispiele Menu** (5 interactive demo pages):
-  - Fahrzeug-Vergleich (`/dashboard/beispiele/vergleich`) — Side-by-side comparison with RadarChart
-  - Preis-Tracker (`/dashboard/beispiele/preis-tracker`) — Multi-vehicle price history with AreaCharts
-  - Flotten-Übersicht (`/dashboard/beispiele/flotte`) — Fleet management with KPIs, cost analysis, vehicle cards
-  - Markt-Report (`/dashboard/beispiele/markt-report`) — Complete market analysis report with charts + tables
-  - Tuning Showcase (`/dashboard/beispiele/tuning-showcase`) — Stage 1/2 performance gains with animated gauges
-- **Empfehlungen** page with AI tuning recommendations
-- Collapsible sidebar menus (Tools + Beispiele) with AnimatePresence
-- 3-way theme system (Dark/Light/Gradient) across all pages
-- ECU Knowledge Bot
-
-### Product Pages (DONE)
-- Market Intelligence page with hero + large 'A' logo background
-- Tuning Intelligence page with hero + large 'A' logo background
+- **Main Nav**: Overview, Market, Tuning, Alerts, Reports
+- **Tools Menu** (7): Deal Analyzer, ROI Rechner, Marktwert-Check, Deal Quiz, Vorher/Nachher, Wettbewerb-Radar, Markt-Heatmap
+- **Beispiele Menu** (7):
+  - Fahrzeug-Vergleich — Radar-Chart + Specs
+  - Preis-Tracker — Multi-vehicle AreaCharts
+  - Flotten-Übersicht — KPIs, cost analysis, vehicle cards
+  - Markt-Report — Segment trends, brand share, region table
+  - Tuning Showcase — Stage 1/2 animated gauges
+  - Dashboard Widgets — KPIs, charts, feed, heatmap, system monitoring
+  - **Fahrzeugsuche** — mobile.de API source selector, search/filter, 12 listings, track/untrack, tracking tab
+- **Empfehlungen** page, ECU Knowledge Bot
+- 3-way theme system (Dark/Light/Gradient)
 
 ### Styling (DONE)
-- Global font change: Orbitron (headings) + Exo 2 (body)
-- Responsive font sizing
-- 3-way theme toggle across entire site
+- Orbitron (headings) + Exo 2 (body), Responsive sizing, 3-way theme
 
 ## Mocked Data
-- All Dashboard data (overview stats, market listings, tuning entries, alerts, reports)
-- All Beispiele pages (vehicle comparison, fleet, price tracker, reports, tuning showcase)
-- Authentication (login/register pages exist but not connected)
+- All Dashboard + Beispiele data, Authentication, Vehicle listings
 
 ## API Endpoints
-- `POST /api/ai/analyze-deal` — AI deal analysis
-- `POST /api/ai/ecu-knowledge` — ECU knowledge queries
-- `POST /api/ai/generate-report` — Report generation
+- `POST /api/ai/analyze-deal`, `/api/ai/ecu-knowledge`, `/api/ai/generate-report`
 
-## Backlog (Prioritized)
+## Backlog
 
 ### P0 — Next
-- Connect Frontend to Backend API (replace mocked dashboard data)
-- User Authentication (JWT login/register flow)
+- Autohändler-Pakete (Addon-System) — Pricing-Cards für verschiedene Händler-Pakete
+- Connect Frontend to Backend API (replace mocked data)
+- User Authentication (JWT login/register)
 
 ### P1
-- Chat History Persistence (store AI chats in MongoDB)
+- Chat History Persistence (MongoDB)
 
 ### P2
-- Crawler System (Spider → Parser → Normalizer → API for live listings)
-- Admin Panel (Tenants, Crawl Jobs, Logs)
+- Crawler System, Admin Panel
 
 ### P3
-- Multi-tenant database separation (tenant_id filtering)
+- Multi-tenant database separation
